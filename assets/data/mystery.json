@@ -1,0 +1,206 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "banner": "joyful/1.jpg",
+      "type": "joyful_mystery",
+      "title": "first_joyful_title",
+      "name": "first_joyful_name",
+      "scripture": "first_joyful_scripture",
+      "text": "first_joyful_text",
+      "reflection": "first_joyful_reflection"
+    },
+    {
+      "id": 2,
+      "banner": "joyful/2.jpg",
+      "title": "second_joyful_title",
+      "type": "joyful_mystery",
+      "name": "second_joyful_name",
+      "scripture": "second_joyful_scripture",
+      "text": "second_joyful_text",
+      "reflection": "second_joyful_reflection"
+    },
+    {
+      "id": 3,
+      "banner": "joyful/3.jpeg",
+      "type": "joyful_mystery",
+      "title": "third_joyful_title",
+      "name": "third_joyful_name",
+      "scripture": "third_joyful_scripture",
+      "text": "third_joyful_text",
+      "reflection": "third_joyful_reflection</p>"
+    },
+    {
+      "id": 4,
+      "banner": "joyful/4.jpeg",
+      "type": "joyful_mystery",
+      "title": "fourth_joyful_title",
+      "name": "fourth_joyful_name",
+      "scripture": "fourth_joyful_scripture",
+      "text": "fourth_joyful_text",
+      "reflection": "fourth_joyful_reflection"
+    },
+    {
+      "id": 5,
+      "type": "joyful_mystery",
+      "banner": "joyful/5.jpg",
+      "title": "fifth_joyful_title",
+      "name": "fifth_joyful_name",
+      "scripture": "fifth_joyful_scripture",
+      "text": "fifth_joyful_text</p>",
+      "reflection": "fifth_joyful_reflection</p>"
+    },
+    {
+      "id": 1,
+      "type": "sorrowful_mystery",
+      "banner": "sorrowful/1.jpg",
+      "title": "first_sorrowful_title",
+      "name": "first_sorrowful_name",
+      "scripture": "first_sorrowful_scripture",
+      "text": "first_sorrowful_text",
+      "reflection": "first_sorrowful_reflection"
+    },
+    {
+      "id": 2,
+      "type": "sorrowful_mystery",
+      "banner": "sorrowful/2.jpeg",
+      "title": "second_sorrowful_title",
+      "name": "second_sorrowful_name",
+      "scripture": "second_sorrowful_scripture",
+      "text": "second_sorrowful_text",
+      "reflection": "second_sorrowful_reflection"
+    },
+    {
+      "id": 3,
+      "type": "sorrowful_mystery",
+      "banner": "sorrowful/3.jpg",
+      "title": "third_sorrowful_title",
+      "name": "third_sorrowful_name",
+      "scripture": "third_sorrowful_scripture",
+      "text": "third_sorrowful_text",
+      "reflection": "third_sorrowful_reflection"
+    },
+    {
+      "id": 4,
+      "type": "sorrowful_mystery",
+      "banner": "sorrowful/4.jpg",
+      "title": "fourth_sorrowful_title",
+      "name": "fourth_sorrowful_name",
+      "scripture": "fourth_sorrowful_scripture",
+      "text": "fourth_sorrowful_text",
+      "reflection": "fourth_sorrowful_reflection"
+    },
+    {
+      "id": 5,
+      "type": "sorrowful_mystery",
+      "banner": "sorrowful/5.jpg",
+      "title": "fifth_sorrowful_title",
+      "name": "fifth_sorrowful_name",
+      "scripture": "fifth_sorrowful_scripture",
+      "text": "fifth_sorrowful_text",
+      "reflection": "fifth_sorrowful_reflection"
+    },
+
+    {
+      "id": 1,
+      "type": "glorious_mystery",
+      "banner": "glorious/1.jpeg",
+      "title": "first_glorious_title",
+      "name": "first_glorious_name",
+      "scripture": "first_glorious_scripture",
+      "text": "first_glorious_text",
+      "reflection": "first_glorious_reflection"
+    },
+    {
+      "id": 2,
+      "type": "glorious_mystery",
+      "banner": "glorious/2.jpeg",
+      "title": "second_glorious_title",
+      "name": "second_glorious_name",
+      "scripture": "second_glorious_scripture",
+      "text": "second_glorious_text",
+      "reflection": "second_glorious_reflection"
+    },
+    {
+      "id": 3,
+      "type": "glorious_mystery",
+      "banner": "glorious/3.webp",
+      "title": "third_glorious_title",
+      "name": "third_glorious_name",
+      "scripture": "third_glorious_scripture",
+      "text": "third_glorious_text",
+      "reflection": "third_glorious_reflection"
+    },
+    {
+      "id": 4,
+      "type": "glorious_mystery",
+      "banner": "glorious/4.jpg",
+      "title": "fourth_glorious_title",
+      "name": "fourth_glorious_name",
+      "scripture": "fourth_glorious_scripture",
+      "text": "fourth_glorious_text",
+      "reflection": "fourth_glorious_reflection"
+    },
+    {
+      "id": 5,
+      "type": "glorious_mystery",
+      "banner": "glorious/5.jpeg",
+      "title": "fifth_glorious_title",
+      "name": "fifth_glorious_name",
+      "scripture": "fifth_glorious_scripture",
+      "text": "fifth_glorious_text",
+      "reflection": "fifth_glorious_reflection"
+    },
+
+    {
+      "id": 1,
+      "type": "luminous_mystery",
+      "banner": "luminous/1.webp",
+      "title": "first_luminous_title",
+      "name": "first_luminous_name",
+      "scripture": "first_luminous_scripture",
+      "text": "first_luminous_text",
+      "reflection": "first_luminous_reflection"
+    },
+    {
+      "id": 2,
+      "type": "luminous_mystery",
+      "banner": "luminous/2.jpeg",
+      "title": "second_luminous_title",
+      "name": "second_luminous_name",
+      "scripture": "second_luminous_scripture",
+      "text": "second_luminous_text",
+      "reflection": "second_luminous_reflection"
+    },
+    {
+      "id": 3,
+      "type": "luminous_mystery",
+      "banner": "luminous/3.jpeg",
+      "title": "third_luminous_title",
+      "name": "third_luminous_name",
+      "scripture": "third_luminous_scripture",
+      "text": "third_luminous_text",
+      "reflection": "third_luminous_reflection"
+    },
+    {
+      "id": 4,
+      "type": "luminous_mystery",
+      "banner": "luminous/4.jpeg",
+      "title": "fourth_luminous_title",
+      "name": "fourth_luminous_name",
+      "scripture": "fourth_luminous_scripture",
+      "text": "fourth_luminous_text",
+      "reflection": "fourth_luminous_reflection"
+    },
+    {
+      "id": 5,
+      "type": "luminous_mystery",
+      "banner": "luminous/5.jpeg",
+      "title": "fifth_luminous_title",
+      "name": "fifth_luminous_name",
+      "scripture": "fifth_luminous_scripture",
+      "text": "fifth_luminous_text",
+      "reflection": "fifth_luminous_reflection"
+    }
+  ]
+}

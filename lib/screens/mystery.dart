@@ -1,0 +1,204 @@
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:rosary/controllers/prayer_request_controller.dart';
+import 'package:rosary/model/data.dart';
+import 'package:rosary/route/route_helpers.dart';
+import 'package:rosary/utils/appColor.dart';
+import 'package:rosary/utils/constants.dart';
+import 'package:rosary/widgets/big_text.dart';
+import 'package:rosary/widgets/main_text.dart';
+
+import '../controllers/main_controller.dart';
+import '../widgets/app_icon.dart';
+
+class MysteryScreen extends StatefulWidget {
+  @override
+  State<MysteryScreen> createState() => _MysteryScreenState();
+}
+
+class _MysteryScreenState extends State<MysteryScreen> {
+  var _mainController = Get.find<MainController>();
+  var _prayerController = Get.find<PrayerRequestController>();
+  late DataModel dataMystery;
+  bool hasLoded = false;
+  @override
+  void initState() {
+    _prayerController.getSelectedPrayerRequest();
+    // TODO: implement initState
+    super.initState();
+    print(_mainController.currentMystery);
+    fetchData(
+        _mainController.currentMyesteryCounter, _mainController.currentMystery);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    _mainController.getSingleMystery(
+        mysteryType: _mainController.currentMystery, number: 1);
+
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: hasLoded ? Text(dataMystery.type!.tr) : Text(""),
+      ),
+      backgroundColor: Colors.white,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: AssetImage('assets/${dataMystery.banner}'),
+          ),
+        ),
+        child: Container(
+          color: Colors.white.withOpacity(.85),
+          child: ListView(children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: !hasLoded
+                  ? const Center(child: CircularProgressIndicator())
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          'assets/${dataMystery.banner}',
+                          fit: BoxFit.cover,
+                          width: double.maxFinite,
+                          height: 200.h,
+                        ),
+                        MainText(
+                          text: dataMystery.title!.tr,
+                          size: 22.sp,
+                        ),
+                        SizedBox(height: 12.h),
+                        Text(
+                          dataMystery.scripture!.tr,
+                          style: TextStyle(
+                              fontSize: 15.sp, fontStyle: FontStyle.italic),
+                        ),
+                        SizedBox(height: 16.h),
+                        Text(
+                          dataMystery.name!.tr,
+                          style: TextStyle(
+                            fontSize: 24.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 16.h),
+                        Html(
+                          data: dataMystery.text.toString().tr,
+                          style: {
+                            'p': Style(
+                                textAlign: TextAlign.left,
+                                fontSize: FontSize(18.sp),
+                                fontFamily: "Georgian"),
+                          },
+                        ),
+                        Divider(),
+                        Text(
+                          'relection'.tr,
+                          style: TextStyle(
+                              fontSize: 20.sp, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 16.h),
+                        Html(
+                          data: dataMystery.reflection.toString().tr,
+                          style: {
+                            'p': Style(
+                                fontSize: FontSize(18.sp),
+                                fontFamily: "Georgian"),
+                          },
+                        ),
+                        GetBuilder<PrayerRequestController>(builder: (prayer) {
+                          return prayer.selectedtList.length > 0
+                              ? ExpansionTile(
+                                  expandedCrossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  title: MainText(
+                                    align: TextAlign.left,
+                                    text: 'my_prayer_request',
+                                    color: Colors.green,
+                                    size: 18.sp,
+                                    isBold: true,
+                                  ),
+                                  children: prayer.selectedtList
+                                      .map((item) => ListTile(
+                                            leading: CircleAvatar(
+                                              backgroundImage: AssetImage(
+                                                AppConstant.getImagePath(
+                                                    "hand.png"),
+                                              ),
+                                            ),
+                                            title: Text(item.content!),
+                                          ))
+                                      .toList(),
+                                )
+                              : Container();
+                        }),
+                        SizedBox(
+                          height: 20.h,
+                        )
+                      ],
+                    ),
+            ),
+          ]),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 30.h),
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          InkWell(
+            onTap: () {
+              Get.toNamed(RouteHelpers.progressPrayerPage);
+            },
+            child: AppIcon(
+              iconColor: Colors.white,
+              backgroundColor: AppColor.primaryColor,
+              icon: Icons.arrow_back_sharp,
+              iconSize: 40.sp,
+              size: 60.sp,
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              _mainController.setBidFocus(0);
+              Get.toNamed(RouteHelpers.chapletPage);
+            },
+            child: AppIcon(
+              iconColor: Colors.white,
+              backgroundColor: AppColor.primaryColor,
+              icon: Icons.arrow_forward_sharp,
+              iconSize: 40.sp,
+              size: 60.sp,
+            ),
+          ),
+        ]),
+      ),
+    );
+  }
+
+  fetchData(id, type) async {
+    String data = await rootBundle.loadString('assets/data/mystery.json');
+    var jsonResult = json.decode(data);
+    print(jsonResult);
+
+    for (var item in jsonResult["data"]) {
+      print("------Loop in myesrty");
+      if (item["id"] == id &&
+          item["type"] == _mainController.formatMystery(type)) {
+        print("kkekekkeke");
+        print(item);
+        dataMystery = DataModel.fromJson(item);
+        _mainController.setMysteryBanner(banner: dataMystery.banner ?? "");
+        setState(() {
+          hasLoded = true;
+        });
+      }
+    }
+  }
+}
