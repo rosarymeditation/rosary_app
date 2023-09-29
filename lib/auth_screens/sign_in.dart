@@ -69,131 +69,152 @@ class SignInPage extends StatelessWidget {
                 physics: BouncingScrollPhysics(),
                 child: SizedBox(
                   height: Dimensions.screenHeight,
-                  child: Stack(
+                  child: Column(
                     children: [
-                      Positioned(
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: Dimensions.height80 * 5,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: AppColor.primaryColor,
-                            borderRadius: BorderRadius.only(
-                              bottomLeft:
-                                  Radius.circular(Dimensions.radius20 * 3),
-                              //topRight: Radius.circular(Dimensions.radius20),
-                            ),
+                      SizedBox(
+                        height: 30.h,
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Colors.white,
+                        radius: 30.sp,
+                        backgroundImage: AssetImage(AppConstant.DEFAULT_LOGO),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      MainText(
+                        color: Colors.grey.shade800,
+                        size: 16.sp,
+                        text: "Welcome back! Sign in to continue with us.",
+                      ),
+                      SizedBox(
+                        height: 15.h,
+                      ),
+                      AuthTextField(
+                        textController: emailController,
+                        hintText: "Email",
+                        icon: Icons.email,
+                      ),
+                      SizedBox(
+                        height: Dimensions.height20,
+                      ),
+                      PasswordTextField(
+                        textController: passwordController,
+                        hintText: "Password",
+                        icon: Icons.password_sharp,
+                        isObscure: true,
+                      ),
+                      SizedBox(
+                        height: Dimensions.height20,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Get.toNamed(RouteHelpers.forgotPasswordPage);
+                        },
+                        child: MainText(
+                          size: 16.sp,
+                          text: 'Forgot Password?',
+                          color: Colors.blue,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          _login();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: RegularBtnWidget(
+                            text: AppConstant.SIGN_IN,
+                            backgroundColor: AppColor.primaryColor,
                           ),
                         ),
                       ),
-                      Positioned(
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: Dimensions.height80 * 5,
-                        child: Center(
-                          child: CircleAvatar(
-                            radius: Dimensions.radius20 * 2,
-                            backgroundColor: Colors.white,
-                            backgroundImage: const AssetImage(
-                              AppConstant.PRAY_LOGO,
-                            ),
-                          ),
-                        ),
+                      SizedBox(
+                        height: Dimensions.height10,
                       ),
-                      Positioned(
-                          top: Dimensions.height80 * 4,
-                          left: 0,
-                          right: 0,
-                          child: Container(
-                            padding: EdgeInsets.only(top: Dimensions.height20),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topRight:
-                                    Radius.circular(Dimensions.radius20 * 3),
-                                //topRight: Radius.circular(Dimensions.radius20),
+                      InkWell(
+                        onTap: () {
+                          Get.toNamed(RouteHelpers.signUpPage);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RichText(
+                              text: TextSpan(
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    // Get.toNamed(RouteHelpers.signUp);
+                                  },
+                                text: "Have no account yet?",
+                                style: TextStyle(
+                                    color: Colors.grey[500], fontSize: 16.sp),
                               ),
                             ),
-                            child: Column(
-                              children: [
-                                AuthTextField(
-                                  textController: emailController,
-                                  hintText: "Email",
-                                  icon: Icons.email,
-                                ),
-                                SizedBox(
-                                  height: Dimensions.height20,
-                                ),
-                                PasswordTextField(
-                                  textController: passwordController,
-                                  hintText: "Password",
-                                  icon: Icons.password_sharp,
-                                  isObscure: true,
-                                ),
-                                SizedBox(
-                                  height: Dimensions.height20,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    Get.toNamed(
-                                        RouteHelpers.forgotPasswordPage);
-                                  },
-                                  child: MainText(
-                                    size: 16.sp,
-                                    text: 'Forgot Password?',
-                                    color: Colors.blue,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    _login();
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20),
-                                    child: RegularBtnWidget(
-                                      text: AppConstant.SIGN_IN,
-                                      backgroundColor: AppColor.primaryColor,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: Dimensions.height10,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    Get.toNamed(RouteHelpers.signUpPage);
-                                  },
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      RichText(
-                                        text: TextSpan(
-                                          recognizer: TapGestureRecognizer()
-                                            ..onTap = () {
-                                              // Get.toNamed(RouteHelpers.signUp);
-                                            },
-                                          text: "Have no account yet?",
-                                          style: TextStyle(
-                                              color: Colors.grey[500],
-                                              fontSize: 16.sp),
-                                        ),
-                                      ),
-                                      MainText(
-                                        size: 16.sp,
-                                        text: ' Sign Up',
-                                        color: Colors.blue,
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
+                            MainText(
+                              size: 16.sp,
+                              text: ' Sign Up',
+                              color: Colors.blue,
                             ),
-                          ))
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15.h,
+                      ),
+                      // Row(
+                      //   children: [
+                      //     Expanded(child: Divider()),
+                      //     MainText(text: "OR"),
+                      //     Expanded(child: Divider())
+                      //   ],
+                      // ),
+                      // SizedBox(
+                      //   height: 20.h,
+                      // ),
+                      // Padding(
+                      //   padding: EdgeInsets.symmetric(horizontal: 10.w),
+                      //   child: ElevatedButton(
+                      //     style: ElevatedButton.styleFrom(
+                      //       padding: EdgeInsets.all(
+                      //           16.0), // Padding around the button content
+                      //       shape: RoundedRectangleBorder(
+                      //         borderRadius: BorderRadius.circular(
+                      //             8.0), // Button border radius
+                      //       ),
+                      //       textStyle: TextStyle(
+                      //         fontSize: 18.0, // Text size
+                      //         fontWeight: FontWeight.bold, // Text weight
+                      //       ),
+                      //     ),
+                      //     onPressed: () {
+                      //       // AuthService().signInWithGoogle();
+                      //     },
+                      //     child: Row(
+                      //       children: [
+                      //         CircleAvatar(
+                      //           backgroundColor: Colors.white,
+                      //           radius: 20.sp,
+                      //           backgroundImage:
+                      //               AssetImage("assets/images/google.webp"),
+                      //         ),
+                      //         SizedBox(
+                      //           width: 10.w,
+                      //         ),
+                      //         MainText(
+                      //           color: Colors.black,
+                      //           text: "Continue with Google",
+                      //           size: 18.sp,
+                      //         )
+                      //       ],
+                      //     ),
+                      //   ),
+                      // ),
+                      // SizedBox(
+                      //   height: 40.h,
+                      // )
                     ],
                   ),
                 ),

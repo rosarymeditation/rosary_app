@@ -16,29 +16,32 @@ class FeedImageWidget extends StatelessWidget {
     if (url == null || url == "") {
       return Container();
     }
-    return CachedNetworkImage(
-      imageUrl: url ?? AppConstant.DEFAULT_IMG,
-      imageBuilder: (context, imageProvider) => Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: imageProvider,
-            onError: (error, stackTrace) {
-              print('');
-            },
+    return AspectRatio(
+      aspectRatio: 4 / 3,
+      child: CachedNetworkImage(
+        imageUrl: url ?? AppConstant.DEFAULT_IMG,
+        imageBuilder: (context, imageProvider) => Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.fill,
+              image: imageProvider,
+              onError: (error, stackTrace) {
+                print('');
+              },
+            ),
+            color: Colors.grey.shade300,
           ),
-          color: Colors.grey.shade300,
+          // width: double.maxFinite,
+          // height: 250.h,
         ),
-        width: double.maxFinite,
-        height: 160.h,
-      ),
-      placeholder: (context, url) => PlaceholderWidget(
-        assetImage: AppConstant.DEFAULT_LOCAL_IMG,
-        height: 160.h,
-      ),
-      errorWidget: (context, url, error) => PlaceholderWidget(
-        assetImage: AppConstant.DEFAULT_LOCAL_IMG,
-        height: 160.h,
+        placeholder: (context, url) => PlaceholderWidget(
+          assetImage: AppConstant.DEFAULT_LOCAL_IMG,
+          height: 160.h,
+        ),
+        errorWidget: (context, url, error) => PlaceholderWidget(
+          assetImage: AppConstant.DEFAULT_LOCAL_IMG,
+          height: 160.h,
+        ),
       ),
     );
   }

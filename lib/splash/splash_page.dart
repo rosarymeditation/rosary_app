@@ -60,11 +60,14 @@ class _SplashSreenState extends State<SplashSreen>
                   isBold: true,
                 ),
                 SizedBox(
-                  height: 20.h,
+                  height: 80.h,
                 ),
-                CircleAvatar(
-                  radius: 120, // Image radius
-                  backgroundImage: AssetImage("assets/icon/icon.jpg"),
+                Center(
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 100.sp, // Image radius
+                    backgroundImage: AssetImage("assets/icon/icon.png"),
+                  ),
                 ),
               ],
             )),

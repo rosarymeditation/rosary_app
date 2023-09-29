@@ -41,10 +41,13 @@ class DisplayButtonWidget extends StatelessWidget {
                 SizedBox(
                   width: 10.w,
                 ),
-                MainText(
-                  size: 18.sp,
-                  text: text,
-                  color: Colors.white,
+                Flexible(
+                  child: MainText(
+                    overflow: TextOverflow.ellipsis,
+                    size: 18.sp,
+                    text: text,
+                    color: Colors.white,
+                  ),
                 ),
               ],
             ),

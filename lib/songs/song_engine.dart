@@ -21,13 +21,13 @@ class AudioEngine extends StatefulWidget {
   List<AudioSource> audioSource;
   List<AudioModel> audioList;
   bool isForRosary;
-
-  AudioEngine({
-    super.key,
-    required this.audioSource,
-    required this.audioList,
-    this.isForRosary = false,
-  });
+  String title;
+  AudioEngine(
+      {super.key,
+      required this.audioSource,
+      required this.audioList,
+      this.isForRosary = false,
+      this.title = "listen"});
 
   @override
   State<AudioEngine> createState() => _AudioEngineState();
@@ -78,7 +78,7 @@ class _AudioEngineState extends State<AudioEngine> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MainAppBarWidget(text: widget.isForRosary ? "listen" : "songs"),
+      appBar: MainAppBarWidget(text: widget.title),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
@@ -112,8 +112,8 @@ class _AudioEngineState extends State<AudioEngine> {
                     barHeight: 8,
                     baseBarColor: Colors.grey.shade600,
                     bufferedBarColor: Colors.grey,
-                    progressBarColor: Colors.red,
-                    thumbColor: Colors.red,
+                    progressBarColor: AppColor.primaryColor,
+                    thumbColor: AppColor.primaryColor,
                     timeLabelTextStyle: const TextStyle(
                         color: Colors.black, fontWeight: FontWeight.w600),
                     progress: positionData?.position ?? Duration.zero,

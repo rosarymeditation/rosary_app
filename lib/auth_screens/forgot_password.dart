@@ -38,6 +38,7 @@ class ForgotPasswordPage extends StatelessWidget {
     }
 
     return Scaffold(
+      appBar: MainAppBarWidget(text: ""),
       backgroundColor: Colors.white,
       body: GetBuilder<AuthController>(builder: (auth) {
         return auth.isLoading

@@ -169,4 +169,20 @@ class AudioPlaylist {
     AudioModel(
         id: "3", title: "sorrowful_mystery".tr, subTitle: "sorrowful_days".tr),
   ];
+
+  static List<AudioSource> deepSleepSource = [
+    AudioSource.uri(
+      Uri.parse(
+          "https://foodengo2.s3.eu-west-2.amazonaws.com/rosary/relaxing-music.mp3"),
+      tag: MediaItem(
+        id: "1",
+        title: "deep_sleep_music",
+        artist: "for_rest_night",
+        artUri: Uri.parse(
+            "https://foodengo2.s3.eu-west-2.amazonaws.com/rosary/sleep_thumbnail.webp"),
+      ),
+    ),
+  ];
+  //https://foodengo2.s3.eu-west-2.amazonaws.com/rosary/relaxing-music.mp3
+  //https://foodengo2.s3.eu-west-2.amazonaws.com/rosary/sleep_thumbnail.webp
 }

@@ -29,6 +29,7 @@ import 'package:rosary/screens/rosary_completion_screen.dart';
 import 'package:rosary/screens/rosary_end_prayer.dart';
 import 'package:rosary/screens/rosary_intro.dart';
 import 'package:rosary/main_screens/start_screen.dart';
+import 'package:rosary/songs/deep_sleep_screen.dart';
 import 'package:rosary/splash/splash_page.dart';
 import 'package:rosary/tab_home.dart';
 
@@ -38,6 +39,7 @@ import '../auth_screens/sign_up.dart';
 class RouteHelpers {
   static const String initial = "/";
   static const String home = "/tab-home";
+  static const String deepSleepPage = "/deep-sleep";
   static const String chapletPage = "/home";
   static const String privacyPage = "/privacy";
   static const String profilePage = "/profile-home";
@@ -88,6 +90,7 @@ class RouteHelpers {
     GetPage(name: progressPrayerPage, page: () => RosaryProgressPrayerScreen()),
     GetPage(name: adioListingPage, page: () => AudioListingScreen()),
     GetPage(name: mysteryPage, page: () => MysteryScreen()),
+    GetPage(name: deepSleepPage, page: () => DeepSleepScreen()),
     GetPage(name: rosaryBenefitPage, page: () => RosaryBenefitPage()),
     GetPage(name: endPrayerPage, page: () => RosaryEndPrayerScreen()),
     GetPage(name: signInPage, page: () => SignInPage()),

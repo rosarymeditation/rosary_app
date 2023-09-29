@@ -217,84 +217,84 @@ class _OtpScreenState extends State<OtpScreen> {
                   SizedBox(
                     height: 18,
                   ),
-                  Text(
-                    "Didn't you receive any code?",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black38,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(
-                    height: 18,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      if (!_canResend) {
-                        showCustomSnackBar("You can resend in $_start ",
-                            title: "OTP timer still on");
-                        return;
-                      }
-                      var phone = auth.phone;
-                      // auth.loginWithCode(phone).then((value) {
-                      //   if (value.isSuccess) {
-                      //     startTimer();
-                      //     showCustomSnackBar(
-                      //         "SMS containing 4 digits code has been sent to you",
-                      //         isError: false,
-                      //         title: "OTP Sent");
-                      //   } else {
-                      //     showCustomSnackBar("OTP could not be sent",
-                      //         isError: true, title: "OTP Failed");
-                      //   }
-                      // });
-                    },
-                    child: RichText(
-                      text: TextSpan(
-                        style: TextStyle(color: Colors.black, fontSize: 14.sp),
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: 'Did not receive OTP? ',
-                          ),
-                          TextSpan(
-                            text: 'Resend',
-                            style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: Colors.blue,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  _start > 0
-                      ? Column(
-                          children: [
-                            SizedBox(
-                              height: 15.h,
-                            ),
-                            Text(
-                              " resend in $_start seconds",
-                              style: TextStyle(
-                                color: Colors.green.shade600,
-                              ),
-                            )
-                          ],
-                        )
-                      : Container(),
-                  SizedBox(
-                    height: 25.h,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      //  Get.offNamed(RouteHelpers.otpWelcome);
-                    },
-                    child: MainText(
-                      text: 'Change phone number',
-                      color: Colors.blue,
-                    ),
-                  )
+                  // Text(
+                  //   "Didn't you receive any code?",
+                  //   style: TextStyle(
+                  //     fontSize: 14,
+                  //     fontWeight: FontWeight.bold,
+                  //     color: Colors.black38,
+                  //   ),
+                  //   textAlign: TextAlign.center,
+                  // ),
+                  // SizedBox(
+                  //   height: 18,
+                  // ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     if (!_canResend) {
+                  //       showCustomSnackBar("You can resend in $_start ",
+                  //           title: "OTP timer still on");
+                  //       return;
+                  //     }
+                  //     var phone = auth.phone;
+                  //     // auth.loginWithCode(phone).then((value) {
+                  //     //   if (value.isSuccess) {
+                  //     //     startTimer();
+                  //     //     showCustomSnackBar(
+                  //     //         "SMS containing 4 digits code has been sent to you",
+                  //     //         isError: false,
+                  //     //         title: "OTP Sent");
+                  //     //   } else {
+                  //     //     showCustomSnackBar("OTP could not be sent",
+                  //     //         isError: true, title: "OTP Failed");
+                  //     //   }
+                  //     // });
+                  //   },
+                  //   child: RichText(
+                  //     text: TextSpan(
+                  //       style: TextStyle(color: Colors.black, fontSize: 14.sp),
+                  //       children: <TextSpan>[
+                  //         TextSpan(
+                  //           text: 'Did not receive OTP? ',
+                  //         ),
+                  //         TextSpan(
+                  //           text: 'Resend',
+                  //           style: TextStyle(
+                  //             decoration: TextDecoration.underline,
+                  //             color: Colors.blue,
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                  // _start > 0
+                  //     ? Column(
+                  //         children: [
+                  //           SizedBox(
+                  //             height: 15.h,
+                  //           ),
+                  //           Text(
+                  //             " resend in $_start seconds",
+                  //             style: TextStyle(
+                  //               color: Colors.green.shade600,
+                  //             ),
+                  //           )
+                  //         ],
+                  //       )
+                  //     : Container(),
+                  // SizedBox(
+                  //   height: 25.h,
+                  // ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     //  Get.offNamed(RouteHelpers.otpWelcome);
+                  //   },
+                  //   child: MainText(
+                  //     text: 'Change phone number',
+                  //     color: Colors.blue,
+                  //   ),
+                  // )
                 ],
               ),
             ),

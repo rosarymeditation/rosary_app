@@ -3,23 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:rosary/songs/play_list.dart';
 import 'package:rosary/songs/song_engine.dart';
 
-class SongScreen extends StatefulWidget {
-  SongScreen({super.key});
+class DeepSleepScreen extends StatefulWidget {
+  DeepSleepScreen({super.key});
 
   @override
-  State<SongScreen> createState() => _SongScreenState();
+  State<DeepSleepScreen> createState() => _DeepSleepScreenState();
 }
 
-class _SongScreenState extends State<SongScreen> {
+class _DeepSleepScreenState extends State<DeepSleepScreen> {
   //ConnectivityResult _connectivityResult = ConnectivityResult.none;
 
   @override
   Widget build(BuildContext context) {
     return AudioEngine(
-      audioSource: AudioPlaylist.audioSource,
-      audioList: AudioPlaylist.songs,
+      audioSource: AudioPlaylist.deepSleepSource,
+      audioList: [],
       isForRosary: false,
-      title: "songs",
+      title: "deep_sleep_music",
     );
   }
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "206973516128",
+    "project_id": "rosarynew-5bb1e",
+    "storage_bucket": "rosarynew-5bb1e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:206973516128:android:492b06df847ddbebce0605",
+        "android_client_info": {
+          "package_name": "com.rosarysoftnergy.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRe-Bb5RbQi6Thy3m6pSwITfrwzpLebnU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

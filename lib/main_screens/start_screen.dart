@@ -70,14 +70,7 @@ class _StartScreenState extends State<StartScreen> {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 60.h,
-                      ),
-                      const CircleAvatar(
-                        radius: 50, // Image radius
-                        backgroundImage: AssetImage("assets/icon/icon.jpg"),
-                      ),
-                      SizedBox(
-                        height: 20.h,
+                        height: 30.h,
                       ),
                       BigText(
                         isBold: true,
@@ -178,6 +171,22 @@ class _StartScreenState extends State<StartScreen> {
                           img: "g-prayer.jpg",
                           color: Colors.blue,
                           text: "general_prayers".tr,
+                          hasIcon: true,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          _prayerController
+                              .setPrayerType(AppConstant.PRAYER_TYPE_OTHERS);
+                          Get.toNamed(RouteHelpers.deepSleepPage);
+                        },
+                        child: DisplayButtonWidget(
+                          img: "galaxy.webp",
+                          color: Colors.black,
+                          text: "deep_sleep_music".tr,
                           hasIcon: true,
                         ),
                       ),

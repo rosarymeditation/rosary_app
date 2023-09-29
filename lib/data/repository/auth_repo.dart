@@ -66,6 +66,7 @@ class AuthRepo {
   }
 
   Future<Response> forgotPassword(String email) async {
+    print("Email--------------: $email");
     return await apiClient
         .postData(AppConstant.FORGOT_PASSWORD_URL, {"email": email});
   }

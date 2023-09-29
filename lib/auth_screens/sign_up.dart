@@ -84,20 +84,24 @@ class SignUpPage extends StatelessWidget {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: Dimensions.screenHeight * 0.05,
+                        height: 30.h,
                       ),
-                      // Container(
-                      //   height: Dimensions.screenHeight * 0.25,
-                      //   child: Center(
-                      //     child: CircleAvatar(
-                      //       radius: Dimensions.radius20 * 2,
-                      //       backgroundColor: Colors.white,
-                      //       backgroundImage: const AssetImage(
-                      //         AppConstant.DEFAULT_LOGO,
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
+                      CircleAvatar(
+                        backgroundColor: Colors.white,
+                        radius: 30.sp,
+                        backgroundImage: AssetImage(AppConstant.DEFAULT_LOGO),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      MainText(
+                        color: Colors.grey.shade800,
+                        size: 16.sp,
+                        text: "Sign up to join our community.",
+                      ),
+                      SizedBox(
+                        height: 15.h,
+                      ),
                       AuthTextField(
                         textController: firstnameController,
                         hintText: "First name",

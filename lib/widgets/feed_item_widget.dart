@@ -142,7 +142,9 @@ class FeedItemWidget extends StatelessWidget {
                         width: 2.w,
                       ),
                       MainText(
-                        text: item.comments!.length.toString(),
+                        text: item.comments!.isEmpty
+                            ? ""
+                            : item.comments!.length.toString(),
                         color: AppColor.iconColor,
                       ),
                     ],

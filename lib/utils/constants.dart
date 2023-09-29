@@ -33,7 +33,7 @@ class AppConstant {
   static const String FORGOT_PASSWORD_URL = "forgot-password";
   static const String PASSWORD_VERIFICATION_URL = "verify-password";
   static const String CHANGE_PASSWORD_URL = "change-password";
-  static const String DEFAULT_LOGO = "assets/icon/icon.jpg";
+  static const String DEFAULT_LOGO = "assets/icon/icon.png";
   static const String PRAY_LOGO = "assets/images/pray.jpg";
   static const String FEED_COMMENT_DELETE = "feedComment_delete";
   static const String FEED_SAVE = "feed";
@@ -80,7 +80,7 @@ class AppConstant {
   static const String LUMINOUS_IMG_PATH = "assets/luminous/";
   static const String GLORIOUS_IMG_PATH = "assets/glorious/";
   static const String END_OR_BEGIN_BID = "end_or_begin_bid";
-  static const String TOKEN = "";
+  static const String TOKEN = "login_token";
   static const String USER_ID = "user-id";
   static const String JOYFUL_MYSTERY = "joyful_mystery";
   static const String RESPONSE = "Response";
