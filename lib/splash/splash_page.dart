@@ -29,7 +29,7 @@ class _SplashSreenState extends State<SplashSreen>
     _loadResources();
     controller = new AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 4),
     )..forward();
     animation = CurvedAnimation(
       parent: controller,
