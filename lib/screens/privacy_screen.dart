@@ -39,7 +39,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
       appBar: MainAppBarWidget(text: "privacy_policy".tr),
       body: WebView(
         initialUrl:
-            'https://www.termsfeed.com/live/05e9a3fc-c277-40cc-a73c-cc2f029f6920', // Replace with your URL
+            'http://rosarymeditationguide.com/privacy', // Replace with your URL
         javascriptMode: JavascriptMode.unrestricted, // Enable JavaScript
       ),
     );

@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:quickalert/quickalert.dart';
 import 'package:rosary/controllers/auth_controller.dart';
 import 'package:rosary/model/feed_model.dart';
 import 'package:rosary/widgets/feed_image_widget.dart';
@@ -98,7 +99,20 @@ class FeedItemWidget extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    _feedController.like(item.id!);
+                    _authController.userLoggedIn()
+                        ? _feedController.like(item.id!)
+                        : QuickAlert.show(
+                            context: context,
+                            title: "sign-in_to_react".tr,
+                            confirmBtnText: "sign_in".tr,
+                            cancelBtnText: "cancel".tr,
+                            onConfirmBtnTap: () {
+                              Get.offAllNamed(RouteHelpers.signInPage);
+                            },
+                            type: QuickAlertType.confirm,
+                            text: 'sign-in_content'.tr,
+                          );
+                    ;
                   },
                   child: Row(
                     children: [

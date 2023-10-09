@@ -103,7 +103,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      Get.toNamed(RouteHelpers.rosaryBenefitPage);
+                      Get.toNamed(RouteHelpers.aboutPage);
                     },
                     child: AccountWidget(
                         iconBackgroundColor: Colors.blue,

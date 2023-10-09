@@ -195,11 +195,29 @@ class _FeedCommentScreenState extends State<FeedCommentScreen> {
                 child: Row(
                   children: [
                     Expanded(
-                      child: ChatTextField(
-                        hasPadding: true,
-                        textController: textController,
-                        hintText: "Type your comment",
-                      ),
+                      child: _authController.userLoggedIn()
+                          ? ChatTextField(
+                              hasPadding: true,
+                              textController: textController,
+                              hintText: "Type your comment",
+                            )
+                          : Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    padding:
+                                        EdgeInsets.symmetric(vertical: 10.w),
+                                    backgroundColor: AppColor.primaryColor,
+                                  ),
+                                  onPressed: () {
+                                    Get.toNamed(RouteHelpers.signInPage);
+                                  },
+                                  child: MainText(
+                                    color: Colors.white,
+                                    text: "cancel",
+                                    size: 20.sp,
+                                  )),
+                            ),
                     ),
                     canShowButton
                         ? comment.isLoaded
