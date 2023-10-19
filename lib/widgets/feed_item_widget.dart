@@ -74,7 +74,8 @@ class FeedItemWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                _authController.currentUserId == item.author!.id
+                _authController.currentUserId == item.author!.id &&
+                        _authController.userLoggedIn()
                     ? InkWell(
                         onTap: () {
                           showPopUp(context, item);
@@ -240,7 +241,6 @@ class FeedItemWidget extends StatelessWidget {
                 _feedController.setEditingContent(feed);
                 Navigator.of(context).pop();
                 Get.toNamed(RouteHelpers.feedEdittPage);
-                Navigator.of(context).pop();
               },
               child: ListTile(
                   leading: const Icon(Icons.edit),

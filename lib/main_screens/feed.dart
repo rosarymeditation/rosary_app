@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:rosary/controllers/auth_controller.dart';
+import 'package:rosary/controllers/dailyVerse_controller.dart';
 import 'package:rosary/controllers/feedComment_controller.dart';
 import 'package:rosary/screens/no_community.dart';
 import 'package:rosary/screens/no_network.dart';
@@ -24,15 +25,16 @@ class FeedScreen extends StatefulWidget {
 
 class _FeedScreenState extends State<FeedScreen> {
   var _feedController = Get.find<FeedController>();
-  var _authController = Get.find<AuthController>();
+
   var textController = TextEditingController();
   final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
   @override
   void initState() {
-    _feedController.getFeedList();
     // TODO: implement initState
     super.initState();
+    _feedController.getFeedList();
+    // _verseController.getDailyVerse();
   }
 
   @override
@@ -149,11 +151,4 @@ class _FeedScreenState extends State<FeedScreen> {
           );
         }),
       );
-
-  @override
-  void dispose() {
-    //controller.dispose();
-    // TODO: implement dispose
-    super.dispose();
-  }
 }

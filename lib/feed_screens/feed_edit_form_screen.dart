@@ -11,10 +11,12 @@ import 'package:rosary/widgets/app_icon.dart';
 import 'package:rosary/widgets/feed_image_widget.dart';
 import 'package:rosary/widgets/main_app_bar_widget.dart';
 import 'package:rosary/widgets/main_text.dart';
+import '../controllers/auth_controller.dart';
 import '../controllers/feed_controller.dart';
 import '../utils/show_custom_snackbar.dart';
 import '../widgets/app_text_field.dart';
 import '../widgets/display_button_widget.dart';
+import '../widgets/sign_in_button_widget.dart';
 
 class FeedEditFormScreen extends StatefulWidget {
   FeedEditFormScreen({super.key});
@@ -26,6 +28,7 @@ class FeedEditFormScreen extends StatefulWidget {
 class _FeedEditFormScreenState extends State<FeedEditFormScreen> {
   var _contentController = TextEditingController();
   var _feedController = Get.find<FeedController>();
+  var _authController = Get.find<AuthController>();
 
   @override
   void initState() {
@@ -200,7 +203,9 @@ class _FeedEditFormScreenState extends State<FeedEditFormScreen> {
                   }
                 },
                 child: feed.isLoaded
-                    ? DisplayButtonWidget(text: 'Post')
+                    ? _authController.userLoggedIn()
+                        ? DisplayButtonWidget(text: 'Post')
+                        : const SignInButtonWidget()
                     : Center(
                         child: CircularProgressIndicator(),
                       )),

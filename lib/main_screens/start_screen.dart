@@ -5,11 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:rosary/controllers/langauge_controller.dart';
 import 'package:rosary/route/route_helpers.dart';
 import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/widgets/big_text.dart';
 import 'package:rosary/widgets/display_button_widget.dart';
 
+import '../controllers/affirmation_controller.dart';
+import '../controllers/dailyVerse_controller.dart';
 import '../controllers/main_controller.dart';
 import '../controllers/prayer_controller.dart';
 import '../utils/constants.dart';
@@ -26,8 +29,11 @@ class StartScreen extends StatefulWidget {
 class _StartScreenState extends State<StartScreen> {
   late int storedBidCounter = 0;
   late String storedScreenName = "";
+  var _languageController = Get.find<LocalizationController>();
   var _mainController = Get.find<MainController>();
   var _prayerController = Get.find<PrayerController>();
+  var _verseController = Get.find<DailyVerseController>();
+  var _affirmationController = Get.find<AffirmationController>();
 
   bool _isVisible = true;
 
@@ -41,9 +47,13 @@ class _StartScreenState extends State<StartScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer.periodic(Duration(seconds: 1), (timer) {
-      toggleVisibility();
-    });
+    // Timer.periodic(Duration(seconds: 1), (timer) {
+    //   toggleVisibility();
+    // });
+
+    _verseController.getDailyVerse(_languageController.selectedIndex);
+    _affirmationController
+        .getDailyAffirmation(_languageController.selectedIndex);
     _mainController.getStaticMystery();
   }
 
@@ -125,6 +135,20 @@ class _StartScreenState extends State<StartScreen> {
                           color: Colors.grey,
                           text: "listen",
                           img: "audio.webp",
+                          hasIcon: true,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Get.toNamed(RouteHelpers.affirmationAndVerse);
+                        },
+                        child: DisplayButtonWidget(
+                          color: Colors.brown,
+                          text: "daily_inspiration",
+                          img: "bible.webp",
                           hasIcon: true,
                         ),
                       ),

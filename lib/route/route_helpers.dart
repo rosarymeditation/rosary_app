@@ -14,6 +14,7 @@ import 'package:rosary/profile_screens/edit_profile.dart';
 import 'package:rosary/profile_screens/profile.dart';
 import 'package:rosary/profile_screens/settings_screen.dart';
 import 'package:rosary/screens/about.dart';
+import 'package:rosary/screens/affirmation_verse.dart';
 import 'package:rosary/screens/audio_listing.dart';
 import 'package:rosary/screens/bug_feedback.dart';
 import 'package:rosary/screens/chaplet.dart';
@@ -41,6 +42,7 @@ class RouteHelpers {
   static const String home = "/tab-home";
   static const String deepSleepPage = "/deep-sleep";
   static const String chapletPage = "/home";
+  static const String affirmationAndVerse = "/affirmation_verse";
   static const String privacyPage = "/privacy";
   static const String profilePage = "/profile-home";
   static const String editProfilePage = "/profile-update-home";
@@ -120,6 +122,13 @@ class RouteHelpers {
       name: feedCommentScreenPage,
       page: () {
         return FeedCommentScreen();
+      },
+      transition: Transition.downToUp,
+    ),
+    GetPage(
+      name: affirmationAndVerse,
+      page: () {
+        return AffirmationAndVerseScreen();
       },
       transition: Transition.downToUp,
     ),

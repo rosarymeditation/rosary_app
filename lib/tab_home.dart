@@ -118,6 +118,7 @@ import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:rate_my_app/rate_my_app.dart';
 import 'package:rosary/songs/song_screen.dart';
 import 'controllers/auth_controller.dart';
 import 'main_screens/feed.dart';
@@ -137,7 +138,14 @@ class _TabHomePageState extends State<TabHomePage> {
   late PersistentTabController _controller;
   var _authController = Get.find<AuthController>();
   int _selectedIndex = 0;
-
+  final RateMyApp rateMyApp = RateMyApp(
+    minDays: 1,
+    minLaunches: 3,
+    remindLaunches: 2,
+    remindDays: 2,
+    appStoreIdentifier: '6463201997',
+    googlePlayIdentifier: 'com.rosarysoftnergy.app',
+  );
   List pages = [StartScreen(), FeedScreen(), SongScreen(), MoreScreen()];
   @override
   void initState() {
@@ -151,6 +159,7 @@ class _TabHomePageState extends State<TabHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    _rateMe();
     return GetBuilder<AuthController>(
       builder: (auth) {
         return Scaffold(
@@ -198,5 +207,50 @@ class _TabHomePageState extends State<TabHomePage> {
         );
       },
     );
+  }
+
+  _rateMe() {
+    Future.delayed(Duration(microseconds: 10000), () {
+      rateMyApp.init().then((_) {
+        if (rateMyApp.shouldOpenDialog) {
+          rateMyApp.showStarRateDialog(
+            context,
+            title: 'Rate this app',
+            message:
+                'If you like this app, please take a little bit of your time to review it! \n it really helps us and it should not take you more than a minute',
+            actionsBuilder: (context, stars) {
+              return [
+                TextButton(
+                    onPressed: () async {
+                      stars = stars ?? 0;
+                      if (stars! < 4) {
+                      } else {
+                        Navigator.pop<RateMyAppDialogButton>(
+                            context, RateMyAppDialogButton.rate);
+                        await rateMyApp
+                            .callEvent(RateMyAppEventType.rateButtonPressed);
+                        // if (await rateMyApp.isNativeReviewDialogSupported ??
+                        //     false) {
+                        //   await rateMyApp.launchNativeReviewDialog();
+                        // }
+                        rateMyApp.launchStore();
+                      }
+                    },
+                    child: const Text('OK'))
+              ];
+            },
+            dialogStyle: const DialogStyle(
+              titleAlign: TextAlign.center,
+              messageAlign: TextAlign.center,
+              messagePadding: EdgeInsets.only(bottom: 20),
+            ),
+            starRatingOptions: const StarRatingOptions(),
+            onDismissed: () => rateMyApp.callEvent(
+              RateMyAppEventType.laterButtonPressed,
+            ),
+          );
+        }
+      });
+    });
   }
 }

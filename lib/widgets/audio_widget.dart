@@ -65,6 +65,7 @@ class AudioWidget extends StatelessWidget {
                             child: IconButton(
                               onPressed: () async {
                                 _audioController.setCurrentNetworkAudio(id);
+
                                 await audioPlayer.play();
                                 // await audioPlayer.seek(
                                 //   Duration.zero,
@@ -93,11 +94,11 @@ class AudioWidget extends StatelessWidget {
                       child: IconButton(
                         onPressed: () async {
                           _audioController.setCurrentNetworkAudio(id);
-                          await audioPlayer.play();
                           await audioPlayer.seek(
                             Duration.zero,
                             index: int.parse(id),
                           );
+                          await audioPlayer.play();
                         },
                         iconSize: 30.sp,
                         icon: Icon(Icons.play_arrow),

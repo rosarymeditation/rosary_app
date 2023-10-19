@@ -16,14 +16,23 @@ class AudioController extends GetxController implements GetxService {
   final AudioRepo audioRepo;
   AudioController({required this.audioRepo});
 
+  late AudioPlayer _audioPlayer;
+  AudioPlayer get audioPlayer => _audioPlayer;
+
   List<AudioModel> get audioList => _audioList;
   List<AudioModel> _audioList = [];
+
+  String _audioScreenName = "";
+  String get audioScreenName => _audioScreenName;
 
   String _audioCurrentMystery = "";
   String get audioCurrentMystery => _audioCurrentMystery;
 
   String _id = "";
   String get id => _id;
+
+  bool _hasLoadedAudio = false;
+  bool get hasLoadedAudio => _hasLoadedAudio;
 
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
@@ -37,6 +46,12 @@ class AudioController extends GetxController implements GetxService {
   int get limit => _limit;
   int _page = 1;
   int get page => _page;
+
+  @override
+  void onInit() {
+    super.onInit();
+    _audioPlayer = AudioPlayer();
+  }
 
   Future<void> getVideoList() async {
     _page = 1;
@@ -84,8 +99,18 @@ class AudioController extends GetxController implements GetxService {
     update();
   }
 
+  void setAudioScreenName(String screenName) {
+    _audioScreenName = screenName;
+    update();
+  }
+
   void setCurrentNetworkAudio(String id) {
     _id = id;
+    update();
+  }
+
+  void setHasLoadedAudio() {
+    _hasLoadedAudio = true;
     update();
   }
 

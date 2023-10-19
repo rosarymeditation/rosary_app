@@ -9,6 +9,7 @@ import 'package:rosary/route/route_helpers.dart';
 import 'package:rosary/utils/show_custom_snackbar.dart';
 import 'package:rosary/widgets/main_app_bar_widget.dart';
 import 'package:rosary/widgets/main_text.dart';
+import 'package:rosary/widgets/sign_in_button_widget.dart';
 import 'package:rosary/widgets/small_avatar.dart';
 import '../controllers/auth_controller.dart';
 import '../controllers/feedComment_controller.dart';
@@ -201,23 +202,7 @@ class _FeedCommentScreenState extends State<FeedCommentScreen> {
                               textController: textController,
                               hintText: "Type your comment",
                             )
-                          : Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    padding:
-                                        EdgeInsets.symmetric(vertical: 10.w),
-                                    backgroundColor: AppColor.primaryColor,
-                                  ),
-                                  onPressed: () {
-                                    Get.toNamed(RouteHelpers.signInPage);
-                                  },
-                                  child: MainText(
-                                    color: Colors.white,
-                                    text: "cancel",
-                                    size: 20.sp,
-                                  )),
-                            ),
+                          : const SignInButtonWidget(),
                     ),
                     canShowButton
                         ? comment.isLoaded

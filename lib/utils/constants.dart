@@ -30,6 +30,9 @@ class AppConstant {
   static UPDATE_FEED_URL(String id) => "feed/$id";
   static const String POST_COMMENT_URL = "feedComment";
   static const String USER_INFO_URL = "userInfo";
+  static const String TODAYS_VERSE_URL = "todaysVerse";
+  static const String TODAYS_AFFIRMATION_URL = "todaysAffirmation";
+  //todaysVerse
   static const String FORGOT_PASSWORD_URL = "forgot-password";
   static const String PASSWORD_VERIFICATION_URL = "verify-password";
   static const String CHANGE_PASSWORD_URL = "change-password";
@@ -52,6 +55,9 @@ class AppConstant {
       "https://rosaryapp.s3.eu-west-2.amazonaws.com/banner.jpg";
   static const String SIGN_IN = "Sign In";
   static const String SIGN_UP = "Sign Up";
+  static const String SCREEN_SLEEP_MUSIC = "sleep_music";
+  static const String SCREEN_ROSARY = "rosary";
+  static const String SCREEN_SONGS = "songs";
   static const String USER_PROFILE = "Profile";
   static const int START_ROSARY = -2;
   static const int PAGE_LIMIT = 10;
@@ -66,6 +72,8 @@ class AppConstant {
   static const String HAS_CACHE = "has_cache";
   static const String OTHERS_PRAYER_CACHE = "others_prayer_cache";
   static const String CATHOLIC_PRAYER_CACHE = "catholic_prayer_cache";
+  static const String DAILY_VERSE_CACHE = "daily_verse_cache";
+  static const String AFFIRMATION_CACHE = "affirmation_cache";
   static const String PASSWORD_LENGTH_MSG =
       "Password length must not be less than 4 characters";
   static const String SORROWFUL_AUDIO_URL = "url_sorrowful_cache";

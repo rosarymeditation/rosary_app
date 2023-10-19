@@ -98,19 +98,19 @@ class _MoreScreenState extends State<MoreScreen> {
                         leftIcon: Icons.check_circle,
                         text: "rosary_benefits_title"),
                   ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Get.toNamed(RouteHelpers.aboutPage);
-                    },
-                    child: AccountWidget(
-                        iconBackgroundColor: Colors.blue,
-                        hasArrow: true,
-                        leftIcon: Icons.info_rounded,
-                        text: "about"),
-                  ),
+                  // SizedBox(
+                  //   height: 20.h,
+                  // ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     Get.toNamed(RouteHelpers.aboutPage);
+                  //   },
+                  //   child: AccountWidget(
+                  //       iconBackgroundColor: Colors.blue,
+                  //       hasArrow: true,
+                  //       leftIcon: Icons.info_rounded,
+                  //       text: "about"),
+                  // ),
                   SizedBox(
                     height: 20.h,
                   ),

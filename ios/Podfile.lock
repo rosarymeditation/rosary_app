@@ -41,6 +41,8 @@ PODS:
     - DKImagePickerController/PhotoGallery
     - Flutter
   - Flutter (1.0.0)
+  - flutter_tts (0.0.1):
+    - Flutter
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -55,6 +57,8 @@ PODS:
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
+  - rate_my_app (1.1.4):
+    - Flutter
   - Reachability (3.2)
   - rive_common (0.0.1):
     - Flutter
@@ -79,11 +83,13 @@ DEPENDENCIES:
   - connectivity (from `.symlinks/plugins/connectivity/ios`)
   - file_picker (from `.symlinks/plugins/file_picker/ios`)
   - Flutter (from `Flutter`)
+  - flutter_tts (from `.symlinks/plugins/flutter_tts/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - just_audio (from `.symlinks/plugins/just_audio/ios`)
   - launch_review (from `.symlinks/plugins/launch_review/ios`)
   - open_file (from `.symlinks/plugins/open_file/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
+  - rate_my_app (from `.symlinks/plugins/rate_my_app/ios`)
   - rive_common (from `.symlinks/plugins/rive_common/ios`)
   - share (from `.symlinks/plugins/share/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
@@ -110,6 +116,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/file_picker/ios"
   Flutter:
     :path: Flutter
+  flutter_tts:
+    :path: ".symlinks/plugins/flutter_tts/ios"
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
   just_audio:
@@ -120,6 +128,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/open_file/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
+  rate_my_app:
+    :path: ".symlinks/plugins/rate_my_app/ios"
   rive_common:
     :path: ".symlinks/plugins/rive_common/ios"
   share:
@@ -139,12 +149,14 @@ SPEC CHECKSUMS:
   DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
   file_picker: ce3938a0df3cc1ef404671531facef740d03f920
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  flutter_tts: 0f492aab6accf87059b72354fcb4ba934304771d
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
   just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
   launch_review: 75d5a956ba8eaa493e9c9d4bf4c05e505e8d5ed0
   open_file: 02eb5cb6b21264bd3a696876f5afbfb7ca4f4b7d
   path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
+  rate_my_app: e249ec0751c276811746ff89558c23dc0da39f0c
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   rive_common: 8a159d68033a8b073e5853acc50f03aa486a2888
   SDWebImage: 750adf017a315a280c60fde706ab1e552a3ae4e9

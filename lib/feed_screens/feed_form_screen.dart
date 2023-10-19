@@ -18,6 +18,7 @@ import '../utils/dimensions.dart';
 import '../utils/show_custom_snackbar.dart';
 import '../widgets/app_text_field.dart';
 import '../widgets/display_button_widget.dart';
+import '../widgets/sign_in_button_widget.dart';
 
 class FeedFormScreen extends StatefulWidget {
   FeedFormScreen({super.key});
@@ -169,7 +170,9 @@ class _FeedFormScreenState extends State<FeedFormScreen> {
                   }
                 },
                 child: feed.isLoaded
-                    ? DisplayButtonWidget(text: 'Post')
+                    ? _authController.userLoggedIn()
+                        ? DisplayButtonWidget(text: 'Post')
+                        : const SignInButtonWidget()
                     : Center(
                         child: CircularProgressIndicator(),
                       )),

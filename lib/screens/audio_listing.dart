@@ -42,6 +42,7 @@ class _AudioListingScreenState extends State<AudioListingScreen> {
       audioSource: AudioPlaylist.audioRosarySource,
       audioList: AudioPlaylist.songsRosary,
       isForRosary: true,
+      screenName: AppConstant.SCREEN_ROSARY,
     );
   }
 }

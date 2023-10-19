@@ -21,13 +21,7 @@ Future<void> main() async {
     androidNotificationChannelName: "Rosary Meditation Guide",
     androidNotificationOngoing: true,
   );
-  // _audioHandler = await AudioService.init(
-  //   builder: () => MyAudioHandler(),
-  //   config: AudioServiceConfig(
-  //     androidNotificationChannelId: 'com.softnergylimited.myapp.channel.audio',
-  //     androidNotificationChannelName: AppConstant.APP_NAME,
-  //   ),
-  // );
+
   WidgetsFlutterBinding.ensureInitialized();
 
   Map<String, Map<String, String>> _languages = await dep.init();
