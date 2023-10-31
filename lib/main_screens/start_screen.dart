@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -11,8 +13,10 @@ import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/widgets/big_text.dart';
 import 'package:rosary/widgets/display_button_widget.dart';
 
+import '../api/firebase_api.dart';
 import '../controllers/affirmation_controller.dart';
 import '../controllers/dailyVerse_controller.dart';
+import '../controllers/log_controller.dart';
 import '../controllers/main_controller.dart';
 import '../controllers/prayer_controller.dart';
 import '../utils/constants.dart';
@@ -34,7 +38,7 @@ class _StartScreenState extends State<StartScreen> {
   var _prayerController = Get.find<PrayerController>();
   var _verseController = Get.find<DailyVerseController>();
   var _affirmationController = Get.find<AffirmationController>();
-
+  var _logController = Get.find<LogController>();
   bool _isVisible = true;
 
   void toggleVisibility() {
@@ -46,14 +50,13 @@ class _StartScreenState extends State<StartScreen> {
   @override
   void initState() {
     // TODO: implement initState
+    init();
+
     super.initState();
     // Timer.periodic(Duration(seconds: 1), (timer) {
     //   toggleVisibility();
     // });
 
-    _verseController.getDailyVerse(_languageController.selectedIndex);
-    _affirmationController
-        .getDailyAffirmation(_languageController.selectedIndex);
     _mainController.getStaticMystery();
   }
 
@@ -114,14 +117,14 @@ class _StartScreenState extends State<StartScreen> {
                         height: 20.h,
                       ),
                       InkWell(
-                        onTap: () {
+                        onTap: () async {
+                          _logController.logMystery();
                           Get.toNamed(RouteHelpers.mysterySelectionPage);
                         },
                         child: DisplayButtonWidget(
                           text: "choose_mystery",
                           img: main.getMysteryImage(main.currentMystery),
                           hasIcon: true,
-                          color: Colors.purple.shade300,
                         ),
                       ),
                       SizedBox(
@@ -132,7 +135,6 @@ class _StartScreenState extends State<StartScreen> {
                           Get.toNamed(RouteHelpers.adioListingPage);
                         },
                         child: DisplayButtonWidget(
-                          color: Colors.grey,
                           text: "listen",
                           img: "audio.webp",
                           hasIcon: true,
@@ -143,10 +145,41 @@ class _StartScreenState extends State<StartScreen> {
                       ),
                       InkWell(
                         onTap: () {
+                          _logController.logPsalm();
+                          Get.toNamed(RouteHelpers.psalmListPage);
+                        },
+                        child: DisplayButtonWidget(
+                          text: "powerful_psalms",
+                          img: "psalm.jpeg",
+                          hasIcon: true,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          _logController.logNovena();
+                          Get.toNamed(RouteHelpers.novenaListPage);
+                        },
+                        child: DisplayButtonWidget(
+                          text: "powerful_novena",
+                          img: "powerful_prayer.jpeg",
+                          hasIcon: true,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          _verseController
+                              .getDailyVerse(_languageController.selectedIndex);
+                          _affirmationController.getDailyAffirmation(
+                              _languageController.selectedIndex);
                           Get.toNamed(RouteHelpers.affirmationAndVerse);
                         },
                         child: DisplayButtonWidget(
-                          color: Colors.brown,
                           text: "daily_inspiration",
                           img: "bible.webp",
                           hasIcon: true,
@@ -161,7 +194,6 @@ class _StartScreenState extends State<StartScreen> {
                         },
                         child: DisplayButtonWidget(
                           img: "hands.jpeg",
-                          color: Colors.green.shade600,
                           text: "prayer_request",
                           hasIcon: true,
                         ),
@@ -177,7 +209,6 @@ class _StartScreenState extends State<StartScreen> {
                         },
                         child: DisplayButtonWidget(
                           img: "catholic.jpg",
-                          color: Colors.orange,
                           text: "catholic_prayers".tr,
                           hasIcon: true,
                         ),
@@ -193,7 +224,6 @@ class _StartScreenState extends State<StartScreen> {
                         },
                         child: DisplayButtonWidget(
                           img: "g-prayer.jpg",
-                          color: Colors.blue,
                           text: "general_prayers".tr,
                           hasIcon: true,
                         ),
@@ -209,7 +239,6 @@ class _StartScreenState extends State<StartScreen> {
                         },
                         child: DisplayButtonWidget(
                           img: "galaxy.webp",
-                          color: Colors.black,
                           text: "deep_sleep_music".tr,
                           hasIcon: true,
                         ),
@@ -313,6 +342,27 @@ class _StartScreenState extends State<StartScreen> {
       Get.toNamed(RouteHelpers.home);
     } else {
       Get.toNamed(lastRouter);
+    }
+  }
+
+  Future getDeviceToken() async {
+    FirebaseMessaging.instance.requestPermission();
+    FirebaseMessaging _firebaseMessage = FirebaseMessaging.instance;
+    String? deviceToken = await _firebaseMessage.getToken();
+    return (deviceToken == null) ? "" : deviceToken;
+  }
+
+  init() async {
+    String deviceToken = await getDeviceToken();
+    if (Platform.isIOS) {
+      print("device ------------------------ token: $deviceToken");
+      FirebaseMessaging.onMessageOpenedApp
+          .listen((RemoteMessage remoteMessage) {
+        String? title = remoteMessage.notification!.title;
+        String? description = remoteMessage.notification!.body;
+      });
+    } else {
+      await FirebaseApi().initNotifications();
     }
   }
 }

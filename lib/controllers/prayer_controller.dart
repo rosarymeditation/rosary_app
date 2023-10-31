@@ -32,6 +32,11 @@ class PrayerController extends GetxController {
       : prayerRepo.othersCacheList();
   List<OnlinePrayerModel> _otherPrayerList = [];
 
+  List<OnlinePrayerModel> get novenaPrayerList => _novenaPrayerList.length > 0
+      ? _novenaPrayerList
+      : prayerRepo.novenaCacheList();
+  List<OnlinePrayerModel> _novenaPrayerList = [];
+
   // List<OnlinePrayerModel> get cachedCatholicPrayerList =>
   //     prayerRepo.catholicCacheList();
   // List<OnlinePrayerModel> get cachedOtherPrayerList =>
@@ -100,13 +105,39 @@ class PrayerController extends GetxController {
           await prayerRepo.getAllCatholic(_page, _limit, _local.selectedIndex);
       print(response.body);
       if (response.statusCode == 200) {
-        print("returned=======");
         _catholicPrayerList = [];
 
-        print(response.body);
+        // print(response.body);
 
         _catholicPrayerList.addAll(Prayer.fromJson(response.body).prayers);
         prayerRepo.saveCatholicAsString(_catholicPrayerList);
+      }
+      _isLoaded = true;
+      update();
+    } catch (err) {
+      _isLoaded = true;
+      update();
+      print("yesssjddkdkd");
+      print(err);
+    }
+  }
+
+  Future<void> getNovenaPrayerList() async {
+    _isLoaded = false;
+    update();
+    _page = 1;
+    try {
+      Response response =
+          await prayerRepo.getAllNovena(_page, _limit, _local.selectedIndex);
+      print(response.body);
+      if (response.statusCode == 200) {
+        // print("returned=======");
+        _novenaPrayerList = [];
+
+        // print(response.body);
+
+        _novenaPrayerList.addAll(Prayer.fromJson(response.body).prayers);
+        prayerRepo.saveNovenaAsString(_novenaPrayerList);
       }
       _isLoaded = true;
       update();

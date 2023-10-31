@@ -23,6 +23,8 @@ class AppConstant {
   //userFeeds
   static const String COMMENTS_BY_FEED_URL = "CommentsByFeed";
   static const String ALL_PRAYERS_URL = "prayers";
+  static const String ALL_PSALMS_URL = "psalms";
+  static const String ALL_NOVENA_PRAYERS_URL = "novenas";
   static const String ALL_CATHOLIC_PRAYERS_URL = "catholic-prayers";
   static const String DEFAULT_PRAYER_IMAGE =
       "https://foodengo2.s3.eu-west-2.amazonaws.com/rosary/9690-man-praising-at-sunrise-sunburst-nature-faith.jpg";
@@ -36,6 +38,11 @@ class AppConstant {
   static const String FORGOT_PASSWORD_URL = "forgot-password";
   static const String PASSWORD_VERIFICATION_URL = "verify-password";
   static const String CHANGE_PASSWORD_URL = "change-password";
+  static const String LOG_INSPIRATION_URL = "log-inspiration";
+  static const String LOG_NOVENA_URL = "log-novena";
+  static const String LOG_PSALM_URL = "log-psalm";
+  static const String LOG_ROSARY_URL = "log-rosary";
+  static const String LOG_MYSTERY_URL = "log-mystery";
   static const String DEFAULT_LOGO = "assets/icon/icon.png";
   static const String PRAY_LOGO = "assets/images/pray.jpg";
   static const String FEED_COMMENT_DELETE = "feedComment_delete";
@@ -71,6 +78,8 @@ class AppConstant {
   static const String MYSTERY_NAME = "mystery_name";
   static const String HAS_CACHE = "has_cache";
   static const String OTHERS_PRAYER_CACHE = "others_prayer_cache";
+  static const String PSALM_CACHE = "psalm_cache";
+  static const String NOVENA_PRAYER_CACHE = "novena_prayer_cache";
   static const String CATHOLIC_PRAYER_CACHE = "catholic_prayer_cache";
   static const String DAILY_VERSE_CACHE = "daily_verse_cache";
   static const String AFFIRMATION_CACHE = "affirmation_cache";

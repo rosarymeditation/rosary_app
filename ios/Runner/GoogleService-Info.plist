@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyDYyRuQHcCc8E8Uf9B4FHwsuhmv0vUq4_A</string>
+	<string>AIzaSyCXsqDIpvytBx06DLzdALHjDPogTMYOKQk</string>
 	<key>GCM_SENDER_ID</key>
-	<string>311150687131</string>
+	<string>1069327607454</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.rosarysoftnergy.app</string>
 	<key>PROJECT_ID</key>
-	<string>rosarynew-94ddc</string>
+	<string>rosary-87ae9</string>
 	<key>STORAGE_BUCKET</key>
-	<string>rosarynew-94ddc.appspot.com</string>
+	<string>rosary-87ae9.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:311150687131:ios:74dee753a942727a36673e</string>
+	<string>1:1069327607454:ios:b2c329cc3e097ae3f33d8f</string>
 </dict>
 </plist>

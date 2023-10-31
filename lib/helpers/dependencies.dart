@@ -22,15 +22,19 @@ import '../controllers/affirmation_controller.dart';
 import '../controllers/audio_controller.dart';
 import '../controllers/auth_controller.dart';
 import '../controllers/feedComment_controller.dart';
+import '../controllers/log_controller.dart';
 import '../controllers/main_controller.dart';
 import '../controllers/prayer_controller.dart';
+import '../controllers/psalm_controller.dart';
 import '../controllers/user_controller.dart';
 import '../data/api/api_client.dart';
 import '../data/repository/audio_repo.dart';
 import '../data/repository/auth_repo.dart';
 import '../data/repository/dailyVerse_repo.dart';
+import '../data/repository/log_repo.dart';
 import '../data/repository/main_repo.dart';
 import '../data/repository/prayer_repo.dart';
+import '../data/repository/psalm_repo.dart';
 import '../data/repository/user_repo.dart';
 
 Future<Map<String, Map<String, String>>> init() async {
@@ -44,9 +48,12 @@ Future<Map<String, Map<String, String>>> init() async {
   //Get.lazyPut(() => AccountRepo(apiClient: Get.find()));
   // Get.lazyPut(() => PopularProductRepo(apiClient: Get.find()));
   // Get.lazyPut(() => RecommendedProductRepo(apiClient: Get.find()));
+  Get.lazyPut(() => LogRepo(apiClient: Get.find()));
   Get.lazyPut(() =>
       AffirmationRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
 
+  Get.lazyPut(
+      () => PsalmRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
   Get.lazyPut(() =>
       DailyVerseRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
   Get.lazyPut(
@@ -75,6 +82,12 @@ Future<Map<String, Map<String, String>>> init() async {
   // Get.lazyPut(() => PopularProductController(popularProductRepo: Get.find()));
   // Get.lazyPut(
   //     () => RecommendedProductController(recommendedProductRepo: Get.find()));
+  Get.lazyPut(() => PsalmController(
+        psalmRepo: Get.find(),
+      ));
+  Get.lazyPut(() => LogController(
+        logRepo: Get.find(),
+      ));
   Get.lazyPut(() => AffirmationController(
       dailyAffirmationRepo: Get.find(), sharedPreferences: Get.find()));
   Get.lazyPut(() => DailyVerseController(

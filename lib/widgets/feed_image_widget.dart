@@ -17,19 +17,19 @@ class FeedImageWidget extends StatelessWidget {
       return Container();
     }
     return AspectRatio(
-      aspectRatio: 4 / 3,
+      aspectRatio: 16 / 9,
       child: CachedNetworkImage(
         imageUrl: url ?? AppConstant.DEFAULT_IMG,
         imageBuilder: (context, imageProvider) => Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              fit: BoxFit.fill,
+              fit: BoxFit.contain,
               image: imageProvider,
               onError: (error, stackTrace) {
                 print('');
               },
             ),
-            color: Colors.grey.shade300,
+            color: Colors.black,
           ),
           // width: double.maxFinite,
           // height: 250.h,

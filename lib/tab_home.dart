@@ -142,7 +142,7 @@ class _TabHomePageState extends State<TabHomePage> {
     minDays: 1,
     minLaunches: 3,
     remindLaunches: 2,
-    remindDays: 2,
+    remindDays: 20,
     appStoreIdentifier: '6463201997',
     googlePlayIdentifier: 'com.rosarysoftnergy.app',
   );

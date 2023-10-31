@@ -15,6 +15,7 @@ class PrayerRepo {
   PrayerRepo({required this.apiClient, required this.sharedPreferences});
   List<String> catholicString = [];
   List<String> othersString = [];
+  List<String> novenaString = [];
   Future<Response> getAll(int page, int limit, int code) async {
     return await apiClient.postData(AppConstant.ALL_PRAYERS_URL,
         {"page": page, "limit": limit, "code": code});
@@ -22,6 +23,11 @@ class PrayerRepo {
 
   Future<Response> getAllCatholic(int page, int limit, int code) async {
     return await apiClient.postData(AppConstant.ALL_CATHOLIC_PRAYERS_URL,
+        {"page": page, "limit": limit, "code": code});
+  }
+
+  Future<Response> getAllNovena(int page, int limit, int code) async {
+    return await apiClient.postData(AppConstant.ALL_NOVENA_PRAYERS_URL,
         {"page": page, "limit": limit, "code": code});
   }
 
@@ -73,5 +79,30 @@ class PrayerRepo {
       othersPrayerList.add(OnlinePrayerModel.fromJson(jsonDecode(element)));
     }
     return othersPrayerList;
+  }
+
+  void saveNovenaAsString(List<OnlinePrayerModel> data) {
+    novenaString = [];
+    data.forEach((element) {
+      return novenaString.add(jsonEncode(element));
+    });
+    sharedPreferences.setStringList(
+        AppConstant.NOVENA_PRAYER_CACHE, novenaString);
+
+    //print(sharedPreferences.getStringList(AppConstants.POPULAR_COURSE_DATA));
+  }
+
+  List<OnlinePrayerModel> novenaCacheList() {
+    List<String> novenaString = [];
+    List<OnlinePrayerModel> novenaPrayerList = [];
+    if (sharedPreferences.containsKey(AppConstant.NOVENA_PRAYER_CACHE)) {
+      novenaString =
+          sharedPreferences.getStringList(AppConstant.NOVENA_PRAYER_CACHE)!;
+    }
+
+    for (var element in novenaString) {
+      novenaPrayerList.add(OnlinePrayerModel.fromJson(jsonDecode(element)));
+    }
+    return novenaPrayerList;
   }
 }

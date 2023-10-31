@@ -8,11 +8,15 @@ import 'package:rosary/feed_screens/comment_edit_screen.dart';
 import 'package:rosary/feed_screens/feed_edit_form_screen.dart';
 import 'package:rosary/feed_screens/feed_form_screen.dart';
 import 'package:rosary/feed_screens/user_feeds.dart';
+import 'package:rosary/novena_screens/novena_detail.dart';
+import 'package:rosary/novena_screens/novena_list_screen.dart';
 import 'package:rosary/prayer_screens/prayers.dart';
 import 'package:rosary/prayer_screens/prayer_detail.dart';
 import 'package:rosary/profile_screens/edit_profile.dart';
 import 'package:rosary/profile_screens/profile.dart';
 import 'package:rosary/profile_screens/settings_screen.dart';
+import 'package:rosary/psalms_screens/psalm_detail.dart';
+import 'package:rosary/psalms_screens/psalm_list_screen.dart';
 import 'package:rosary/screens/about.dart';
 import 'package:rosary/screens/affirmation_verse.dart';
 import 'package:rosary/screens/audio_listing.dart';
@@ -42,6 +46,7 @@ class RouteHelpers {
   static const String home = "/tab-home";
   static const String deepSleepPage = "/deep-sleep";
   static const String chapletPage = "/home";
+  static const String psalmListPage = "/psalm-list-page";
   static const String affirmationAndVerse = "/affirmation_verse";
   static const String privacyPage = "/privacy";
   static const String profilePage = "/profile-home";
@@ -51,6 +56,9 @@ class RouteHelpers {
   static const String prayerDetailPage = "/prayer-detail";
   static const String feedEdittPage = "/feed-edit";
   static const String prayersPage = "/prayers-page";
+  static const String psalmDetailPage = "/psalm-detail-page";
+  static const String novenaListPage = "/novena-page";
+  static const String novenaDetailPage = "/novena-detail-page";
   static const String signUpPage = "/sign-up";
   static const String otpPage = "/otp";
   static const String signInPage = "/sign-in";
@@ -82,6 +90,7 @@ class RouteHelpers {
     GetPage(name: prayerDetailPage, page: () => PrayerDetailScreen()),
     GetPage(name: prayersPage, page: () => PrayersScreen()),
     GetPage(name: home, page: () => const TabHomePage()),
+    GetPage(name: psalmListPage, page: () => const PsalmListScreen()),
     GetPage(name: languagePage, page: () => const LanguageScreen()),
     GetPage(name: chapletPage, page: () => ChapletPage()),
     GetPage(name: startScreenPage, page: () => StartScreen()),
@@ -104,6 +113,9 @@ class RouteHelpers {
     GetPage(name: feedEdittPage, page: () => FeedEditFormScreen()),
     GetPage(name: userFeedPage, page: () => UserFeedScreen()),
     GetPage(name: privacyPage, page: () => PrivacyScreen()),
+    GetPage(name: psalmDetailPage, page: () => PsalmDetailScreen()),
+    GetPage(name: novenaListPage, page: () => NovenaListScreen()),
+    GetPage(name: novenaDetailPage, page: () => NovenaDetailScreen()),
     GetPage(
       name: popUpPrayer,
       page: () {
