@@ -40,13 +40,11 @@ class DailyVerseController extends GetxController implements GetxService {
     var day = date.day;
     var month = date.month;
     var formattedDate = "$day/$month";
-    // print(formattedDate);
 
     _isLoading = true;
     Response response = await dailyVerseRepo
         .getDailyVerse({"date": formattedDate, "code": languageCode});
     late ResponseModel responseModel;
-    //print(response.body);
 
     if (response.statusCode == 200) {
       _hasVerse = true;
@@ -54,7 +52,6 @@ class DailyVerseController extends GetxController implements GetxService {
       dailyVerseRepo.cacheDailyVerse(_dailyVerseModel);
       responseModel = ResponseModel(true, "OK");
     } else {
-      print("eooeoeoeooeoe");
       _hasVerse = false;
       responseModel = ResponseModel(false, "Error");
     }

@@ -18,10 +18,12 @@ import 'package:rosary/profile_screens/settings_screen.dart';
 import 'package:rosary/psalms_screens/psalm_detail.dart';
 import 'package:rosary/psalms_screens/psalm_list_screen.dart';
 import 'package:rosary/screens/about.dart';
+import 'package:rosary/screens/affirmation.dart';
 import 'package:rosary/screens/affirmation_verse.dart';
 import 'package:rosary/screens/audio_listing.dart';
 import 'package:rosary/screens/bug_feedback.dart';
 import 'package:rosary/screens/chaplet.dart';
+import 'package:rosary/screens/daily_verse.dart';
 import 'package:rosary/screens/language.dart';
 import 'package:rosary/screens/mystery.dart';
 import 'package:rosary/screens/mystery_selection.dart';
@@ -35,6 +37,7 @@ import 'package:rosary/screens/rosary_end_prayer.dart';
 import 'package:rosary/screens/rosary_intro.dart';
 import 'package:rosary/main_screens/start_screen.dart';
 import 'package:rosary/songs/deep_sleep_screen.dart';
+import 'package:rosary/songs/song_screen.dart';
 import 'package:rosary/splash/splash_page.dart';
 import 'package:rosary/tab_home.dart';
 
@@ -49,6 +52,9 @@ class RouteHelpers {
   static const String psalmListPage = "/psalm-list-page";
   static const String affirmationAndVerse = "/affirmation_verse";
   static const String privacyPage = "/privacy";
+  static const String songsPage = "/song-page";
+  static const String affirmationPage = "/affirmation-page";
+  static const String dailyVersePage = "/daily-verse-page";
   static const String profilePage = "/profile-home";
   static const String editProfilePage = "/profile-update-home";
   static const String feedPostPage = "/feed-post";
@@ -99,9 +105,9 @@ class RouteHelpers {
     //GetPage(name: mysterySelectionPage, page: () => MysterySelectionPage()),
     GetPage(name: prayerRequestPage, page: () => PrayerRequestScreen()),
     GetPage(name: progressPrayerPage, page: () => RosaryProgressPrayerScreen()),
-    GetPage(name: adioListingPage, page: () => AudioListingScreen()),
+
     GetPage(name: mysteryPage, page: () => MysteryScreen()),
-    GetPage(name: deepSleepPage, page: () => DeepSleepScreen()),
+
     GetPage(name: rosaryBenefitPage, page: () => RosaryBenefitPage()),
     GetPage(name: endPrayerPage, page: () => RosaryEndPrayerScreen()),
     GetPage(name: signInPage, page: () => SignInPage()),
@@ -116,10 +122,32 @@ class RouteHelpers {
     GetPage(name: psalmDetailPage, page: () => PsalmDetailScreen()),
     GetPage(name: novenaListPage, page: () => NovenaListScreen()),
     GetPage(name: novenaDetailPage, page: () => NovenaDetailScreen()),
+    // GetPage(name: deepSleepPage, page: () => DeepSleepScreen()),
+    GetPage(
+      name: deepSleepPage,
+      page: () {
+        return DeepSleepScreen();
+      },
+      transition: Transition.downToUp,
+    ),
     GetPage(
       name: popUpPrayer,
       page: () {
         return PopUpPrayer();
+      },
+      transition: Transition.downToUp,
+    ),
+    GetPage(
+      name: dailyVersePage,
+      page: () {
+        return DailyVerseScreen();
+      },
+      transition: Transition.downToUp,
+    ),
+    GetPage(
+      name: affirmationPage,
+      page: () {
+        return AffirmationScreen();
       },
       transition: Transition.downToUp,
     ),
@@ -137,6 +165,14 @@ class RouteHelpers {
       },
       transition: Transition.downToUp,
     ),
+    GetPage(
+      name: adioListingPage,
+      page: () {
+        return AudioListingScreen();
+      },
+      transition: Transition.downToUp,
+    ),
+    //GetPage(name: adioListingPage, page: () => AudioListingScreen()),
     GetPage(
       name: affirmationAndVerse,
       page: () {
@@ -169,6 +205,13 @@ class RouteHelpers {
       name: mysterySelectionPage,
       page: () {
         return MysterySelectionPage();
+      },
+      transition: Transition.downToUp,
+    ),
+    GetPage(
+      name: songsPage,
+      page: () {
+        return SongScreen();
       },
       transition: Transition.downToUp,
     ),

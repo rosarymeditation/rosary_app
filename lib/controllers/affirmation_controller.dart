@@ -48,8 +48,6 @@ class AffirmationController extends GetxController implements GetxService {
     Response response = await dailyAffirmationRepo
         .getDailyAffirmation({"date": formattedDate, "code": languageCode});
     late ResponseModel responseModel;
-    print(response.body);
-    print("affirmation00000");
 
     if (response.statusCode == 200) {
       _hasAffirmation = true;

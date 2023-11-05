@@ -6,12 +6,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:rosary/controllers/langauge_controller.dart';
 import 'package:rosary/route/route_helpers.dart';
-import 'package:rosary/utils/appColor.dart';
-import 'package:rosary/widgets/big_text.dart';
-import 'package:rosary/widgets/display_button_widget.dart';
+import 'package:rosary/widgets/start_rosary_widget.dart';
 
 import '../api/firebase_api.dart';
 import '../controllers/affirmation_controller.dart';
@@ -19,9 +16,13 @@ import '../controllers/dailyVerse_controller.dart';
 import '../controllers/log_controller.dart';
 import '../controllers/main_controller.dart';
 import '../controllers/prayer_controller.dart';
+import '../songs/play_list.dart';
 import '../utils/constants.dart';
-import '../widgets/current_mystery_widget.dart';
+import '../widgets/dash_audio_widget.dart';
+import '../widgets/dash_round_widget.dart';
+import '../widgets/inspiration_widget.dart';
 import '../widgets/main_text.dart';
+import '../widgets/menu_label.dart';
 
 class StartScreen extends StatefulWidget {
   StartScreen({super.key});
@@ -49,14 +50,11 @@ class _StartScreenState extends State<StartScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
-    init();
+    if (Platform.isIOS) {
+      init();
+    }
 
     super.initState();
-    // Timer.periodic(Duration(seconds: 1), (timer) {
-    //   toggleVisibility();
-    // });
-
     _mainController.getStaticMystery();
   }
 
@@ -65,156 +63,135 @@ class _StartScreenState extends State<StartScreen> {
     return GetBuilder<MainController>(
       builder: (main) {
         return Scaffold(
+          backgroundColor: Colors.grey.shade100,
           appBar: AppBar(
+            centerTitle: true,
+            automaticallyImplyLeading: false,
             title: Text('${AppConstant.APP_NAME.tr}'),
           ),
           body: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage("assets/images/rosary.jpeg"),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              InkWell(
+                  onTap: () {
+                    if (_mainController.getHasCache()) {
+                      showYesNoAlert();
+                    } else {
+                      main.setIntroBidFocus(0);
+                      Get.toNamed(RouteHelpers.rosaryIntroPage);
+                    }
+                  },
+                  child: const StartRosaryWidget()),
+              SizedBox(
+                height: 20.h,
+              ),
+              SizedBox(
+                height: 120.h,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        _verseController
+                            .getDailyVerse(_languageController.selectedIndex);
+                        _affirmationController.getDailyAffirmation(
+                            _languageController.selectedIndex);
+                        Get.toNamed(RouteHelpers.affirmationPage);
+                      },
+                      child: InspirationWidget(
+                          title: "affirmation_title",
+                          subTitle: _affirmationController.hasAffirmation
+                              ? _affirmationController
+                                  .dailyAffirmationModel.content!
+                              : "daily_affirmation",
+                          img: "back1.jpg"),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        _verseController
+                            .getDailyVerse(_languageController.selectedIndex);
+                        _affirmationController.getDailyAffirmation(
+                            _languageController.selectedIndex);
+                        Get.toNamed(RouteHelpers.dailyVersePage);
+                      },
+                      child: InspirationWidget(
+                        title: "daily_verse_title",
+                        subTitle: _verseController.hasVerse
+                            ? _verseController.dailyVerseModel.content!
+                            : "daily_verse",
+                        img: "back2.jpeg",
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Divider(),
+              InkWell(
+                onTap: () {
+                  _logController.logMystery();
+                  Get.toNamed(RouteHelpers.mysterySelectionPage);
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  margin: EdgeInsets.symmetric(horizontal: 10),
+                  height: 40.h,
+                  width: double.maxFinite,
+                  decoration: BoxDecoration(
+                    color: Colors.blue.shade900,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      MainText(
+                        text: "choose_mystery",
+                        color: Colors.white,
+                        size: 16.sp,
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.grey.shade100,
+                      )
+                    ],
                   ),
                 ),
-                child: Container(
-                  color: Colors.white.withOpacity(.85),
-                  child: Column(
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              DashLabelWidget(
+                title: "prayer_label",
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      SizedBox(
-                        height: 30.h,
-                      ),
-                      BigText(
-                        isBold: true,
-                        align: TextAlign.center,
-                        text: 'welcome_msg'.tr,
-                        size: 18.sp,
-                      ),
-                      SizedBox(
-                        height: 40.h,
-                      ),
-                      CurrentMysteryWidget(),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          if (_mainController.getHasCache()) {
-                            showYesNoAlert();
-                          } else {
-                            main.setIntroBidFocus(0);
-                            Get.toNamed(RouteHelpers.rosaryIntroPage);
-                          }
-                        },
-                        child: DisplayButtonWidget(
-                          img: "rosary_icon.jpeg",
-                          hasIcon: true,
-                          text: "start_rosary",
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      InkWell(
-                        onTap: () async {
-                          _logController.logMystery();
-                          Get.toNamed(RouteHelpers.mysterySelectionPage);
-                        },
-                        child: DisplayButtonWidget(
-                          text: "choose_mystery",
-                          img: main.getMysteryImage(main.currentMystery),
-                          hasIcon: true,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Get.toNamed(RouteHelpers.adioListingPage);
-                        },
-                        child: DisplayButtonWidget(
-                          text: "listen",
-                          img: "audio.webp",
-                          hasIcon: true,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          _logController.logPsalm();
-                          Get.toNamed(RouteHelpers.psalmListPage);
-                        },
-                        child: DisplayButtonWidget(
-                          text: "powerful_psalms",
-                          img: "psalm.jpeg",
-                          hasIcon: true,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          _logController.logNovena();
-                          Get.toNamed(RouteHelpers.novenaListPage);
-                        },
-                        child: DisplayButtonWidget(
-                          text: "powerful_novena",
-                          img: "powerful_prayer.jpeg",
-                          hasIcon: true,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          _verseController
-                              .getDailyVerse(_languageController.selectedIndex);
-                          _affirmationController.getDailyAffirmation(
-                              _languageController.selectedIndex);
-                          Get.toNamed(RouteHelpers.affirmationAndVerse);
-                        },
-                        child: DisplayButtonWidget(
-                          text: "daily_inspiration",
-                          img: "bible.webp",
-                          hasIcon: true,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Get.toNamed(RouteHelpers.prayerRequestPage);
-                        },
-                        child: DisplayButtonWidget(
-                          img: "hands.jpeg",
-                          text: "prayer_request",
-                          hasIcon: true,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
                       InkWell(
                         onTap: () {
                           _prayerController
                               .setPrayerType(AppConstant.PRAYER_TYPE_CATHOLIC);
                           Get.toNamed(RouteHelpers.prayersPage);
                         },
-                        child: DisplayButtonWidget(
-                          img: "catholic.jpg",
-                          text: "catholic_prayers".tr,
-                          hasIcon: true,
+                        child: DashRoundWidget(
+                          title: "catholic_prayers",
+                          img: "eucharist.jpg",
                         ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
                       ),
                       InkWell(
                         onTap: () {
@@ -222,35 +199,94 @@ class _StartScreenState extends State<StartScreen> {
                               .setPrayerType(AppConstant.PRAYER_TYPE_OTHERS);
                           Get.toNamed(RouteHelpers.prayersPage);
                         },
-                        child: DisplayButtonWidget(
+                        child: DashRoundWidget(
+                          title: "general_prayers",
                           img: "g-prayer.jpg",
-                          text: "general_prayers".tr,
-                          hasIcon: true,
                         ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Get.toNamed(RouteHelpers.psalmListPage);
+                        },
+                        child: DashRoundWidget(
+                          title: "powerful_psalms",
+                          img: "bible.webp",
+                        ),
                       ),
                       InkWell(
                         onTap: () {
-                          _prayerController
-                              .setPrayerType(AppConstant.PRAYER_TYPE_OTHERS);
-                          Get.toNamed(RouteHelpers.deepSleepPage);
+                          Get.toNamed(RouteHelpers.novenaListPage);
                         },
-                        child: DisplayButtonWidget(
-                          img: "galaxy.webp",
-                          text: "deep_sleep_music".tr,
-                          hasIcon: true,
+                        child: DashRoundWidget(
+                          title: "powerful_novena",
+                          img: "powerful_prayer.jpeg",
                         ),
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
+                      )
                     ],
                   ),
+                ],
+              ),
+              SizedBox(
+                height: 30.h,
+              ),
+              DashLabelWidget(title: "audio_label"),
+              SizedBox(
+                height: 10.h,
+              ),
+              InkWell(
+                onTap: () {
+                  Get.toNamed(RouteHelpers.adioListingPage);
+                },
+                child: DashAudioWidget(
+                  title: "listen",
+                  subTitle: "rosary_subtitle",
+                  icon: Icons.play_circle,
+                  img: "rosary.png",
+                  iconColor: Colors.orange.shade700,
+                  num: AudioPlaylist.songsRosary.length,
                 ),
               ),
-            ),
+              SizedBox(
+                height: 10.h,
+              ),
+              InkWell(
+                onTap: () {
+                  Get.toNamed(RouteHelpers.songsPage);
+                },
+                child: DashAudioWidget(
+                  title: "songs",
+                  subTitle: "song_subtitle",
+                  icon: Icons.play_circle,
+                  iconColor: Colors.orange.shade700,
+                  num: AudioPlaylist.audioSource.length,
+                ),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              InkWell(
+                onTap: () {
+                  _prayerController
+                      .setPrayerType(AppConstant.PRAYER_TYPE_OTHERS);
+                  Get.toNamed(RouteHelpers.deepSleepPage);
+                },
+                child: DashAudioWidget(
+                  title: "deep_sleep_music",
+                  subTitle: "sleep_subtitle",
+                  icon: Icons.bedtime_rounded,
+                  iconColor: Colors.blue.shade700,
+                  num: AudioPlaylist.deepSleepSource.length,
+                ),
+              ),
+            ]),
           ),
         );
       },
@@ -354,15 +390,15 @@ class _StartScreenState extends State<StartScreen> {
 
   init() async {
     String deviceToken = await getDeviceToken();
-    if (Platform.isIOS) {
-      print("device ------------------------ token: $deviceToken");
-      FirebaseMessaging.onMessageOpenedApp
-          .listen((RemoteMessage remoteMessage) {
-        String? title = remoteMessage.notification!.title;
-        String? description = remoteMessage.notification!.body;
-      });
-    } else {
-      await FirebaseApi().initNotifications();
-    }
+    // if (Platform.isIOS) {
+    //   print("device ------------------------ token: $deviceToken");
+    //   FirebaseMessaging.onMessageOpenedApp
+    //       .listen((RemoteMessage remoteMessage) {
+    //     String? title = remoteMessage.notification!.title;
+    //     String? description = remoteMessage.notification!.body;
+    //   });
+    // } else {
+    //   await FirebaseApi().initNotifications();
+    // }
   }
 }

@@ -73,31 +73,59 @@ class _RosaryIntroPageState extends State<RosaryIntroPage> {
             SizedBox(
               height: 20.h,
             ),
-            counter == 0
-                ? Column(
-                    children: [
-                      MainText(
-                        text: "name_of_father",
-                        size: 18.sp,
-                        color: Colors.red,
-                        isBold: true,
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      ApostleCreedWidget(),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      OurFatherWidget(),
-                    ],
-                  )
-                : Container(),
-            counter >= 1 && counter <= 3 ? HailMaryWidget() : Container(),
-            counter > 3 ? GloryWidget() : Container(),
-            counter >= 1 && counter <= 3
-                ? BeadNumberCounterWidget(counter: counter)
-                : Container(),
+            SizedBox(
+              height: 200.h,
+              child: Column(
+                children: [
+                  counter == 0
+                      ? Column(
+                          children: [
+                            MainText(
+                              text: "name_of_father",
+                              size: 18.sp,
+                              color: Colors.red,
+                              isBold: true,
+                            ),
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            ApostleCreedWidget(),
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            OurFatherWidget(),
+                          ],
+                        )
+                      : Container(),
+                  counter >= 1 && counter <= 3
+                      ? Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: MainText(
+                            text: 'hail_mary'.tr,
+                            size: 16.sp,
+                          ),
+                        )
+                      : Container(),
+                  counter > 3
+                      ? Column(children: [
+                          MainText(
+                            text: 'glory_to_father'.tr,
+                            size: 15.sp,
+                          ),
+                          Divider(),
+                          MainText(
+                            color: Colors.brown.shade500,
+                            text: 'oh_my_jesus'.tr,
+                            size: 14.sp,
+                          ),
+                        ])
+                      : Container(),
+                  counter >= 1 && counter <= 3
+                      ? BeadNumberCounterWidget(counter: counter)
+                      : Container(),
+                ],
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -133,7 +161,9 @@ class _RosaryIntroPageState extends State<RosaryIntroPage> {
           ],
         ),
         bottomNavigationBar: Container(
-          padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 40.h),
+          color: AppColor.primaryColor,
+          padding:
+              EdgeInsets.only(left: 20.w, right: 20.w, bottom: 20.h, top: 20.h),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -146,8 +176,8 @@ class _RosaryIntroPageState extends State<RosaryIntroPage> {
                   main.setIntroBidFocus(count - 1);
                 },
                 child: AppIcon(
-                  backgroundColor: AppColor.primaryColor,
-                  iconColor: Colors.white,
+                  backgroundColor: Colors.grey.shade100,
+                  iconColor: AppColor.primaryColor,
                   icon: Icons.arrow_back_sharp,
                   iconSize: 40.sp,
                   size: 60.sp,
@@ -158,14 +188,14 @@ class _RosaryIntroPageState extends State<RosaryIntroPage> {
                   // Get.toNamed(RouteHelpers.chapletPage);
                   var count = counter;
                   if (count == 4) {
-                    Get.toNamed(RouteHelpers.progressPrayerPage);
+                    Get.toNamed(RouteHelpers.mysteryPage);
                     return;
                   }
                   main.setIntroBidFocus(count + 1);
                 },
                 child: AppIcon(
-                  backgroundColor: AppColor.primaryColor,
-                  iconColor: Colors.white,
+                  backgroundColor: Colors.grey.shade100,
+                  iconColor: AppColor.primaryColor,
                   icon: Icons.arrow_forward_sharp,
                   iconSize: 40.sp,
                   size: 60.sp,

@@ -27,12 +27,6 @@ import 'utils/messages.dart';
 late AudioHandler _audioHandler;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (Platform.isIOS) {
-    Firebase.initializeApp();
-  } else {
-    await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform);
-  }
 
   await JustAudioBackground.init(
     androidNotificationChannelId: "com.ryanheise.bg_demo.channel.audio",
@@ -45,6 +39,12 @@ Future<void> main() async {
   runApp(MyApp(
     languages: _languages,
   ));
+  if (Platform.isIOS) {
+    Firebase.initializeApp();
+  } else {
+    // await Firebase.initializeApp(
+    //     options: DefaultFirebaseOptions.currentPlatform);
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -104,7 +104,7 @@ class MyApp extends StatelessWidget {
             initialRoute: RouteHelpers.initial,
             getPages: RouteHelpers.routes,
             //home: AudioPlayerScreen(),
-            //home: SignUpPage(),
+
             // initialRoute: RouteHelpers.endPrayerPage,
             // getPages: RouteHelpers.routes,
           ),

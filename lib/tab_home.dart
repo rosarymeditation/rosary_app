@@ -146,7 +146,7 @@ class _TabHomePageState extends State<TabHomePage> {
     appStoreIdentifier: '6463201997',
     googlePlayIdentifier: 'com.rosarysoftnergy.app',
   );
-  List pages = [StartScreen(), FeedScreen(), SongScreen(), MoreScreen()];
+  List pages = [StartScreen(), FeedScreen(), MoreScreen()];
   @override
   void initState() {
     super.initState();
@@ -188,13 +188,13 @@ class _TabHomePageState extends State<TabHomePage> {
                 ),
                 label: "community".tr,
               ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.music_note,
-                  size: 20.sp,
-                ),
-                label: "songs".tr,
-              ),
+              // BottomNavigationBarItem(
+              //   icon: Icon(
+              //     Icons.music_note,
+              //     size: 20.sp,
+              //   ),
+              //   label: "songs".tr,
+              // ),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.more_horiz,

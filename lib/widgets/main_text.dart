@@ -24,14 +24,20 @@ class MainText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      text.tr,
+      removePTags(text.tr),
       textAlign: align,
       overflow: overflow,
+      maxLines: 14,
       style: TextStyle(
-          fontSize: size == 0 ? 20.sp : size,
-          color: color,
-          fontWeight: isBold! ? FontWeight.w800 : FontWeight.w400,
-          fontFamily: "Georgian"),
+        fontSize: size == 0 ? 20.sp : size,
+        color: color,
+        fontWeight: isBold! ? FontWeight.w800 : FontWeight.w400,
+        fontFamily: "Georgian",
+      ),
     );
+  }
+
+  String removePTags(String input) {
+    return input.replaceAll(RegExp(r'<p>|<\/p>'), '');
   }
 }

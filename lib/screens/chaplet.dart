@@ -8,6 +8,7 @@ import 'package:rosary/model/bid_model.dart';
 import 'package:rosary/route/route_helpers.dart';
 import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/utils/constants.dart';
+import 'package:rosary/utils/dimensions.dart';
 import 'package:rosary/widgets/app_icon.dart';
 import 'package:rosary/widgets/bead_number_widget.dart';
 import 'package:rosary/widgets/bid.dart';
@@ -104,7 +105,7 @@ class _ChapletPageState extends State<ChapletPage> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 50.h,
+                  height: 10.h,
                 ),
                 Column(
                   children: [
@@ -113,15 +114,46 @@ class _ChapletPageState extends State<ChapletPage> {
                     ),
                   ],
                 ),
-                counter <= 0 || counter > 10
-                    ? const Text("")
-                    : BeadNumberCounterWidget(counter: counter),
-                SizedBox(
-                  height: 40.h,
+                Container(
+                  height: Dimensions.screenHeight * 0.36,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      counter >= 1 && counter <= 10
+                          ? MainText(
+                              text: 'hail_mary'.tr,
+                              size: 16.sp,
+                            )
+                          : Container(),
+                      counter > 10
+                          ? Column(children: [
+                              MainText(
+                                text: 'glory_to_father'.tr,
+                                size: 15.sp,
+                              ),
+                              const Divider(),
+                              MainText(
+                                color: Colors.brown.shade500,
+                                text: 'oh_my_jesus'.tr,
+                                size: 14.sp,
+                              ),
+                            ])
+                          : Container(),
+                      counter == 0
+                          ? MainText(
+                              text: "our_father",
+                              size: 16.sp,
+                            )
+                          : Container(),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      counter <= 0 || counter > 10
+                          ? const Text("")
+                          : BeadNumberCounterWidget(counter: counter),
+                    ],
+                  ),
                 ),
-                counter >= 1 && counter <= 10 ? HailMaryWidget() : Container(),
-                counter > 10 ? GloryWidget() : Container(),
-                counter == 0 ? OurFatherWidget() : Container(),
                 SizedBox(
                   height: 200.h,
                   child: ListView.builder(
@@ -147,7 +179,9 @@ class _ChapletPageState extends State<ChapletPage> {
           ),
         ),
         bottomNavigationBar: Container(
-          padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 40.h),
+          color: AppColor.primaryColor,
+          padding:
+              EdgeInsets.only(left: 20.w, right: 20.w, bottom: 20.h, top: 20.h),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -166,8 +200,8 @@ class _ChapletPageState extends State<ChapletPage> {
                   }
                 },
                 child: AppIcon(
-                  backgroundColor: AppColor.primaryColor,
-                  iconColor: Colors.white,
+                  backgroundColor: Colors.grey.shade100,
+                  iconColor: AppColor.primaryColor,
                   icon: Icons.arrow_back_sharp,
                   iconSize: 40.sp,
                   size: 60.sp,
@@ -181,7 +215,8 @@ class _ChapletPageState extends State<ChapletPage> {
                     if (main.currentMyesteryCounter == 6) {
                       Get.toNamed(RouteHelpers.endPrayerPage);
                     } else {
-                      Get.toNamed(RouteHelpers.progressPrayerPage);
+                      Get.toNamed(RouteHelpers.mysteryPage);
+                      //Get.toNamed(RouteHelpers.progressPrayerPage);
                     }
                     return;
                   }
@@ -193,8 +228,8 @@ class _ChapletPageState extends State<ChapletPage> {
                   }
                 },
                 child: AppIcon(
-                  backgroundColor: AppColor.primaryColor,
-                  iconColor: Colors.white,
+                  backgroundColor: Colors.grey.shade100,
+                  iconColor: AppColor.primaryColor,
                   icon: Icons.arrow_forward_sharp,
                   iconSize: 40.sp,
                   size: 60.sp,
