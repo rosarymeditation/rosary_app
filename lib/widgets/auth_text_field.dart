@@ -33,7 +33,7 @@ class AuthTextField extends StatelessWidget {
         right: hasPadding ? Dimensions.height20 : 2,
       ),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.tertiary,
         borderRadius: BorderRadius.circular(
           Dimensions.radius20,
         ),
@@ -47,6 +47,7 @@ class AuthTextField extends StatelessWidget {
         ],
       ),
       child: TextField(
+          cursorColor: AppColor.subTitle,
           enableSuggestions: true,
           readOnly: readOnly,
           obscureText: isObscure,
@@ -57,7 +58,7 @@ class AuthTextField extends StatelessWidget {
             hintText: hintText,
             prefixIcon: Icon(
               icon,
-              color: AppColor.primaryColor,
+              color: AppColor.iconColor,
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(
@@ -71,10 +72,6 @@ class AuthTextField extends StatelessWidget {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(
                 Dimensions.radius20,
-              ),
-              borderSide: BorderSide(
-                width: 1.0,
-                color: Colors.white,
               ),
             ),
             border: OutlineInputBorder(

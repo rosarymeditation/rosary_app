@@ -28,8 +28,10 @@ class ChatTextField extends StatelessWidget {
         left: hasPadding ? Dimensions.height20 : 0,
         right: hasPadding ? Dimensions.height20 : 0,
       ),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: Colors.white,
+        //  backgroundColor: Theme.of(context).colorScheme.background,
+        color: Theme.of(context).colorScheme.tertiary,
         borderRadius: BorderRadius.circular(
           Dimensions.radius20,
         ),
@@ -43,38 +45,17 @@ class ChatTextField extends StatelessWidget {
         ],
       ),
       child: TextField(
+          cursorColor: AppColor.subTitle,
           enableSuggestions: true,
           readOnly: readOnly,
           obscureText: isObscure,
           maxLines: null,
           controller: textController,
           decoration: InputDecoration(
+            border: InputBorder.none,
             floatingLabelBehavior: FloatingLabelBehavior.always,
             labelText: labelText,
             hintText: hintText,
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                Dimensions.radius20,
-              ),
-              borderSide: BorderSide(
-                width: 1.0,
-                color: Colors.white,
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                Dimensions.radius20,
-              ),
-              borderSide: BorderSide(
-                width: 1.0,
-                color: Colors.white,
-              ),
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                Dimensions.radius20,
-              ),
-            ),
           )),
     );
   }

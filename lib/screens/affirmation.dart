@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/widgets/main_app_bar_widget.dart';
 import 'package:rosary/widgets/main_text.dart';
 
@@ -19,6 +20,7 @@ class _AffirmationScreenState extends State<AffirmationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: MainAppBarWidget(text: "daily_affirmation_title"),
       body: GetBuilder<AffirmationController>(builder: (data) {
         return Padding(
@@ -39,6 +41,7 @@ class _AffirmationScreenState extends State<AffirmationScreen> {
             ),
             data.hasAffirmation
                 ? MainText(
+                    color: AppColor.subTitle,
                     align: TextAlign.left,
                     text: data.dailyAffirmationModel.content!,
                     size: 20.sp,

@@ -46,6 +46,7 @@ class _RosaryCompletionScreenState extends State<RosaryCompletionScreen> {
       alignment: Alignment.center,
       children: [
         Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.background,
           body: SafeArea(
             child: SingleChildScrollView(
               child: Container(

@@ -65,6 +65,7 @@ class _PrayerDetailScreenState extends State<PsalmDetailScreen> {
   Widget build(BuildContext context) {
     return GetBuilder<PsalmController>(builder: (item) {
       return Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: MainAppBarWidget(text: item.psalm.verse ?? ""),
         // backgroundColor: Colors.yellow.shade100,
         body: SafeArea(

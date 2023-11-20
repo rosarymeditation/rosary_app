@@ -10,7 +10,8 @@ import 'big_text.dart';
 
 class MainAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final String text;
-  MainAppBarWidget({super.key, required this.text});
+  final bool hasBackBtn;
+  MainAppBarWidget({super.key, required this.text, this.hasBackBtn = true});
   var _mainController = Get.find<MainController>();
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
@@ -18,8 +19,10 @@ class MainAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      foregroundColor: Colors.white,
+      automaticallyImplyLeading: hasBackBtn,
+      // foregroundColor: Colors.white,
       centerTitle: true,
+
       title: BigText(
         align: TextAlign.center,
         text: text.tr,
@@ -27,7 +30,8 @@ class MainAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         size: 19.sp,
         isBold: true,
       ),
-      backgroundColor: AppColor.primaryColor,
+
+      backgroundColor: Theme.of(context).colorScheme.secondary,
     );
   }
 }

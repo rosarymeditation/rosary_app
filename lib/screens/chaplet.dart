@@ -91,6 +91,7 @@ class _ChapletPageState extends State<ChapletPage> {
       main.setDecade();
       var counter = main.currentBidFocusId;
       return Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: RosaryAppBarWidget(text: main.currentDecade),
         body: Container(
           decoration: BoxDecoration(
@@ -101,7 +102,7 @@ class _ChapletPageState extends State<ChapletPage> {
             ),
           ),
           child: Container(
-            color: Colors.white.withOpacity(.85),
+            color: Theme.of(context).colorScheme.background,
             child: Column(
               children: [
                 SizedBox(
@@ -121,6 +122,8 @@ class _ChapletPageState extends State<ChapletPage> {
                     children: [
                       counter >= 1 && counter <= 10
                           ? MainText(
+                              color:
+                                  Theme.of(context).colorScheme.inversePrimary,
                               text: 'hail_mary'.tr,
                               size: 16.sp,
                             )
@@ -128,19 +131,26 @@ class _ChapletPageState extends State<ChapletPage> {
                       counter > 10
                           ? Column(children: [
                               MainText(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .inversePrimary,
                                 text: 'glory_to_father'.tr,
-                                size: 15.sp,
+                                size: 16.sp,
                               ),
                               const Divider(),
                               MainText(
-                                color: Colors.brown.shade500,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .inversePrimary,
                                 text: 'oh_my_jesus'.tr,
-                                size: 14.sp,
+                                size: 16.sp,
                               ),
                             ])
                           : Container(),
                       counter == 0
                           ? MainText(
+                              color:
+                                  Theme.of(context).colorScheme.inversePrimary,
                               text: "our_father",
                               size: 16.sp,
                             )
@@ -179,7 +189,7 @@ class _ChapletPageState extends State<ChapletPage> {
           ),
         ),
         bottomNavigationBar: Container(
-          color: AppColor.primaryColor,
+          color: Theme.of(context).colorScheme.tertiary,
           padding:
               EdgeInsets.only(left: 20.w, right: 20.w, bottom: 20.h, top: 20.h),
           child: Row(
@@ -200,8 +210,8 @@ class _ChapletPageState extends State<ChapletPage> {
                   }
                 },
                 child: AppIcon(
-                  backgroundColor: Colors.grey.shade100,
-                  iconColor: AppColor.primaryColor,
+                  backgroundColor: AppColor.iconColor,
+                  iconColor: Colors.white,
                   icon: Icons.arrow_back_sharp,
                   iconSize: 40.sp,
                   size: 60.sp,
@@ -228,8 +238,8 @@ class _ChapletPageState extends State<ChapletPage> {
                   }
                 },
                 child: AppIcon(
-                  backgroundColor: Colors.grey.shade100,
-                  iconColor: AppColor.primaryColor,
+                  backgroundColor: AppColor.iconColor,
+                  iconColor: Colors.white,
                   icon: Icons.arrow_forward_sharp,
                   iconSize: 40.sp,
                   size: 60.sp,

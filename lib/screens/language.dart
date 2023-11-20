@@ -17,7 +17,7 @@ class LanguageScreen extends StatelessWidget {
     return GetBuilder<LocalizationController>(
       builder: (_languageController) {
         return Scaffold(
-          backgroundColor: Colors.grey.shade200,
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: MainAppBarWidget(text: "select_language"),
           body: SafeArea(
               child: Column(
@@ -36,7 +36,8 @@ class LanguageScreen extends StatelessWidget {
                           if (AppConstant.languages[index].languageCode ==
                               "es") {
                             QuickAlert.show(
-                              headerBackgroundColor: Colors.blue,
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.background,
                               confirmBtnText: "ok".tr,
                               context: context,
                               type: QuickAlertType.info,
@@ -71,7 +72,7 @@ class LanguageScreen extends StatelessWidget {
                             title: Text(
                               AppConstant.languages[index].languageName,
                               style: TextStyle(
-                                  color: Colors.black54, fontSize: 18.sp),
+                                  color: AppColor.subTitle, fontSize: 18.sp),
                             ),
                           ),
                         ),

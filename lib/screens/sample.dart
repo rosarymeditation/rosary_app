@@ -90,6 +90,7 @@ class CircularRosaryChaplet extends StatelessWidget {
     const double angleIncrement = 2 * pi / (decadesCount * beadsPerDecade);
 
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Center(
         child: Container(
           width: 2 * circleRadius,

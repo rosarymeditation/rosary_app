@@ -42,7 +42,7 @@ class _RosaryEndPrayerScreenState extends State<RosaryEndPrayerScreen> {
   Widget build(BuildContext context) {
     return GetBuilder<MainController>(builder: (main) {
       return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.background,
         body: SafeArea(
           child: Container(
             decoration: const BoxDecoration(
@@ -52,7 +52,7 @@ class _RosaryEndPrayerScreenState extends State<RosaryEndPrayerScreen> {
               ),
             ),
             child: Container(
-              color: Colors.white.withOpacity(.85),
+              color: Theme.of(context).colorScheme.background,
               child: SingleChildScrollView(
                 physics: const ScrollPhysics(),
                 child: Padding(
@@ -95,7 +95,10 @@ class _RosaryEndPrayerScreenState extends State<RosaryEndPrayerScreen> {
                                 context: context,
                                 builder: (BuildContext context) => AlertDialog(
                                   title: const Text(''),
-                                  content: Text("prayer_for_pope".tr),
+                                  content: MainText(
+                                    text: "prayer_for_pope",
+                                    color: AppColor.subTitle,
+                                  ),
                                   actions: <Widget>[
                                     TextButton(
                                       onPressed: () =>
@@ -112,6 +115,7 @@ class _RosaryEndPrayerScreenState extends State<RosaryEndPrayerScreen> {
                                 Expanded(
                                   child: MainText(
                                     isBold: true,
+                                    color: AppColor.subTitle,
                                     text: "prayer_for_pope",
                                     size: 20.sp,
                                   ),
@@ -137,6 +141,7 @@ class _RosaryEndPrayerScreenState extends State<RosaryEndPrayerScreen> {
                             height: 30.h,
                           ),
                           MainText(
+                            color: AppColor.subTitle,
                             size: 20.sp,
                             text: "glory_to_father".tr,
                           ),
@@ -146,7 +151,7 @@ class _RosaryEndPrayerScreenState extends State<RosaryEndPrayerScreen> {
                           MainText(
                             text: "name_of_father",
                             size: 18.sp,
-                            color: Colors.red,
+                            color: AppColor.subTitle,
                             isBold: true,
                           ),
                         ],
@@ -162,6 +167,7 @@ class _RosaryEndPrayerScreenState extends State<RosaryEndPrayerScreen> {
           ),
         ),
         bottomNavigationBar: Container(
+          color: Theme.of(context).colorScheme.tertiary,
           padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 30.h),
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
@@ -172,8 +178,8 @@ class _RosaryEndPrayerScreenState extends State<RosaryEndPrayerScreen> {
                 Get.toNamed(RouteHelpers.chapletPage);
               },
               child: AppIcon(
+                backgroundColor: AppColor.iconColor,
                 iconColor: Colors.white,
-                backgroundColor: AppColor.primaryColor,
                 icon: Icons.arrow_back_sharp,
                 iconSize: 40.sp,
                 size: 60.sp,
@@ -186,8 +192,8 @@ class _RosaryEndPrayerScreenState extends State<RosaryEndPrayerScreen> {
                 Get.toNamed(RouteHelpers.rosaryCompletionPage);
               },
               child: AppIcon(
+                backgroundColor: AppColor.iconColor,
                 iconColor: Colors.white,
-                backgroundColor: AppColor.primaryColor,
                 icon: Icons.arrow_forward_sharp,
                 iconSize: 40.sp,
                 size: 60.sp,

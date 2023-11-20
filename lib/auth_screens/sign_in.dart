@@ -13,6 +13,7 @@ import '../controllers/auth_controller.dart';
 import '../controllers/user_controller.dart';
 import '../utils/appColor.dart';
 import '../utils/show_custom_snackbar.dart';
+import '../widgets/auth_button.dart';
 import '../widgets/auth_text_field.dart';
 import '../widgets/regular_button.dart';
 
@@ -58,7 +59,7 @@ class SignInPage extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: MainAppBarWidget(
         text: AppConstant.SIGN_IN,
       ),
@@ -83,7 +84,7 @@ class SignInPage extends StatelessWidget {
                         height: 20.h,
                       ),
                       MainText(
-                        color: Colors.grey.shade800,
+                        color: AppColor.subTitle,
                         size: 16.sp,
                         text: "Welcome back! Sign in to continue with us.",
                       ),
@@ -114,7 +115,7 @@ class SignInPage extends StatelessWidget {
                         child: MainText(
                           size: 16.sp,
                           text: 'Forgot Password?',
-                          color: Colors.blue,
+                          color: AppColor.subTitle,
                         ),
                       ),
                       SizedBox(
@@ -126,10 +127,7 @@ class SignInPage extends StatelessWidget {
                         },
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: RegularBtnWidget(
-                            text: AppConstant.SIGN_IN,
-                            backgroundColor: AppColor.primaryColor,
-                          ),
+                          child: AuthButtonWidget(title: AppConstant.SIGN_IN),
                         ),
                       ),
                       SizedBox(
@@ -156,7 +154,7 @@ class SignInPage extends StatelessWidget {
                             MainText(
                               size: 16.sp,
                               text: ' Sign Up',
-                              color: Colors.blue,
+                              color: AppColor.subTitle,
                             ),
                           ],
                         ),

@@ -32,7 +32,7 @@ class _PsalmListScreenState extends State<NovenaListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.yellow.shade100,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: MainAppBarWidget(text: "powerful_novena"),
       body: Container(
         margin: EdgeInsets.only(top: 20.h),
@@ -75,6 +75,7 @@ class _PsalmListScreenState extends State<NovenaListScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         MainText(
+          color: AppColor.subTitle,
           text: title,
           size: 16.sp,
         ),

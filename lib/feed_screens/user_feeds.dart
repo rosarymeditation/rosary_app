@@ -38,8 +38,8 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
     return GetBuilder<FeedController>(
       builder: (feeds) {
         return Scaffold(
+            backgroundColor: Theme.of(context).colorScheme.background,
             appBar: MainAppBarWidget(text: "My Posts"),
-            backgroundColor: AppColor.primaryLight,
             body: feeds.isLoaded
                 ? SmartRefresher(
                     enablePullUp: true,

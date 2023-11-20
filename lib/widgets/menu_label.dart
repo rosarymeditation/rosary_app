@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rosary/utils/appColor.dart';
 
 import 'main_text.dart';
 
@@ -24,7 +25,7 @@ class DashLabelWidget extends StatelessWidget {
             text: title,
             size: 16.sp,
             isBold: true,
-            color: Colors.grey.shade400,
+            color: AppColor.subTitle,
           ),
         ],
       ),

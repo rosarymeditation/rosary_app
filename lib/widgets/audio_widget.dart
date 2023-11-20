@@ -37,7 +37,7 @@ class AudioWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MainText(
-                    color: Colors.black,
+                    color: AppColor.subTitle,
                     text: title,
                     size: 19.sp,
                     isBold: true,
@@ -46,7 +46,7 @@ class AudioWidget extends StatelessWidget {
                     height: 10.h,
                   ),
                   MainText(
-                    color: Colors.black,
+                    color: AppColor.subTitle,
                     text: subTitle,
                     size: 15.sp,
                   ),
@@ -90,6 +90,7 @@ class AudioWidget extends StatelessWidget {
                         }
                       })
                   : CircleAvatar(
+                      backgroundColor: Theme.of(context).colorScheme.tertiary,
                       radius: 25.sp,
                       child: IconButton(
                         onPressed: () async {

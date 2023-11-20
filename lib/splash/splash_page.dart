@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rosary/route/route_helpers.dart';
+import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/utils/constants.dart';
 import 'package:rosary/widgets/big_text.dart';
 
@@ -44,7 +45,7 @@ class _SplashSreenState extends State<SplashSreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
       body: Center(
         child: ScaleTransition(
             scale: animation,
@@ -55,6 +56,7 @@ class _SplashSreenState extends State<SplashSreen>
                   height: 100.h,
                 ),
                 BigText(
+                  color: AppColor.subTitle,
                   text: AppConstant.APP_NAME.tr,
                   size: 23.sp,
                   isBold: true,
@@ -64,7 +66,7 @@ class _SplashSreenState extends State<SplashSreen>
                 ),
                 Center(
                   child: CircleAvatar(
-                    backgroundColor: Colors.white,
+                    backgroundColor: Theme.of(context).colorScheme.tertiary,
                     radius: 100.sp, // Image radius
                     backgroundImage: AssetImage("assets/icon/icon.png"),
                   ),

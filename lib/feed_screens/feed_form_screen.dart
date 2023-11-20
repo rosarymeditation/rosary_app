@@ -10,6 +10,7 @@ import 'package:quickalert/quickalert.dart';
 import 'package:rosary/route/route_helpers.dart';
 import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/widgets/app_icon.dart';
+import 'package:rosary/widgets/auth_button.dart';
 import 'package:rosary/widgets/main_app_bar_widget.dart';
 import 'package:rosary/widgets/main_text.dart';
 import '../controllers/auth_controller.dart';
@@ -42,6 +43,7 @@ class _FeedFormScreenState extends State<FeedFormScreen> {
     return GetBuilder<FeedController>(
       builder: (feed) {
         return Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: MainAppBarWidget(text: "Make a post"),
           body: SingleChildScrollView(
             child: Column(
@@ -90,7 +92,7 @@ class _FeedFormScreenState extends State<FeedFormScreen> {
                   height: 20.h,
                 ),
                 AppTextField(
-                  maxLength: 1000,
+                  maxLength: 3000,
                   hasIcon: false,
                   minLine: 6,
                   textController: _contentController,
@@ -111,13 +113,14 @@ class _FeedFormScreenState extends State<FeedFormScreen> {
                       children: [
                         Icon(
                           Icons.image_rounded,
-                          color: Colors.green,
+                          color: AppColor.iconColor,
                           size: 30.sp,
                         ),
                         SizedBox(
                           width: 10.w,
                         ),
                         MainText(
+                          color: AppColor.subTitle,
                           text: "Photo",
                           size: 14.sp,
                         )
@@ -146,6 +149,8 @@ class _FeedFormScreenState extends State<FeedFormScreen> {
                         : await feed.uploadWithImage(_image!, content);
                     if (value.isSuccess) {
                       QuickAlert.show(
+                        backgroundColor:
+                            Theme.of(context).colorScheme.background,
                         barrierDismissible: false,
                         context: context,
                         title: "Waiting for Approval".tr,
@@ -171,7 +176,7 @@ class _FeedFormScreenState extends State<FeedFormScreen> {
                 },
                 child: feed.isLoaded
                     ? _authController.userLoggedIn()
-                        ? DisplayButtonWidget(text: 'Post')
+                        ? AuthButtonWidget(title: 'Post')
                         : const SignInButtonWidget()
                     : Center(
                         child: CircularProgressIndicator(),
@@ -211,12 +216,13 @@ class _FeedFormScreenState extends State<FeedFormScreen> {
                   children: [
                     Icon(
                       Icons.photo_camera,
-                      color: AppColor.primaryColor,
+                      color: AppColor.iconColor,
                     ),
                     SizedBox(
                       width: 10.w,
                     ),
                     MainText(
+                      color: AppColor.subTitle,
                       text: 'Camera',
                     ),
                   ],
@@ -236,6 +242,7 @@ class _FeedFormScreenState extends State<FeedFormScreen> {
                     width: 10.w,
                   ),
                   MainText(
+                    color: AppColor.subTitle,
                     text: 'Gallery',
                   ),
                 ],
@@ -252,12 +259,18 @@ class _FeedFormScreenState extends State<FeedFormScreen> {
           children: [
             ListTile(
               leading: Icon(Icons.camera_alt),
-              title: Text('Camera'),
+              title: MainText(
+                text: "Camera",
+                color: AppColor.subTitle,
+              ),
               onTap: () => Navigator.of(context).pop(ImageSource.camera),
             ),
             ListTile(
               leading: Icon(Icons.image),
-              title: Text('Gallery'),
+              title: MainText(
+                text: "Gallery",
+                color: AppColor.subTitle,
+              ),
               onTap: () => Navigator.of(context).pop(ImageSource.gallery),
             )
           ],

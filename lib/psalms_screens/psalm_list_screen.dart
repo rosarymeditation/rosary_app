@@ -31,6 +31,7 @@ class _PsalmListScreenState extends State<PsalmListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       //backgroundColor: Colors.yellow.shade100,
       appBar: MainAppBarWidget(text: "powerful_psalms"),
       body: Container(

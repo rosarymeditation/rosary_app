@@ -11,6 +11,7 @@ import 'package:rosary/route/route_helpers.dart';
 import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/widgets/account_widget.dart';
 import 'package:rosary/widgets/big_text.dart';
+import 'package:rosary/widgets/donate_button.dart';
 import 'package:share/share.dart';
 
 import '../controllers/main_controller.dart';
@@ -34,8 +35,20 @@ class _MoreScreenState extends State<MoreScreen> {
     return GetBuilder<AuthController>(
       builder: (auth) {
         return Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: AppBar(
-            title: Text('${AppConstant.APP_NAME.tr}'),
+            backgroundColor: Theme.of(context).colorScheme.background,
+            centerTitle: true,
+            elevation: 0,
+            automaticallyImplyLeading: false,
+            toolbarHeight: 60.h,
+            actions: [
+              InkWell(
+                  onTap: () {
+                    Get.toNamed(RouteHelpers.donationPage);
+                  },
+                  child: const DonateBtnWidget())
+            ],
           ),
           body: SingleChildScrollView(
             child: Padding(
@@ -80,10 +93,11 @@ class _MoreScreenState extends State<MoreScreen> {
                       Get.toNamed(RouteHelpers.languagePage);
                     },
                     child: AccountWidget(
-                        iconBackgroundColor: Colors.grey,
-                        hasArrow: true,
-                        leftIcon: Icons.language_rounded,
-                        text: "language"),
+                      iconBackgroundColor: Colors.grey,
+                      hasArrow: true,
+                      leftIcon: Icons.language_rounded,
+                      text: "language",
+                    ),
                   ),
                   SizedBox(
                     height: 20.h,
@@ -98,19 +112,6 @@ class _MoreScreenState extends State<MoreScreen> {
                         leftIcon: Icons.check_circle,
                         text: "rosary_benefits_title"),
                   ),
-                  // SizedBox(
-                  //   height: 20.h,
-                  // ),
-                  // InkWell(
-                  //   onTap: () {
-                  //     Get.toNamed(RouteHelpers.aboutPage);
-                  //   },
-                  //   child: AccountWidget(
-                  //       iconBackgroundColor: Colors.blue,
-                  //       hasArrow: true,
-                  //       leftIcon: Icons.info_rounded,
-                  //       text: "about"),
-                  // ),
                   SizedBox(
                     height: 20.h,
                   ),

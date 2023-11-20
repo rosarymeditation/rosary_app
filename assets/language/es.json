@@ -1,4 +1,18 @@
 {
+  "donation_amount_error": "Evitando Contribuciones de Cero para un Impacto Positivo",
+  "donation_amount_limit": "Por favor, contribuye con una cantidad mayor a cero para tu donación. ¡Gracias por tu generosidad!",
+  "donate_with": "Donar con",
+  "copy_paypal_link": "Paypal: https://www.paypal.me/rosaryMG",
+  "copy_text": "Sigue el enlace de Paypal copiado",
+  "donate_error_network": "Problema con el procesamiento del pago. Por favor, utilice el enlace de PayPal para la donación. Disculpas por cualquier inconveniente.",
+  "donate_error_title": "Error de Pago",
+  "donate_error": "Lamentamos informarte que hubo un problema al procesar tu donación. Por favor, revisa la información de tu pago y vuelve a intentarlo. Si el problema persiste o si tienes alguna pregunta, no dudes en ponerte en contacto con nuestro equipo de soporte. \n \n Gracias por tu generosidad y comprensión.",
+  "retry": "Reintentar",
+  "return_home": "Regresar a Inicio",
+  "donate_success_title": "¡Gracias por su Donación!",
+  "donate_success": "Su generosa contribución ha sido recibida y tendrá un impacto significativo. Apreciamos enormemente su apoyo.",
+  "donate": "Dar Ahora",
+  "donate_body": "<p>Querida Comunidad de  Rosary Meditation Guide (RMG),</p><p>Acudimos a ustedes hoy con una súplica desde lo más profundo de nuestros corazones. RMG, tu refugio de serenidad espiritual, está enfrentando un camino desafiante. Hemos elegido el noble camino de permanecer libre de publicidad, para que puedas meditar y conectar con tu fe sin distracciones.</p><p>Pero a medida que nuestra familia de RMG crece, los costos de cuidar este precioso santuario aumentan. Estamos ansiosos por agregar más características, traducir la aplicación a más idiomas y potenciar tu viaje espiritual de nuevas maneras.</p><p>Necesitamos tu ayuda, tu compasión y tu generosidad para mantener la llama de la fe ardiendo brillantemente. Tu apoyo, ya sea grande o pequeño, lleva un peso inmenso.</p><p>Por favor, dona haciendo clic en el botón de abajo para asegurarte de que RMG siga siendo un lugar de consuelo, crecimiento y profunda conexión espiritual para todos los que lo buscan.</p><p>Desde lo más profundo de nuestras almas, te agradecemos por ser una parte querida de la comunidad de RMG.</p><p>Con profunda gratitud,</p><p>Equipo de RMG</p>",
   "rosary_subtitle": "Rosario con voz tranquila",
   "song_subtitle": "El amor de Dios en devoción melódica",
 

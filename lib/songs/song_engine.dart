@@ -93,8 +93,8 @@ class _AudioEngineState extends State<AudioEngine> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: MainAppBarWidget(text: widget.title),
-      backgroundColor: Colors.white,
       body: isLoading
           ? Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
@@ -131,8 +131,9 @@ class _AudioEngineState extends State<AudioEngine> {
                           bufferedBarColor: Colors.grey,
                           progressBarColor: AppColor.primaryColor,
                           thumbColor: AppColor.primaryColor,
-                          timeLabelTextStyle: const TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.w600),
+                          timeLabelTextStyle: TextStyle(
+                              color: AppColor.subTitle,
+                              fontWeight: FontWeight.w600),
                           progress: positionData?.position ?? Duration.zero,
                           buffered:
                               positionData?.bufferedPosition ?? Duration.zero,

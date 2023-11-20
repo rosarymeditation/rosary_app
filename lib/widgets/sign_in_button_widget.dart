@@ -16,7 +16,7 @@ class SignInButtonWidget extends StatelessWidget {
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             padding: EdgeInsets.symmetric(vertical: 10.w),
-            backgroundColor: AppColor.primaryColor,
+            backgroundColor: Theme.of(context).colorScheme.secondary,
           ),
           onPressed: () {
             Get.toNamed(RouteHelpers.signInPage);

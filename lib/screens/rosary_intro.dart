@@ -67,101 +67,112 @@ class _RosaryIntroPageState extends State<RosaryIntroPage> {
     return GetBuilder<MainController>(builder: (main) {
       var counter = main.currentIntroBidFocusId;
       return Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: RosaryAppBarWidget(text: "opening_bead"),
-        body: Column(
-          children: [
-            SizedBox(
-              height: 20.h,
-            ),
-            SizedBox(
-              height: 200.h,
-              child: Column(
-                children: [
-                  counter == 0
-                      ? Column(
-                          children: [
+        body: Container(
+          color: Theme.of(context).colorScheme.background,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20.h,
+              ),
+              SizedBox(
+                height: 200.h,
+                child: Column(
+                  children: [
+                    counter == 0
+                        ? Column(
+                            children: [
+                              MainText(
+                                text: "name_of_father",
+                                size: 18.sp,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .inversePrimary,
+                                isBold: true,
+                              ),
+                              SizedBox(
+                                height: 20.h,
+                              ),
+                              ApostleCreedWidget(),
+                              SizedBox(
+                                height: 20.h,
+                              ),
+                              OurFatherWidget(),
+                            ],
+                          )
+                        : Container(),
+                    counter >= 1 && counter <= 3
+                        ? Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: MainText(
+                              color:
+                                  Theme.of(context).colorScheme.inversePrimary,
+                              text: 'hail_mary'.tr,
+                              size: 16.sp,
+                            ),
+                          )
+                        : Container(),
+                    counter > 3
+                        ? Column(children: [
                             MainText(
-                              text: "name_of_father",
-                              size: 18.sp,
-                              color: Colors.red,
-                              isBold: true,
+                              color:
+                                  Theme.of(context).colorScheme.inversePrimary,
+                              text: 'glory_to_father'.tr,
+                              size: 15.sp,
                             ),
-                            SizedBox(
-                              height: 20.h,
+                            Divider(),
+                            MainText(
+                              color:
+                                  Theme.of(context).colorScheme.inversePrimary,
+                              text: 'oh_my_jesus'.tr,
+                              size: 14.sp,
                             ),
-                            ApostleCreedWidget(),
-                            SizedBox(
-                              height: 20.h,
-                            ),
-                            OurFatherWidget(),
-                          ],
-                        )
-                      : Container(),
-                  counter >= 1 && counter <= 3
-                      ? Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: MainText(
-                            text: 'hail_mary'.tr,
-                            size: 16.sp,
-                          ),
-                        )
-                      : Container(),
-                  counter > 3
-                      ? Column(children: [
-                          MainText(
-                            text: 'glory_to_father'.tr,
-                            size: 15.sp,
-                          ),
-                          Divider(),
-                          MainText(
-                            color: Colors.brown.shade500,
-                            text: 'oh_my_jesus'.tr,
-                            size: 14.sp,
-                          ),
-                        ])
-                      : Container(),
-                  counter >= 1 && counter <= 3
-                      ? BeadNumberCounterWidget(counter: counter)
-                      : Container(),
+                          ])
+                        : Container(),
+                    counter >= 1 && counter <= 3
+                        ? BeadNumberCounterWidget(counter: counter)
+                        : Container(),
+                  ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 200.h,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      controller: _scrollController,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: bidModelList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        var item = bidModelList[index];
+                        return InkWell(
+                          onTap: () {
+                            main.setIntroBidFocus(item.id);
+                          },
+                          child: item.isCrucifix
+                              ? Image.asset(
+                                  'assets/images/cross.png',
+                                  height: 80.h,
+                                  width: 80.w,
+                                )
+                              : BidIntroWidget(
+                                  id: item.id,
+                                  type: item.type,
+                                ),
+                        );
+                      },
+                    ),
+                  ),
                 ],
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 200.h,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    controller: _scrollController,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: bidModelList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      var item = bidModelList[index];
-                      return InkWell(
-                        onTap: () {
-                          main.setIntroBidFocus(item.id);
-                        },
-                        child: item.isCrucifix
-                            ? Image.asset(
-                                'assets/images/cross.jpg',
-                                height: 80.h,
-                                width: 80.w,
-                              )
-                            : BidIntroWidget(
-                                id: item.id,
-                                type: item.type,
-                              ),
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
         bottomNavigationBar: Container(
-          color: AppColor.primaryColor,
+          color: Theme.of(context).colorScheme.tertiary,
           padding:
               EdgeInsets.only(left: 20.w, right: 20.w, bottom: 20.h, top: 20.h),
           child: Row(
@@ -176,8 +187,8 @@ class _RosaryIntroPageState extends State<RosaryIntroPage> {
                   main.setIntroBidFocus(count - 1);
                 },
                 child: AppIcon(
-                  backgroundColor: Colors.grey.shade100,
-                  iconColor: AppColor.primaryColor,
+                  backgroundColor: AppColor.iconColor,
+                  iconColor: Colors.white,
                   icon: Icons.arrow_back_sharp,
                   iconSize: 40.sp,
                   size: 60.sp,
@@ -194,8 +205,8 @@ class _RosaryIntroPageState extends State<RosaryIntroPage> {
                   main.setIntroBidFocus(count + 1);
                 },
                 child: AppIcon(
-                  backgroundColor: Colors.grey.shade100,
-                  iconColor: AppColor.primaryColor,
+                  backgroundColor: AppColor.iconColor,
+                  iconColor: Colors.white,
                   icon: Icons.arrow_forward_sharp,
                   iconSize: 40.sp,
                   size: 60.sp,

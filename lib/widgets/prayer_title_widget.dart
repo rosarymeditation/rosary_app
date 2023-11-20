@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rosary/route/route_helpers.dart';
+import 'package:rosary/utils/appColor.dart';
 
 import '../controllers/main_controller.dart';
 import '../model/prayer_model.dart';
@@ -25,6 +26,7 @@ class PrayerTitleWidget extends StatelessWidget {
         children: [
           Expanded(
             child: MainText(
+              color: AppColor.subTitle,
               isBold: true,
               text: "$title...",
               size: 20.sp,

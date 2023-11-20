@@ -165,8 +165,8 @@ class _TabHomePageState extends State<TabHomePage> {
         return Scaffold(
           body: pages[auth.currentIndex],
           bottomNavigationBar: BottomNavigationBar(
-            selectedItemColor: AppColor.primaryColor,
-            unselectedItemColor: Colors.grey,
+            selectedItemColor: AppColor.subTitle,
+            unselectedItemColor: AppColor.title,
             showUnselectedLabels: true,
             showSelectedLabels: true,
             selectedFontSize: 0.0,
@@ -197,7 +197,7 @@ class _TabHomePageState extends State<TabHomePage> {
               // ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.more_horiz,
+                  Icons.view_headline_sharp,
                   size: 20.sp,
                 ),
                 label: "more".tr,

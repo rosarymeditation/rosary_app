@@ -64,6 +64,7 @@ class _PrayerDetailScreenState extends State<PrayerDetailScreen> {
   Widget build(BuildContext context) {
     return GetBuilder<PrayerController>(builder: (item) {
       return Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
@@ -77,7 +78,9 @@ class _PrayerDetailScreenState extends State<PrayerDetailScreen> {
               expandedHeight: 200.h, // Max height when fully expanded
               floating: true, // Doesn't float above content
               pinned: true,
-              backgroundColor: AppColor.primaryColor, // Stays pinned to the top
+              backgroundColor: Theme.of(context)
+                  .colorScheme
+                  .background, // Stays pinned to the top
               flexibleSpace: FlexibleSpaceBar(
                   background: PrayerBannerWidget(item: item.prayer)),
             ),
@@ -99,7 +102,7 @@ class _PrayerDetailScreenState extends State<PrayerDetailScreen> {
                             ),
                     ),
                     child: Container(
-                      color: Colors.white.withOpacity(.85),
+                      color: Theme.of(context).colorScheme.background,
                       child: Html(
                         data: item.prayer.content,
                         style: {

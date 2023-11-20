@@ -36,6 +36,7 @@ class _CommentEditScreenState extends State<CommentEditScreen> {
     return GetBuilder<FeedCommentController>(
       builder: (comment) {
         return Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: MainAppBarWidget(text: 'Edit Comment'),
           body: Column(
             children: [

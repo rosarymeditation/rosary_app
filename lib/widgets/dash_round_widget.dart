@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/utils/dimensions.dart';
 
 import '../utils/constants.dart';
@@ -14,13 +15,15 @@ class DashRoundWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(10.sp)),
+        color: Theme.of(context).colorScheme.tertiary,
+        borderRadius: BorderRadius.circular(10.sp),
+      ),
       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
       child: Column(
         children: [
           CircleAvatar(
             radius: Dimensions.screenWidth * 0.19,
-            backgroundColor: Colors.blue,
+            backgroundColor: Theme.of(context).colorScheme.secondary,
             child: CircleAvatar(
               radius: Dimensions.screenWidth * 0.18,
               backgroundImage: AssetImage(AppConstant.getImagePath(img)),
@@ -30,6 +33,7 @@ class DashRoundWidget extends StatelessWidget {
             height: 10.h,
           ),
           MainText(
+            color: AppColor.title,
             text: title,
             size: 14.sp,
             isBold: true,

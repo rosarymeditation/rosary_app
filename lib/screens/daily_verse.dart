@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/widgets/main_app_bar_widget.dart';
 import 'package:rosary/widgets/main_text.dart';
 
@@ -19,6 +20,7 @@ class _DailyVerseScreenState extends State<DailyVerseScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: MainAppBarWidget(text: "verse_of_the_day_title"),
       body: GetBuilder<DailyVerseController>(builder: (data) {
         return Padding(
@@ -32,6 +34,7 @@ class _DailyVerseScreenState extends State<DailyVerseScreen> {
                           height: 50.h,
                         ),
                         MainText(
+                          color: AppColor.subTitle,
                           text: data.dailyVerseModel.verse!,
                           isBold: true,
                           size: 20.sp,
@@ -40,6 +43,7 @@ class _DailyVerseScreenState extends State<DailyVerseScreen> {
                           height: 10.h,
                         ),
                         MainText(
+                          color: AppColor.subTitle,
                           align: TextAlign.left,
                           text: data.dailyVerseModel.content!,
                           size: 20.sp,

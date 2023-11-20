@@ -13,6 +13,7 @@ import 'package:rosary/controllers/bugFeedback_controller.dart';
 import 'package:rosary/route/route_helpers.dart';
 import 'package:rosary/widgets/app_icon.dart';
 import 'package:rosary/widgets/app_text_field.dart';
+import 'package:rosary/widgets/auth_button.dart';
 import 'package:rosary/widgets/avatar_widget.dart';
 import 'package:rosary/widgets/banner_widget.dart';
 import 'package:rosary/widgets/chat_text_field.dart';
@@ -66,6 +67,7 @@ class _BugFeedbackPageState extends State<BugFeedbackPage> {
         _bugController.submit(title, desc, selectedValue).then((status) {
           if (status.isSuccess) {
             QuickAlert.show(
+              backgroundColor: Theme.of(context).colorScheme.background,
               context: context,
               title: "success".tr,
               onConfirmBtnTap: () {
@@ -83,6 +85,7 @@ class _BugFeedbackPageState extends State<BugFeedbackPage> {
             // _auth.resetReturnUrl();
           } else {
             QuickAlert.show(
+              backgroundColor: Theme.of(context).colorScheme.background,
               context: context,
               type: QuickAlertType.error,
               title: 'Oops...',
@@ -97,10 +100,10 @@ class _BugFeedbackPageState extends State<BugFeedbackPage> {
       return GetBuilder<UserController>(
         builder: (user) {
           return Scaffold(
+            backgroundColor: Theme.of(context).colorScheme.background,
             appBar: MainAppBarWidget(
               text: "feedbak_screen_title".tr,
             ),
-            backgroundColor: Colors.white,
             body: auth.isLoading
                 ? Center(child: CircularProgressIndicator())
                 : SingleChildScrollView(
@@ -179,11 +182,9 @@ class _BugFeedbackPageState extends State<BugFeedbackPage> {
                       _update();
                     },
                     child: Padding(
-                      padding: EdgeInsets.only(
-                          bottom: 20.h, left: 10.w, right: 10.w),
-                      child: RegularBtnWidget(
-                        text: "submit".tr,
-                        backgroundColor: AppColor.primaryColor,
+                      padding: EdgeInsets.only(bottom: 20.h),
+                      child: AuthButtonWidget(
+                        title: "submit".tr,
                       ),
                     ),
                   ),

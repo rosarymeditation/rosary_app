@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/utils/constants.dart';
 import 'package:rosary/widgets/app_icon.dart';
 import 'package:rosary/widgets/big_text.dart';
@@ -16,6 +17,7 @@ class PopUpPrayer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<MainController>(builder: (main) {
       return Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
         body: Container(
           height: double.infinity,
           decoration: BoxDecoration(
@@ -26,7 +28,7 @@ class PopUpPrayer extends StatelessWidget {
             ),
           ),
           child: Container(
-            color: Colors.white.withOpacity(.85),
+            color: Theme.of(context).colorScheme.background,
             child: SafeArea(
               child: SingleChildScrollView(
                 child: Column(
@@ -54,6 +56,7 @@ class PopUpPrayer extends StatelessWidget {
                       height: 20.h,
                     ),
                     MainText(
+                      color: AppColor.subTitle,
                       text: main.currentPrayer.title,
                       size: 24.sp,
                     ),

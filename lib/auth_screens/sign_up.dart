@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rosary/route/route_helpers.dart';
+import 'package:rosary/widgets/auth_button.dart';
 import 'package:rosary/widgets/password_text_field.dart';
 import '../../widgets/auth_text_field.dart';
 import '../controllers/auth_controller.dart';
@@ -76,7 +77,7 @@ class SignUpPage extends StatelessWidget {
           appBar: MainAppBarWidget(
             text: AppConstant.SIGN_UP,
           ),
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).colorScheme.background,
           body: auth.isLoading
               ? Center(child: CircularProgressIndicator())
               : SingleChildScrollView(
@@ -95,7 +96,7 @@ class SignUpPage extends StatelessWidget {
                         height: 20.h,
                       ),
                       MainText(
-                        color: Colors.grey.shade800,
+                        color: AppColor.subTitle,
                         size: 16.sp,
                         text: "Sign up to join our community.",
                       ),
@@ -142,25 +143,7 @@ class SignUpPage extends StatelessWidget {
                         onTap: () {
                           _registration();
                         },
-                        child: Container(
-                          margin: EdgeInsets.only(
-                            left: Dimensions.height20,
-                            right: Dimensions.height20,
-                          ),
-                          height: Dimensions.screenHeight / 13,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                Dimensions.radius30,
-                              ),
-                              color: AppColor.primaryColor),
-                          child: Center(
-                            child: MainText(
-                              text: AppConstant.SIGN_UP,
-                              size: Dimensions.font20 + Dimensions.font20 / 4,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
+                        child: AuthButtonWidget(title: AppConstant.SIGN_UP),
                       ),
                       SizedBox(
                         height: Dimensions.height10,
@@ -179,14 +162,14 @@ class SignUpPage extends StatelessWidget {
                                       Get.toNamed(RouteHelpers.signInPage),
                                 text: "Have an account already?",
                                 style: TextStyle(
-                                    color: Colors.grey[500],
+                                    color: AppColor.subTitle,
                                     fontSize: Dimensions.font15),
                               ),
                             ),
                             MainText(
                               size: 16.sp,
                               text: ' Sign In',
-                              color: Colors.blue,
+                              color: AppColor.subTitle,
                             )
                           ],
                         ),

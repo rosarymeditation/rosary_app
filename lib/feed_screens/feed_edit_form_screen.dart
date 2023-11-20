@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/widgets/app_icon.dart';
+import 'package:rosary/widgets/auth_button.dart';
 import 'package:rosary/widgets/feed_image_widget.dart';
 import 'package:rosary/widgets/main_app_bar_widget.dart';
 import 'package:rosary/widgets/main_text.dart';
@@ -50,6 +51,7 @@ class _FeedEditFormScreenState extends State<FeedEditFormScreen> {
     return GetBuilder<FeedController>(
       builder: (feed) {
         return Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: MainAppBarWidget(text: "Make a post"),
           body: SingleChildScrollView(
             child: Column(
@@ -84,7 +86,7 @@ class _FeedEditFormScreenState extends State<FeedEditFormScreen> {
                                 });
                               },
                               child: AppIcon(
-                                iconColor: Colors.white,
+                                iconColor: AppColor.iconColor,
                                 icon: Icons.close,
                                 iconSize: 20.sp,
                                 backgroundColor: AppColor.primaryColor,
@@ -145,7 +147,7 @@ class _FeedEditFormScreenState extends State<FeedEditFormScreen> {
                       children: [
                         Icon(
                           Icons.image_rounded,
-                          color: Colors.green,
+                          color: AppColor.iconColor,
                           size: 30.sp,
                         ),
                         SizedBox(
@@ -153,6 +155,7 @@ class _FeedEditFormScreenState extends State<FeedEditFormScreen> {
                         ),
                         MainText(
                           text: "Photo",
+                          color: AppColor.subTitle,
                           size: 14.sp,
                         )
                       ],
@@ -204,8 +207,8 @@ class _FeedEditFormScreenState extends State<FeedEditFormScreen> {
                 },
                 child: feed.isLoaded
                     ? _authController.userLoggedIn()
-                        ? DisplayButtonWidget(text: 'Post')
-                        : const SignInButtonWidget()
+                        ? AuthButtonWidget(title: 'Post')
+                        : SignInButtonWidget()
                     : Center(
                         child: CircularProgressIndicator(),
                       )),

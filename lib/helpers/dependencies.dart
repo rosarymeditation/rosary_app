@@ -7,11 +7,13 @@ import 'package:rosary/controllers/dailyVerse_controller.dart';
 import 'package:rosary/controllers/feed_controller.dart';
 import 'package:rosary/controllers/langauge_controller.dart';
 import 'package:rosary/controllers/network_controller.dart';
+import 'package:rosary/controllers/payment_controller.dart';
 import 'package:rosary/controllers/prayer_request_controller.dart';
 import 'package:rosary/data/repository/affirmation_repo.dart';
 import 'package:rosary/data/repository/bugFeedback_repo.dart';
 import 'package:rosary/data/repository/feedComment_repo.dart';
 import 'package:rosary/data/repository/feed_repo.dart';
+import 'package:rosary/data/repository/payment_repo.dart';
 import 'package:rosary/data/repository/prayer_request_repo.dart';
 import 'package:rosary/model/feed_model.dart';
 import 'package:rosary/model/language_model.dart';
@@ -52,6 +54,8 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(() =>
       AffirmationRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
 
+  Get.lazyPut(
+      () => PaymentRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
   Get.lazyPut(
       () => PsalmRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
   Get.lazyPut(() =>
@@ -97,6 +101,8 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(() => FeedCommentController(feedCommentRepo: Get.find()));
   Get.lazyPut(() => PrayerController(prayerRepo: Get.find()));
   Get.lazyPut(() => MainController(mainRepo: Get.find()));
+  Get.lazyPut(() => PaymentController(
+      paymentRepo: Get.find(), sharedPreferences: Get.find()));
   Get.lazyPut(() => BugFeedbackController(
       bugFeedbackRepo: Get.find(), sharedPreferences: Get.find()));
   Get.lazyPut(() => PrayerRequestController(prayerRequestRepo: Get.find()));

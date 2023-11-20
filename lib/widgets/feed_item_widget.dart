@@ -32,13 +32,23 @@ class FeedItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.tertiary,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5), // Shadow color and opacity
+            spreadRadius: 1, // Spread radius
+            blurRadius: 3, // Blur radius
+            offset: Offset(0, 1), // Offset of the shadow
+          ),
+        ],
+      ),
       margin: EdgeInsets.only(top: 20.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -52,6 +62,7 @@ class FeedItemWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         NameWidget(
+                          color: Theme.of(context).colorScheme.inversePrimary,
                           size: 15.sp,
                           firstname: item.author!.firstname!,
                           lastname: item.author!.lastname!,
@@ -60,6 +71,8 @@ class FeedItemWidget extends StatelessWidget {
                         Row(
                           children: [
                             MainText(
+                              color:
+                                  Theme.of(context).colorScheme.inversePrimary,
                               text: AppConstant.formatTimeAgo(item.createdAt!),
                             ),
                             SizedBox(
@@ -103,6 +116,8 @@ class FeedItemWidget extends StatelessWidget {
                     _authController.userLoggedIn()
                         ? _feedController.like(item.id!)
                         : QuickAlert.show(
+                            backgroundColor:
+                                Theme.of(context).colorScheme.background,
                             context: context,
                             title: "sign-in_to_react".tr,
                             confirmBtnText: "sign_in".tr,
@@ -122,15 +137,17 @@ class FeedItemWidget extends StatelessWidget {
                         color: AppColor.iconColor,
                       ),
                       item.likes!.isNotEmpty
-                          ? MainText(text: item.likes!.length.toString())
+                          ? MainText(
+                              text: item.likes!.length.toString(),
+                              color:
+                                  Theme.of(context).colorScheme.inversePrimary)
                           : Text(""),
                       SizedBox(
                         width: 2.w,
                       ),
                       MainText(
-                        text: 'Love',
-                        color: AppColor.iconColor,
-                      )
+                          text: 'Love',
+                          color: Theme.of(context).colorScheme.inversePrimary)
                     ],
                   ),
                 ),
@@ -196,6 +213,7 @@ class FeedItemWidget extends StatelessWidget {
                       width: 10.w,
                     ),
                     MainText(
+                      color: AppColor.subTitle,
                       text: 'Edit',
                     ),
                   ],
@@ -214,15 +232,16 @@ class FeedItemWidget extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.delete,
-                    color: Colors.red,
+                    color: AppColor.iconColor,
                   ),
                   SizedBox(
                     width: 10.w,
                   ),
                   MainText(
                     text: 'Delete',
+                    color: AppColor.subTitle,
                   ),
                 ],
               ),
@@ -244,7 +263,10 @@ class FeedItemWidget extends StatelessWidget {
               },
               child: ListTile(
                   leading: const Icon(Icons.edit),
-                  title: const Text('Edit'),
+                  title: MainText(
+                    text: "Edit",
+                    color: AppColor.subTitle,
+                  ),
                   onTap: () {
                     Navigator.of(context).pop();
                   }),
@@ -262,7 +284,10 @@ class FeedItemWidget extends StatelessWidget {
               },
               child: ListTile(
                 leading: const Icon(Icons.delete),
-                title: const Text('Delete'),
+                title: MainText(
+                  text: "Delete",
+                  color: AppColor.subTitle,
+                ),
                 onTap: () => Navigator.of(context).pop(),
               ),
             )

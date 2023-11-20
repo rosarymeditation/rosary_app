@@ -35,7 +35,7 @@ class _RosaryProgressPrayerScreenState
   Widget build(BuildContext context) {
     return GetBuilder<MainController>(builder: (main) {
       return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.background,
         body: SafeArea(
           child: SingleChildScrollView(
             physics: const ScrollPhysics(),

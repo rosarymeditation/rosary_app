@@ -12,7 +12,11 @@ import 'package:rosary/controllers/affirmation_controller.dart';
 import 'package:rosary/controllers/dailyVerse_controller.dart';
 import 'package:rosary/controllers/feed_controller.dart';
 import 'package:rosary/controllers/langauge_controller.dart';
+import 'package:rosary/donation/donation_error_screen.dart';
+import 'package:rosary/donation/donation_success.dart';
 import 'package:rosary/firebase_options.dart';
+import 'package:rosary/themes/dark_theme.dart';
+import 'package:rosary/themes/light_theme.dart';
 import 'package:rosary/utils/constants.dart';
 import 'controllers/feedComment_controller.dart';
 import 'controllers/log_controller.dart';
@@ -91,11 +95,10 @@ class MyApp extends StatelessWidget {
             defaultTransition: Transition.noTransition,
             debugShowCheckedModeBanner: false,
             title: 'Rosary',
-            theme: ThemeData(
-              colorScheme:
-                  ColorScheme.fromSeed(seedColor: AppColor.primaryColor),
-              useMaterial3: true,
-            ),
+
+            theme: lightTheme,
+            darkTheme: darkTheme,
+
             locale: localizatonController.locale,
 
             translations: Messages(languages: languages),
@@ -103,7 +106,7 @@ class MyApp extends StatelessWidget {
                 AppConstant.languages[0].countryCode),
             initialRoute: RouteHelpers.initial,
             getPages: RouteHelpers.routes,
-            //home: AudioPlayerScreen(),
+            // home: DonationErrorScreen(),
 
             // initialRoute: RouteHelpers.endPrayerPage,
             // getPages: RouteHelpers.routes,

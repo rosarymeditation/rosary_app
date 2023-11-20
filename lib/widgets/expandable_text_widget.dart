@@ -26,12 +26,16 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
   @override
   Widget build(BuildContext context) {
     return ExpandableText(
-      style: TextStyle(fontFamily: "Georgian", fontSize: 14.sp),
+      style: TextStyle(
+        color: Theme.of(context).colorScheme.inversePrimary,
+        fontFamily: "Georgian",
+        fontSize: 14.sp,
+      ),
       widget.text,
       expandText: 'show more',
       collapseText: 'show less',
       maxLines: 4,
-      linkColor: Colors.blue,
+      linkColor: Theme.of(context).colorScheme.inversePrimary,
       animation: true,
       collapseOnTextTap: true,
     );

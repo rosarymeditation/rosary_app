@@ -3,6 +3,10 @@ import 'package:rosary/auth_screens/change_password.dart';
 import 'package:rosary/auth_screens/forgot_password.dart';
 import 'package:rosary/auth_screens/otp.dart';
 import 'package:rosary/auth_screens/sign_in.dart';
+import 'package:rosary/donation/donation_display_screen.dart';
+import 'package:rosary/donation/donation_error_screen.dart';
+import 'package:rosary/donation/donation_screen.dart';
+import 'package:rosary/donation/donation_success.dart';
 import 'package:rosary/feed_screens/comment_screen.dart';
 import 'package:rosary/feed_screens/comment_edit_screen.dart';
 import 'package:rosary/feed_screens/feed_edit_form_screen.dart';
@@ -52,7 +56,11 @@ class RouteHelpers {
   static const String psalmListPage = "/psalm-list-page";
   static const String affirmationAndVerse = "/affirmation_verse";
   static const String privacyPage = "/privacy";
+  static const String donationDisplayPage = "/donation-display-page";
   static const String songsPage = "/song-page";
+  static const String donationPage = "/donation-page";
+  static const String donationErrorPage = "/donation-error-page";
+  static const String donationSuccessPage = "/donation-success-page";
   static const String affirmationPage = "/affirmation-page";
   static const String dailyVersePage = "/daily-verse-page";
   static const String profilePage = "/profile-home";
@@ -91,7 +99,10 @@ class RouteHelpers {
 
   static List<GetPage> routes = [
     GetPage(name: initial, page: () => const SplashSreen()),
+    GetPage(name: donationSuccessPage, page: () => DonationSuccessScreen()),
+    GetPage(name: donationErrorPage, page: () => DonationErrorScreen()),
     GetPage(name: aboutPage, page: () => AboutPage()),
+    GetPage(name: donationPage, page: () => DonationScreen()),
     GetPage(name: bugFeedbackPage, page: () => BugFeedbackPage()),
     GetPage(name: prayerDetailPage, page: () => PrayerDetailScreen()),
     GetPage(name: prayersPage, page: () => PrayersScreen()),
@@ -99,6 +110,7 @@ class RouteHelpers {
     GetPage(name: psalmListPage, page: () => const PsalmListScreen()),
     GetPage(name: languagePage, page: () => const LanguageScreen()),
     GetPage(name: chapletPage, page: () => ChapletPage()),
+    GetPage(name: donationDisplayPage, page: () => DonationDisplayScreen()),
     GetPage(name: startScreenPage, page: () => StartScreen()),
     GetPage(name: profilePage, page: () => ProfileScreen()),
     GetPage(name: rosaryIntroPage, page: () => RosaryIntroPage()),

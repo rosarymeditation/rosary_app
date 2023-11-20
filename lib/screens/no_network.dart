@@ -17,6 +17,7 @@ class NoNetworkScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Stack(children: [
         Positioned(
           top: 40.h,
@@ -42,7 +43,7 @@ class NoNetworkScreen extends StatelessWidget {
           child: Container(
               height: Dimensions.screenHeight * 0.4,
               decoration: BoxDecoration(
-                color: AppColor.primaryColor,
+                color: Theme.of(context).colorScheme.secondary,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40.sp),
                   topRight: Radius.circular(40.sp),
@@ -81,7 +82,7 @@ class NoNetworkScreen extends StatelessWidget {
                       },
                       child: MainText(
                         text: "Try again",
-                        color: AppColor.primaryColor,
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
                     ),
                     // SizedBox(

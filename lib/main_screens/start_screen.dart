@@ -63,11 +63,12 @@ class _StartScreenState extends State<StartScreen> {
     return GetBuilder<MainController>(
       builder: (main) {
         return Scaffold(
-          backgroundColor: Colors.grey.shade100,
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: AppBar(
             centerTitle: true,
             automaticallyImplyLeading: false,
             title: Text('${AppConstant.APP_NAME.tr}'),
+            backgroundColor: Theme.of(context).colorScheme.secondary,
           ),
           body: SingleChildScrollView(
             child:
@@ -149,7 +150,7 @@ class _StartScreenState extends State<StartScreen> {
                   height: 40.h,
                   width: double.maxFinite,
                   decoration: BoxDecoration(
-                    color: Colors.blue.shade900,
+                    color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(

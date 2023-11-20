@@ -25,7 +25,7 @@ class StatusWidget extends StatelessWidget {
       isBold: true,
       size: 15.sp,
       text: status!.name!,
-      color: color,
+      color: Theme.of(context).colorScheme.inversePrimary,
     );
   }
 }

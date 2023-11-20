@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/widgets/big_text.dart';
 
 import '../songs/play_list.dart';
@@ -30,7 +31,9 @@ class DashAudioWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       width: double.maxFinite,
       decoration: BoxDecoration(
-        color: Colors.white, // Set the background color of the container
+        color: Theme.of(context)
+            .colorScheme
+            .tertiary, // Set the background color of the container
         borderRadius:
             BorderRadius.circular(10), // Optional: Add rounded corners
       ),
@@ -69,21 +72,20 @@ class DashAudioWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     MainText(
-                      align: TextAlign.left,
-                      text: title,
-                      size: 16.sp,
-                      isBold: true,
-                    ),
+                        align: TextAlign.left,
+                        text: title,
+                        size: 16.sp,
+                        isBold: true,
+                        color: AppColor.title),
                     const SizedBox(
                       height: 5,
                     ),
                     MainText(
-                      align: TextAlign.left,
-                      overflow: TextOverflow.ellipsis,
-                      text: subTitle,
-                      size: 14.sp,
-                      color: Colors.grey.shade500,
-                    ),
+                        align: TextAlign.left,
+                        overflow: TextOverflow.ellipsis,
+                        text: subTitle,
+                        size: 14.sp,
+                        color: AppColor.subTitle),
                   ],
                 ),
               ),

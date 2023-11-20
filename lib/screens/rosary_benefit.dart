@@ -3,14 +3,14 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rosary/utils/constants.dart';
+import 'package:rosary/widgets/main_app_bar_widget.dart';
 
 class RosaryBenefitPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('rosary_benefits_title'.tr),
-      ),
+      backgroundColor: Theme.of(context).colorScheme.background,
+      appBar: MainAppBarWidget(text: 'rosary_benefits_title'.tr),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: Html(

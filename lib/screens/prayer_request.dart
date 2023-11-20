@@ -26,6 +26,7 @@ class PrayerRequestScreen extends StatelessWidget {
         var prayerList = prayer.prayerRequestList ?? [];
 
         return Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: MainAppBarWidget(text: "Prayer Request"),
           body: Container(
             child: SingleChildScrollView(

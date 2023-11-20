@@ -1,21 +1,16 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:quickalert/quickalert.dart';
-import 'package:rosary/utils/constants.dart';
-import 'package:rosary/widgets/main_app_bar_widget.dart';
+import 'package:rosary/widgets/auth_button.dart';
 import 'package:rosary/widgets/main_text.dart';
 import 'package:rosary/widgets/password_text_field.dart';
 import '../../route/route_helpers.dart';
 import '../../utils/dimensions.dart';
-import '../../widgets/big_text.dart';
 import '../controllers/auth_controller.dart';
 import '../controllers/user_controller.dart';
 import '../utils/appColor.dart';
 import '../utils/show_custom_snackbar.dart';
-import '../widgets/auth_text_field.dart';
-import '../widgets/regular_button.dart';
 
 class ChangePasswordPage extends StatelessWidget {
   const ChangePasswordPage({Key? key}) : super(key: key);
@@ -45,6 +40,8 @@ class ChangePasswordPage extends StatelessWidget {
         _auth.resetPassword(password).then((res) {
           if (res.isSuccess) {
             QuickAlert.show(
+              headerBackgroundColor: AppColor.primaryLight,
+              backgroundColor: Theme.of(context).colorScheme.background,
               context: context,
               title: "success".tr,
               confirmBtnText: "Login",
@@ -56,6 +53,7 @@ class ChangePasswordPage extends StatelessWidget {
             );
           } else {
             QuickAlert.show(
+              backgroundColor: Theme.of(context).colorScheme.background,
               context: context,
               title: "Error".tr,
               type: QuickAlertType.error,
@@ -67,7 +65,7 @@ class ChangePasswordPage extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: GetBuilder<AuthController>(builder: (auth) {
         return auth.isLoading
             ? Center(child: CircularProgressIndicator())
@@ -86,7 +84,7 @@ class ChangePasswordPage extends StatelessWidget {
                               horizontal: 10.w, vertical: 20.h),
                           height: Dimensions.screenHeight * 0.4,
                           decoration: BoxDecoration(
-                            color: AppColor.primaryColor,
+                            color: Theme.of(context).colorScheme.secondary,
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(30.sp),
                               bottomRight: Radius.circular(30.sp),
@@ -162,11 +160,10 @@ class ChangePasswordPage extends StatelessWidget {
           _forgotPassword();
         },
         child: Padding(
-          padding: EdgeInsets.only(bottom: 20.h, left: 20.w, right: 20.w),
-          child: RegularBtnWidget(
-            text: "Send",
-            backgroundColor: AppColor.primaryColor,
+          padding: EdgeInsets.only(
+            bottom: 20.h,
           ),
+          child: AuthButtonWidget(title: "Send"),
         ),
       ),
     );

@@ -47,7 +47,7 @@ class _PrayersScreenState extends State<PrayersScreen> {
         return prayer.prayerType == AppConstant.PRAYER_TYPE_OTHERS
             ? Scaffold(
                 appBar: MainAppBarWidget(text: "General Prayers"),
-                backgroundColor: AppColor.primaryLight,
+                backgroundColor: Theme.of(context).colorScheme.background,
                 body: prayer.isLoaded
                     ? SmartRefresher(
                         enablePullUp: true,
@@ -101,7 +101,7 @@ class _PrayersScreenState extends State<PrayersScreen> {
                     : const Center(child: CircularProgressIndicator()))
             : Scaffold(
                 appBar: MainAppBarWidget(text: "Catholic Prayers"),
-                backgroundColor: AppColor.primaryLight,
+                backgroundColor: Theme.of(context).colorScheme.background,
                 body: prayer.isLoaded
                     ? SmartRefresher(
                         enablePullUp: true,

@@ -22,7 +22,9 @@ class SelectWidget extends StatelessWidget {
           margin: EdgeInsets.symmetric(vertical: 10.h),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20.sp),
-            color: hasSelected ? AppColor.primaryColor : Colors.grey,
+            color: hasSelected
+                ? Theme.of(context).colorScheme.secondary
+                : Theme.of(context).colorScheme.tertiary,
           ),
           height: 120.h,
           width: double.infinity,
@@ -47,7 +49,7 @@ class SelectWidget extends StatelessWidget {
                     children: [
                       MainText(
                         text: item.name.tr,
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.inversePrimary,
                         isBold: true,
                         size: 18.sp,
                       ),
@@ -58,7 +60,7 @@ class SelectWidget extends StatelessWidget {
                         hasSelected
                             ? Icons.check_circle
                             : Icons.radio_button_off,
-                        color: Colors.white,
+                        color: AppColor.subTitle,
                         size: 20.sp,
                       ),
                     ],
@@ -69,9 +71,8 @@ class SelectWidget extends StatelessWidget {
                 ],
               ),
               MainText(
-                text: item.days,
-                color: Colors.white,
-              )
+                  text: item.days,
+                  color: Theme.of(context).colorScheme.inversePrimary)
             ],
           ),
         );

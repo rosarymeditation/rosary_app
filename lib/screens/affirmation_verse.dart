@@ -21,6 +21,7 @@ class _AffirmationAndVerseScreenState extends State<AffirmationAndVerseScreen> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: AppBar(
           bottom: TabBar(
             tabs: [

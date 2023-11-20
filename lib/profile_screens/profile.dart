@@ -37,6 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: MainAppBarWidget(text: ""),
       body: GetBuilder<UserController>(
         builder: (user) {

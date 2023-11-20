@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:rosary/controllers/auth_controller.dart';
-import 'package:rosary/controllers/dailyVerse_controller.dart';
-import 'package:rosary/controllers/feedComment_controller.dart';
-import 'package:rosary/screens/no_community.dart';
 import 'package:rosary/screens/no_network.dart';
 import 'package:rosary/widgets/chat_text_field.dart';
 import 'package:rosary/widgets/feed_item_widget.dart';
@@ -13,7 +9,6 @@ import 'package:rosary/widgets/main_app_bar_widget.dart';
 import '../controllers/feed_controller.dart';
 import '../controllers/network_controller.dart';
 import '../route/route_helpers.dart';
-import '../utils/appColor.dart';
 import '../utils/dimensions.dart';
 
 class FeedScreen extends StatefulWidget {
@@ -45,8 +40,11 @@ class _FeedScreenState extends State<FeedScreen> {
           return network.connectionStatus == 1
               ? NoNetworkScreen()
               : Scaffold(
-                  appBar: MainAppBarWidget(text: "Community"),
-                  backgroundColor: AppColor.primaryLight,
+                  appBar: MainAppBarWidget(
+                    text: "Community",
+                    hasBackBtn: false,
+                  ),
+                  backgroundColor: Theme.of(context).colorScheme.tertiary,
                   body: feeds.isLoaded
                       ? SmartRefresher(
                           enablePullUp: true,
@@ -89,32 +87,30 @@ class _FeedScreenState extends State<FeedScreen> {
                                 title: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Container(
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 10.h,
-                                          ),
-                                          Stack(children: [
-                                            ChatTextField(
-                                                textController: textController,
-                                                hintText: "Write a post"),
-                                            InkWell(
-                                              onTap: () {
-                                                Get.toNamed(
-                                                    RouteHelpers.feedPostPage);
-                                              },
-                                              child: Container(
-                                                width: double.maxFinite,
-                                                height: 50.h,
-                                              ),
-                                            )
-                                          ]),
-                                          SizedBox(
-                                            height: 10.h,
-                                          ),
-                                        ],
-                                      ),
+                                    Column(
+                                      children: [
+                                        SizedBox(
+                                          height: 10.h,
+                                        ),
+                                        Stack(children: [
+                                          ChatTextField(
+                                              textController: textController,
+                                              hintText: "Write a post"),
+                                          InkWell(
+                                            onTap: () {
+                                              Get.toNamed(
+                                                  RouteHelpers.feedPostPage);
+                                            },
+                                            child: SizedBox(
+                                              width: double.maxFinite,
+                                              height: 50.h,
+                                            ),
+                                          )
+                                        ]),
+                                        SizedBox(
+                                          height: 10.h,
+                                        ),
+                                      ],
                                     )
                                   ],
                                 ),

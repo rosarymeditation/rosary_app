@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rosary/utils/constants.dart';
+import 'package:rosary/widgets/auth_button.dart';
 import 'package:rosary/widgets/main_app_bar_widget.dart';
 import 'package:rosary/widgets/main_text.dart';
 import '../../route/route_helpers.dart';
@@ -39,7 +40,7 @@ class ForgotPasswordPage extends StatelessWidget {
 
     return Scaffold(
       appBar: MainAppBarWidget(text: ""),
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: GetBuilder<AuthController>(builder: (auth) {
         return auth.isLoading
             ? Center(child: CircularProgressIndicator())
@@ -58,7 +59,7 @@ class ForgotPasswordPage extends StatelessWidget {
                               horizontal: 10.w, vertical: 20.h),
                           height: Dimensions.screenHeight * 0.4,
                           decoration: BoxDecoration(
-                            color: AppColor.primaryColor,
+                            color: Theme.of(context).colorScheme.secondary,
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(30.sp),
                               bottomRight: Radius.circular(30.sp),
@@ -120,10 +121,9 @@ class ForgotPasswordPage extends StatelessWidget {
           _forgotPassword();
         },
         child: Padding(
-          padding: EdgeInsets.only(bottom: 20.h, left: 20.w, right: 20.w),
-          child: RegularBtnWidget(
-            text: "Send",
-            backgroundColor: AppColor.primaryColor,
+          padding: const EdgeInsets.only(bottom: 20),
+          child: AuthButtonWidget(
+            title: "Send",
           ),
         ),
       ),

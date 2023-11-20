@@ -66,19 +66,14 @@ class MediaMetadata extends StatelessWidget {
         const SizedBox(
           height: 8,
         ),
-        MainText(
-          size: 20,
-          isBold: true,
-          text: title,
-          color: Colors.black,
-        ),
+        MainText(size: 20, isBold: true, text: title, color: AppColor.subTitle),
         SizedBox(
           height: 10,
         ),
         MainText(
           text: artist,
           size: 16.sp,
-          color: AppColor.accentColor,
+          color: AppColor.subTitle,
         )
       ],
     );

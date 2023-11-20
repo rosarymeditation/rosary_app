@@ -38,8 +38,9 @@ class AppTextField extends StatelessWidget {
         left: hasPadding ? 20.w : 2,
         right: hasPadding ? 20.w : 2,
       ),
+      padding: EdgeInsets.all(3),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.tertiary,
         borderRadius: BorderRadius.circular(
           20.sp,
         ),
@@ -53,7 +54,7 @@ class AppTextField extends StatelessWidget {
         ],
       ),
       child: TextField(
-        maxLength: maxLength,
+        cursorColor: AppColor.subTitle,
         enableSuggestions: true,
         minLines: minLine,
         maxLines: null,
@@ -68,15 +69,6 @@ class AppTextField extends StatelessWidget {
                 prefixIcon: Icon(
                   icon,
                   color: AppColor.primaryColor,
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(
-                    20.sp,
-                  ),
-                  borderSide: BorderSide(
-                    width: 1.0,
-                    color: Colors.white,
-                  ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(
@@ -94,32 +86,10 @@ class AppTextField extends StatelessWidget {
                 ),
               )
             : InputDecoration(
+                border: InputBorder.none,
                 floatingLabelBehavior: FloatingLabelBehavior.always,
                 labelText: labelText,
                 hintText: hintText,
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(
-                    20.sp,
-                  ),
-                  borderSide: BorderSide(
-                    width: 1.0,
-                    color: Colors.white,
-                  ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(
-                    20.sp,
-                  ),
-                  borderSide: BorderSide(
-                    width: 1.0,
-                    color: Colors.white,
-                  ),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(
-                    20.sp,
-                  ),
-                ),
               ),
       ),
     );

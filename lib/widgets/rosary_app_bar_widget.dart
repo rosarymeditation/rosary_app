@@ -27,7 +27,7 @@ class RosaryAppBarWidget extends StatelessWidget
         },
         child: Icon(
           Icons.close,
-          color: Colors.black,
+          color: Colors.white,
           size: 28.sp,
         ),
       ),
@@ -35,11 +35,11 @@ class RosaryAppBarWidget extends StatelessWidget
       title: BigText(
         align: TextAlign.center,
         text: text.tr,
-        color: Colors.black,
+        color: Colors.white,
         size: 19.sp,
         isBold: true,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       actions: [
         InkWell(
           onTap: () {
@@ -48,7 +48,7 @@ class RosaryAppBarWidget extends StatelessWidget
           },
           child: Icon(
             Icons.restart_alt,
-            color: Colors.black,
+            color: Colors.white,
             size: 28.sp,
           ),
         )

@@ -41,6 +41,9 @@ class AppConstant {
   static const String LOG_INSPIRATION_URL = "log-inspiration";
   static const String LOG_NOVENA_URL = "log-novena";
   static const String LOG_PSALM_URL = "log-psalm";
+  static const String EXECUTE_PAYPAL_URL = "execute-payment";
+  static const String STRIPE_PAYMENT_URL = "stripe-payment";
+  //execute-payment
   static const String LOG_ROSARY_URL = "log-rosary";
   static const String LOG_MYSTERY_URL = "log-mystery";
   static const String DEFAULT_LOGO = "assets/icon/icon.png";
@@ -87,6 +90,9 @@ class AppConstant {
       "Password length must not be less than 4 characters";
   static const String SORROWFUL_AUDIO_URL = "url_sorrowful_cache";
   static const String FEEDBACK_URL = "feedback";
+  static const String PAYMENT_URL = "create-payment";
+  static const String CURRENCIES_URL = "currency-list";
+  //create-payment
   static const String GLORIOUS_AUDIO_URL = "url_glorious_cache";
   static const String JOYFUL_AUDIO_URL = "url_joyful_cache";
   static const String LUMINOUS_AUDIO_URL = "url_luminous_cache";
@@ -105,6 +111,8 @@ class AppConstant {
   static const String GLORIOUS_MYSTERY = "glorious_mystery";
   static const String LUMINIOUS_MYSTERY = "luminous_mystery";
   static const String IMG_PATH = "assets/images/";
+  static const String PAYPAL_LINK = "https://www.paypal.me/rosaryMG";
+  //https://www.paypal.me/rosaryMG
   static const String COUNTRY_CODE = "country_code";
   static const String LANGUAGE_CODE = "language_code";
   static formatTimeAgo(String time) {

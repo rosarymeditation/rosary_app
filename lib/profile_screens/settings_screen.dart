@@ -19,6 +19,7 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: MainAppBarWidget(text: "Settings"),
       body: GetBuilder<AuthController>(
         builder: (auth) {
@@ -83,6 +84,8 @@ class SettingsScreen extends StatelessWidget {
                         InkWell(
                           onTap: () async {
                             QuickAlert.show(
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.background,
                               context: context,
                               confirmBtnText: 'Delete',
                               cancelBtnText: 'Cancel',

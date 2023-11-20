@@ -52,6 +52,7 @@ class _PrayerDetailScreenState extends State<NovenaDetailScreen> {
   Widget build(BuildContext context) {
     return GetBuilder<PrayerController>(builder: (item) {
       return Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: MainAppBarWidget(text: item.prayer.title ?? ""),
         // backgroundColor: Colors.yellow.shade100,
         body: SafeArea(

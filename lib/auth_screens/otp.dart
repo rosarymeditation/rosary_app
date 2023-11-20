@@ -60,7 +60,7 @@ class _OtpScreenState extends State<OtpScreen> {
     return GetBuilder<AuthController>(builder: (auth) {
       return Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: Color(0xfff7f6fb),
+        backgroundColor: Theme.of(context).colorScheme.background,
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 24, horizontal: 32),
@@ -74,7 +74,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       child: Icon(
                         Icons.arrow_back,
                         size: 32,
-                        color: Colors.black54,
+                        color: AppColor.subTitle,
                       ),
                     ),
                   ),
@@ -85,7 +85,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     width: 200,
                     height: 200,
                     decoration: BoxDecoration(
-                      color: Colors.deepPurple.shade50,
+                      color: Theme.of(context).colorScheme.tertiary,
                       shape: BoxShape.circle,
                     ),
                     child: Image.asset(
@@ -110,7 +110,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black38,
+                      color: AppColor.subTitle,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -120,7 +120,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   Container(
                     padding: EdgeInsets.all(28),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.tertiary,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
@@ -190,10 +190,11 @@ class _OtpScreenState extends State<OtpScreen> {
                                   style: ButtonStyle(
                                     foregroundColor:
                                         MaterialStateProperty.all<Color>(
-                                            Colors.white),
+                                            AppColor.subTitle),
                                     backgroundColor:
                                         MaterialStateProperty.all<Color>(
-                                            AppColor.primaryColor),
+                                      Theme.of(context).colorScheme.secondary,
+                                    ),
                                     shape: MaterialStateProperty.all<
                                         RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
@@ -206,7 +207,8 @@ class _OtpScreenState extends State<OtpScreen> {
                                     padding: EdgeInsets.all(14.0),
                                     child: Text(
                                       'Verify',
-                                      style: TextStyle(fontSize: 16),
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.white),
                                     ),
                                   ),
                                 ),
@@ -332,7 +334,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 borderSide: BorderSide(width: 2, color: Colors.black12),
                 borderRadius: BorderRadius.circular(12)),
             focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(width: 2, color: AppColor.primaryColor),
+                borderSide: BorderSide(width: 2, color: AppColor.iconColor),
                 borderRadius: BorderRadius.circular(12)),
           ),
         ),

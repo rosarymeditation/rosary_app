@@ -45,6 +45,7 @@ class _MysteryScreenState extends State<MysteryScreen> {
         mysteryType: _mainController.currentMystery, number: 1);
 
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: RosaryAppBarWidget(text: ""),
       body: Container(
         decoration: BoxDecoration(
@@ -54,7 +55,7 @@ class _MysteryScreenState extends State<MysteryScreen> {
           ),
         ),
         child: Container(
-          color: Colors.white.withOpacity(.85),
+          color: Theme.of(context).colorScheme.background,
           child: ListView(children: [
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -70,6 +71,7 @@ class _MysteryScreenState extends State<MysteryScreen> {
                           height: 200.h,
                         ),
                         MainText(
+                          color: AppColor.subTitle,
                           text: dataMystery.title!.tr,
                           size: 22.sp,
                         ),
@@ -148,7 +150,7 @@ class _MysteryScreenState extends State<MysteryScreen> {
         ),
       ),
       bottomNavigationBar: Container(
-        color: AppColor.primaryColor,
+        color: Theme.of(context).colorScheme.tertiary,
         padding:
             EdgeInsets.only(left: 20.w, right: 20.w, bottom: 20.h, top: 20.h),
         child:
@@ -165,8 +167,8 @@ class _MysteryScreenState extends State<MysteryScreen> {
               }
             },
             child: AppIcon(
-              backgroundColor: Colors.grey.shade100,
-              iconColor: AppColor.primaryColor,
+              backgroundColor: AppColor.iconColor,
+              iconColor: Colors.white,
               icon: Icons.arrow_back_sharp,
               iconSize: 40.sp,
               size: 60.sp,
@@ -178,8 +180,8 @@ class _MysteryScreenState extends State<MysteryScreen> {
               Get.toNamed(RouteHelpers.chapletPage);
             },
             child: AppIcon(
-              backgroundColor: Colors.grey.shade100,
-              iconColor: AppColor.primaryColor,
+              backgroundColor: AppColor.iconColor,
+              iconColor: Colors.white,
               icon: Icons.arrow_forward_sharp,
               iconSize: 40.sp,
               size: 60.sp,

@@ -35,6 +35,7 @@ class _PrayerRequestAddScreenState extends State<PrayerRequestAddScreen> {
     return GetBuilder<PrayerRequestController>(
       builder: (prayer) {
         return Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: MainAppBarWidget(text: 'Add Prayer Request'),
           body: Container(
             decoration: const BoxDecoration(

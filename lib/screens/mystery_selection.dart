@@ -29,18 +29,16 @@ class MysterySelectionPage extends StatelessWidget {
     return GetBuilder<MainController>(builder: (main) {
       return SafeArea(
         child: Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: MainAppBarWidget(text: "Mystery Selection"),
           body: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage("assets/images/pray.jpg"),
-              ),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.background,
             ),
             padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: SingleChildScrollView(
               child: Container(
-                color: Colors.white.withOpacity(.50),
+                color: Theme.of(context).colorScheme.background,
                 child: Column(
                   children: [
                     SizedBox(

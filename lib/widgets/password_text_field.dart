@@ -52,7 +52,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         right: widget.hasPadding ? Dimensions.height20 : 2,
       ),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.tertiary,
         borderRadius: BorderRadius.circular(
           Dimensions.radius20,
         ),
@@ -66,6 +66,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         ],
       ),
       child: TextField(
+          cursorColor: AppColor.subTitle,
           enableSuggestions: true,
           obscureText: !_passwordVisible,
           controller: widget.textController,
@@ -81,25 +82,17 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
               },
               child: Icon(
                 _passwordVisible ? Icons.visibility : Icons.visibility_off,
-                color: AppColor.primaryColor,
+                color: AppColor.iconColor,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(
                 Dimensions.radius20,
               ),
-              borderSide: BorderSide(
-                width: 1.0,
-                color: Colors.white,
-              ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(
                 Dimensions.radius20,
-              ),
-              borderSide: BorderSide(
-                width: 1.0,
-                color: Colors.white,
               ),
             ),
             border: OutlineInputBorder(

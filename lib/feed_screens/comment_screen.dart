@@ -57,9 +57,9 @@ class _FeedCommentScreenState extends State<FeedCommentScreen> {
   Widget build(BuildContext context) {
     return GetBuilder<FeedCommentController>(builder: (comment) {
       return Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
         resizeToAvoidBottomInset: true,
         appBar: MainAppBarWidget(text: "Comment"),
-        backgroundColor: Colors.white,
         body: Stack(
           children: [
             comment.isLoaded

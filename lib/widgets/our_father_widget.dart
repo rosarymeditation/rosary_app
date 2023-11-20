@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:rosary/utils/appColor.dart';
 
 import '../controllers/main_controller.dart';
 import '../route/route_helpers.dart';
@@ -22,6 +23,7 @@ class OurFatherWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           MainText(
+            color: Theme.of(context).colorScheme.inversePrimary,
             isBold: true,
             text: "our_father_title".tr,
             size: 20.sp,

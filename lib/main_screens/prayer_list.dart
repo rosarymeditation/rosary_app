@@ -8,6 +8,7 @@ class PrayerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Container(
         child: Center(
           child: MainText(text: "Prayers"),
