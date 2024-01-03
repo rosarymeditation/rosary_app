@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:rosary/controllers/feedComment_controller.dart';
-import 'package:rosary/screens/no_network.dart';
 import 'package:rosary/widgets/chat_text_field.dart';
 import 'package:rosary/widgets/feed_item_widget.dart';
 import 'package:rosary/widgets/main_app_bar_widget.dart';

@@ -1,4 +1,12 @@
 {
+  "unite_in_prayer": "Unámonos en oración por nuestros queridos hermanos y hermanas que han solicitado nuestro apoyo a través de la oración.",
+  "ask_for_prayers": "Pedir Oraciones",
+  "ask_for_prayers_subtitle": "Comparte tu petición de oración con nuestra Comunidad",
+  "prayer_disappear_note": "Las peticiones de oración desaparecen después de 30 días.",
+  "share_prayer_request": "Compartir Petición de Oración",
+  "prayer_request_box": "Comparte tu oración con nosotros; únete a nuestra comunidad en apoyo y solidaridad a través de intenciones sinceras en la oración.",
+  "op_name": "Nombre (No requerido)",
+  "prayer_request_success": "Gracias por compartir tu oración. La hemos recibido con gratitud. Nuestra comunidad elevará tus intenciones en nuestras plegarias. Confía en la fuerza de nuestra fe colectiva. Que Dios te bendiga.",
   "donation_amount_error": "Evitando Contribuciones de Cero para un Impacto Positivo",
   "donation_amount_limit": "Por favor, contribuye con una cantidad mayor a cero para tu donación. ¡Gracias por tu generosidad!",
   "donate_with": "Donar con",

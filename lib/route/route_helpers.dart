@@ -14,6 +14,7 @@ import 'package:rosary/feed_screens/feed_form_screen.dart';
 import 'package:rosary/feed_screens/user_feeds.dart';
 import 'package:rosary/novena_screens/novena_detail.dart';
 import 'package:rosary/novena_screens/novena_list_screen.dart';
+import 'package:rosary/prayer_request/public_prayer_request_create.dart';
 import 'package:rosary/prayer_screens/prayers.dart';
 import 'package:rosary/prayer_screens/prayer_detail.dart';
 import 'package:rosary/profile_screens/edit_profile.dart';
@@ -35,6 +36,7 @@ import 'package:rosary/screens/pop_up_prayer.dart';
 import 'package:rosary/screens/prayer_request.dart';
 import 'package:rosary/screens/prayer_request_add.dart';
 import 'package:rosary/screens/privacy_screen.dart';
+import 'package:rosary/prayer_request/public_prayer_request.dart';
 import 'package:rosary/screens/rosary_benefit.dart';
 import 'package:rosary/screens/rosary_completion_screen.dart';
 import 'package:rosary/screens/rosary_end_prayer.dart';
@@ -68,6 +70,9 @@ class RouteHelpers {
   static const String feedPostPage = "/feed-post";
   static const String commentEdittPage = "/comment-edit";
   static const String prayerDetailPage = "/prayer-detail";
+  static const String publicPrayerRequestCreatePage =
+      "/public-prayer-request_create";
+  static const String publicPrayerRequestPage = "/public-prayer-request";
   static const String feedEdittPage = "/feed-edit";
   static const String prayersPage = "/prayers-page";
   static const String psalmDetailPage = "/psalm-detail-page";
@@ -119,6 +124,7 @@ class RouteHelpers {
     GetPage(name: progressPrayerPage, page: () => RosaryProgressPrayerScreen()),
 
     GetPage(name: mysteryPage, page: () => MysteryScreen()),
+    GetPage(name: publicPrayerRequestPage, page: () => PublicPrayerRequest()),
 
     GetPage(name: rosaryBenefitPage, page: () => RosaryBenefitPage()),
     GetPage(name: endPrayerPage, page: () => RosaryEndPrayerScreen()),
@@ -167,6 +173,13 @@ class RouteHelpers {
       name: prayerRequestAddPage,
       page: () {
         return PrayerRequestAddScreen();
+      },
+      transition: Transition.downToUp,
+    ),
+    GetPage(
+      name: publicPrayerRequestCreatePage,
+      page: () {
+        return PublicPrayerRequestCreate();
       },
       transition: Transition.downToUp,
     ),

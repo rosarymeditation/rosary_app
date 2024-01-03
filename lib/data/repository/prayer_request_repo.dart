@@ -50,4 +50,17 @@ class PrayerRequestRepo {
 
     return true;
   }
+
+  Future<Response> submitRequest(
+    String content,
+    String? name,
+  ) async {
+    return await apiClient.postData(AppConstant.SUBMIT_PRAYER_REQUEST_URL,
+        {"content": content, "name": name});
+  }
+
+  Future<Response> getPrayerRequest(int page, int limit) async {
+    return await apiClient.postData(
+        AppConstant.ALL_PRAYER_REQUEST_URL, {"page": page, "limit": limit});
+  }
 }

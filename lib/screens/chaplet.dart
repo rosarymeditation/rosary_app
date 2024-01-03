@@ -94,29 +94,13 @@ class _ChapletPageState extends State<ChapletPage> {
         backgroundColor: Theme.of(context).colorScheme.background,
         appBar: RosaryAppBarWidget(text: main.currentDecade),
         body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image:
-                  AssetImage("assets/${_mainController.currentMysterBanner}"),
-            ),
-          ),
           child: Container(
             color: Theme.of(context).colorScheme.background,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
-                  height: 10.h,
-                ),
-                Column(
-                  children: [
-                    Row(
-                      children: [BigText(text: '')],
-                    ),
-                  ],
-                ),
                 Container(
-                  height: Dimensions.screenHeight * 0.36,
+                  margin: EdgeInsets.only(top: 20.h),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -125,7 +109,7 @@ class _ChapletPageState extends State<ChapletPage> {
                               color:
                                   Theme.of(context).colorScheme.inversePrimary,
                               text: 'hail_mary'.tr,
-                              size: 16.sp,
+                              size: 15.sp,
                             )
                           : Container(),
                       counter > 10
@@ -135,7 +119,7 @@ class _ChapletPageState extends State<ChapletPage> {
                                     .colorScheme
                                     .inversePrimary,
                                 text: 'glory_to_father'.tr,
-                                size: 16.sp,
+                                size: 15.sp,
                               ),
                               const Divider(),
                               MainText(
@@ -143,7 +127,7 @@ class _ChapletPageState extends State<ChapletPage> {
                                     .colorScheme
                                     .inversePrimary,
                                 text: 'oh_my_jesus'.tr,
-                                size: 16.sp,
+                                size: 15.sp,
                               ),
                             ])
                           : Container(),
@@ -152,7 +136,7 @@ class _ChapletPageState extends State<ChapletPage> {
                               color:
                                   Theme.of(context).colorScheme.inversePrimary,
                               text: "our_father",
-                              size: 16.sp,
+                              size: 15.sp,
                             )
                           : Container(),
                       SizedBox(
@@ -164,24 +148,27 @@ class _ChapletPageState extends State<ChapletPage> {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 200.h,
-                  child: ListView.builder(
-                    controller: _scrollController,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: bidModelList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      var item = bidModelList[index];
-                      return InkWell(
-                        onTap: () {
-                          main.setBidFocus(item.id);
-                        },
-                        child: BidWidget(
-                          id: item.id,
-                          type: item.type,
-                        ),
-                      );
-                    },
+                Container(
+                  margin: EdgeInsets.only(top: 20.h),
+                  child: SizedBox(
+                    height: Dimensions.screenHeight * 0.2,
+                    child: ListView.builder(
+                      controller: _scrollController,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: bidModelList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        var item = bidModelList[index];
+                        return InkWell(
+                          onTap: () {
+                            main.setBidFocus(item.id);
+                          },
+                          child: BidWidget(
+                            id: item.id,
+                            type: item.type,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ],

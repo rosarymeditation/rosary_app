@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:rosary/route/route_helpers.dart';
 import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/utils/constants.dart';
+import 'package:rosary/utils/dimensions.dart';
 import 'package:rosary/widgets/rosary_app_bar_widget.dart';
 import 'package:rosary/widgets/app_icon.dart';
 import 'package:rosary/widgets/big_text.dart';
@@ -72,12 +73,10 @@ class _RosaryIntroPageState extends State<RosaryIntroPage> {
         body: Container(
           color: Theme.of(context).colorScheme.background,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(
-                height: 20.h,
-              ),
-              SizedBox(
-                height: 200.h,
+              Container(
+                margin: EdgeInsets.only(top: 20.h),
                 child: Column(
                   children: [
                     counter == 0
@@ -85,7 +84,7 @@ class _RosaryIntroPageState extends State<RosaryIntroPage> {
                             children: [
                               MainText(
                                 text: "name_of_father",
-                                size: 18.sp,
+                                size: 15.sp,
                                 color: Theme.of(context)
                                     .colorScheme
                                     .inversePrimary,
@@ -109,7 +108,7 @@ class _RosaryIntroPageState extends State<RosaryIntroPage> {
                               color:
                                   Theme.of(context).colorScheme.inversePrimary,
                               text: 'hail_mary'.tr,
-                              size: 16.sp,
+                              size: 15.sp,
                             ),
                           )
                         : Container(),
@@ -126,7 +125,7 @@ class _RosaryIntroPageState extends State<RosaryIntroPage> {
                               color:
                                   Theme.of(context).colorScheme.inversePrimary,
                               text: 'oh_my_jesus'.tr,
-                              size: 14.sp,
+                              size: 15.sp,
                             ),
                           ])
                         : Container(),
@@ -136,37 +135,38 @@ class _RosaryIntroPageState extends State<RosaryIntroPage> {
                   ],
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 200.h,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      controller: _scrollController,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: bidModelList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        var item = bidModelList[index];
-                        return InkWell(
-                          onTap: () {
-                            main.setIntroBidFocus(item.id);
-                          },
-                          child: item.isCrucifix
-                              ? Image.asset(
-                                  'assets/images/cross.png',
-                                  height: 80.h,
-                                  width: 80.w,
-                                )
-                              : BidIntroWidget(
-                                  id: item.id,
-                                  type: item.type,
-                                ),
-                        );
-                      },
-                    ),
+              // SizedBox(
+              //   height: 40.h,
+              // ),
+              Container(
+                margin: EdgeInsets.only(top: 20.h),
+                child: SizedBox(
+                  height: Dimensions.screenHeight * 0.2,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    controller: _scrollController,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: bidModelList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      var item = bidModelList[index];
+                      return InkWell(
+                        onTap: () {
+                          main.setIntroBidFocus(item.id);
+                        },
+                        child: item.isCrucifix
+                            ? Image.asset(
+                                'assets/images/cross.png',
+                                height: 80.h,
+                                width: 80.w,
+                              )
+                            : BidIntroWidget(
+                                id: item.id,
+                                type: item.type,
+                              ),
+                      );
+                    },
                   ),
-                ],
+                ),
               ),
             ],
           ),
@@ -182,9 +182,12 @@ class _RosaryIntroPageState extends State<RosaryIntroPage> {
                 onTap: () {
                   var count = counter;
                   if (count <= 0) {
+                    main.setIntroBidFocus(0);
+                    main.reset();
                     Get.toNamed(RouteHelpers.home);
+                  } else {
+                    main.setIntroBidFocus(count - 1);
                   }
-                  main.setIntroBidFocus(count - 1);
                 },
                 child: AppIcon(
                   backgroundColor: AppColor.iconColor,

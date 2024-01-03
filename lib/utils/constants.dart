@@ -31,6 +31,8 @@ class AppConstant {
   static DELETE_FEED_URL(String id) => "feed/$id";
   static UPDATE_FEED_URL(String id) => "feed/$id";
   static const String POST_COMMENT_URL = "feedComment";
+  static const String ALL_PRAYER_REQUEST_URL = "all-prayer-request";
+  static const String SUBMIT_PRAYER_REQUEST_URL = "submit-prayer-request";
   static const String USER_INFO_URL = "userInfo";
   static const String TODAYS_VERSE_URL = "todaysVerse";
   static const String TODAYS_AFFIRMATION_URL = "todaysAffirmation";

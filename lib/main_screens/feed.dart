@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:rosary/screens/no_network.dart';
 import 'package:rosary/widgets/chat_text_field.dart';
 import 'package:rosary/widgets/feed_item_widget.dart';
 import 'package:rosary/widgets/main_app_bar_widget.dart';
@@ -34,97 +33,93 @@ class _FeedScreenState extends State<FeedScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<NetworkController>(builder: (network) {
-      return GetBuilder<FeedController>(
-        builder: (feeds) {
-          return network.connectionStatus == 1
-              ? NoNetworkScreen()
-              : Scaffold(
-                  appBar: MainAppBarWidget(
-                    text: "Community",
-                    hasBackBtn: false,
-                  ),
-                  backgroundColor: Theme.of(context).colorScheme.tertiary,
-                  body: feeds.isLoaded
-                      ? SmartRefresher(
-                          enablePullUp: true,
-                          header: WaterDropHeader(),
-                          controller: _refreshController,
-                          onRefresh: () async {
-                            feeds.getFeedList();
-                            await Future.delayed(
-                              Duration(seconds: 0, milliseconds: 2000),
-                            );
-                            if (feeds.isLoaded)
-                              _refreshController.refreshCompleted();
-                            else
-                              _refreshController.refreshFailed();
-                          },
-                          onLoading: () async {
-                            feeds.loadMore();
+    return GetBuilder<FeedController>(
+      builder: (feeds) {
+        return Scaffold(
+          appBar: MainAppBarWidget(
+            text: "Community",
+            hasBackBtn: false,
+          ),
+          backgroundColor: Theme.of(context).colorScheme.tertiary,
+          body: feeds.isLoaded
+              ? SmartRefresher(
+                  enablePullUp: true,
+                  header: WaterDropHeader(),
+                  controller: _refreshController,
+                  onRefresh: () async {
+                    feeds.getFeedList();
+                    await Future.delayed(
+                      Duration(seconds: 0, milliseconds: 2000),
+                    );
+                    if (feeds.isLoaded)
+                      _refreshController.refreshCompleted();
+                    else
+                      _refreshController.refreshFailed();
+                  },
+                  onLoading: () async {
+                    feeds.loadMore();
 
-                            // _shopController.setOffset(offset);
-                            // _shopController.getRestaurantLoadMoreList(
-                            //   offset,
-                            //   limit,
-                            //   search,
-                            //   category,
-                            // );
-                            await Future.delayed(
-                              Duration(seconds: 0, milliseconds: 2000),
-                            );
-                            if (feeds.isMoreLoaded)
-                              _refreshController.loadComplete();
-                            else
-                              _refreshController.loadFailed();
-                          },
-                          child: CustomScrollView(
-                            slivers: [
-                              SliverAppBar(
-                                automaticallyImplyLeading: false,
-                                toolbarHeight: 80.h,
-                                elevation: 0,
-                                title: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Column(
-                                      children: [
-                                        SizedBox(
-                                          height: 10.h,
-                                        ),
-                                        Stack(children: [
-                                          ChatTextField(
-                                              textController: textController,
-                                              hintText: "Write a post"),
-                                          InkWell(
-                                            onTap: () {
-                                              Get.toNamed(
-                                                  RouteHelpers.feedPostPage);
-                                            },
-                                            child: SizedBox(
-                                              width: double.maxFinite,
-                                              height: 50.h,
-                                            ),
-                                          )
-                                        ]),
-                                        SizedBox(
-                                          height: 10.h,
-                                        ),
-                                      ],
-                                    )
-                                  ],
+                    // _shopController.setOffset(offset);
+                    // _shopController.getRestaurantLoadMoreList(
+                    //   offset,
+                    //   limit,
+                    //   search,
+                    //   category,
+                    // );
+                    await Future.delayed(
+                      Duration(seconds: 0, milliseconds: 2000),
+                    );
+                    if (feeds.isMoreLoaded)
+                      _refreshController.loadComplete();
+                    else
+                      _refreshController.loadFailed();
+                  },
+                  child: CustomScrollView(
+                    slivers: [
+                      SliverAppBar(
+                        automaticallyImplyLeading: false,
+                        toolbarHeight: 80.h,
+                        elevation: 0,
+                        title: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Column(
+                              children: [
+                                SizedBox(
+                                  height: 10.h,
                                 ),
-                                floating: true,
-                                expandedHeight: Dimensions.height80,
-                              ),
-                              buildImages(),
-                            ],
-                          ),
-                        )
-                      : const Center(child: CircularProgressIndicator()));
-        },
-      );
-    });
+                                Stack(children: [
+                                  ChatTextField(
+                                      textController: textController,
+                                      hintText: "Write a post"),
+                                  InkWell(
+                                    onTap: () {
+                                      Get.toNamed(RouteHelpers.feedPostPage);
+                                    },
+                                    child: SizedBox(
+                                      width: double.maxFinite,
+                                      height: 50.h,
+                                    ),
+                                  )
+                                ]),
+                                SizedBox(
+                                  height: 10.h,
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                        floating: true,
+                        expandedHeight: Dimensions.height80,
+                      ),
+                      buildImages(),
+                    ],
+                  ),
+                )
+              : const Center(child: CircularProgressIndicator()),
+        );
+      },
+    );
     // : NoCommunityScreen();
   }
 

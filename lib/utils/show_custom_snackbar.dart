@@ -12,6 +12,7 @@ void showCustomSnackBar(String message,
         text: title,
         color: Colors.white,
       ),
+      duration: Duration(seconds: 6),
       messageText: Text(
         message,
         style: const TextStyle(color: Colors.white),

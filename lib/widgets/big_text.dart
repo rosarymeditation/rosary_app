@@ -29,7 +29,7 @@ class BigText extends StatelessWidget {
       softWrap: false,
       textAlign: align,
       style: TextStyle(
-        fontFamily: 'Playfair',
+        fontFamily: "Georgian",
         color: color,
         fontSize: size == 0 ? 20.sp : size,
         fontWeight: isBold! ? FontWeight.w800 : FontWeight.w400,

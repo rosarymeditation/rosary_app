@@ -1,4 +1,12 @@
 {
+  "unite_in_prayer": "Let's unite in prayer for our beloved brothers and sisters who've requested our support through prayer.",
+  "ask_for_prayers": "Ask for Prayers",
+  "ask_for_prayers_subtitle": "Share your prayer request with our Community",
+  "prayer_disappear_note": "Please note: Prayer requests will be removed after 30 days for freshness and relevancy. Thank you for your understanding.",
+  "share_prayer_request": "Share Prayer Request",
+  "prayer_request_box": "Share your prayer with us; join our community in support and solidarity through heartfelt intentions in prayer.",
+  "op_name": "Name (Not required)",
+  "prayer_request_success": "Thank you for sharing your prayer. We've received it with gratitude. Our community will lift your intentions in our prayers. Trust in the strength of our collective faith. God bless.",
   "donation_amount_error": "Avoiding Zero Contributions for a Positive Impact",
   "donation_amount_limit": "Kindly contribute an amount greater than zero for your donation. Thank you for your generosity!",
   "donate_with": "Donate with",

@@ -45,7 +45,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             slivers: [
               SliverAppBar(
                 automaticallyImplyLeading: false,
-                expandedHeight: 200.0, // Max height when fully expanded
+                expandedHeight: 200.h, // Max height when fully expanded
                 floating: true, // Doesn't float above content
                 pinned: true,
                 backgroundColor:
@@ -70,7 +70,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child:
                               BannerWidget(bannerUrl: user.userModel.banner)),
                       Positioned(
-                        top: 30.h,
+                        top: 10.h,
                         child: AvatarWidget(
                           avatarUrl: user.userModel.avatar,
                           size: 120.sp,
@@ -97,7 +97,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 onPressed: () {
                                   Get.toNamed(RouteHelpers.editProfilePage);
                                 },
-                                child: Text("Edit Profile"),
+                                child: MainText(
+                                  text: "Edit Profile",
+                                ),
                               )
                             : Text("")
                       ],

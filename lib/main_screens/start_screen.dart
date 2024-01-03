@@ -17,6 +17,7 @@ import '../controllers/log_controller.dart';
 import '../controllers/main_controller.dart';
 import '../controllers/prayer_controller.dart';
 import '../songs/play_list.dart';
+import '../utils/appColor.dart';
 import '../utils/constants.dart';
 import '../widgets/dash_audio_widget.dart';
 import '../widgets/dash_round_widget.dart';
@@ -266,6 +267,7 @@ class _StartScreenState extends State<StartScreen> {
                   title: "songs",
                   subTitle: "song_subtitle",
                   icon: Icons.play_circle,
+                  img: "play.png",
                   iconColor: Colors.orange.shade700,
                   num: AudioPlaylist.audioSource.length,
                 ),
@@ -283,10 +285,70 @@ class _StartScreenState extends State<StartScreen> {
                   title: "deep_sleep_music",
                   subTitle: "sleep_subtitle",
                   icon: Icons.bedtime_rounded,
+                  img: "sleeping.png",
                   iconColor: Colors.blue.shade700,
                   num: AudioPlaylist.deepSleepSource.length,
                 ),
               ),
+              SizedBox(
+                height: 20.h,
+              ),
+              DashLabelWidget(title: "prayer_request".tr),
+              SizedBox(
+                height: 10.h,
+              ),
+              InkWell(
+                onTap: () {
+                  Get.toNamed(RouteHelpers.publicPrayerRequestPage);
+                },
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20.w),
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  width: double.maxFinite,
+                  height: 80.h,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.tertiary,
+                    borderRadius: BorderRadius.circular(10.sp),
+                  ),
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundImage: AssetImage(
+                            AppConstant.getImagePath("prayer_request.png")),
+                      ),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      Flexible(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            MainText(
+                              text: "ask_for_prayers".tr,
+                              size: 16.sp,
+                              isBold: true,
+                              color: AppColor.title,
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Flexible(
+                              child: MainText(
+                                align: TextAlign.left,
+                                overflow: TextOverflow.ellipsis,
+                                text: "ask_for_prayers_subtitle".tr,
+                                size: 12.sp,
+                                color: AppColor.subTitle,
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              )
             ]),
           ),
         );
