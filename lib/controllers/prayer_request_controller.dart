@@ -46,10 +46,13 @@ class PrayerRequestController extends GetxController implements GetxService {
   void add(String content) {
     var random = Random();
 
-    int id = random.nextInt(10000);
+    int id = random.nextInt(100000);
 
     var date = DateTime.now();
-    _prayerRequestList.insert(0, PrayerRequestModel(id: id, content: content));
+    _prayerRequestList.insert(
+      0,
+      PrayerRequestModel(id: id, content: content, isChecked: true),
+    );
 
     prayerRequestRepo.savePrayerRequestAsString(_prayerRequestList);
     update();
@@ -66,6 +69,7 @@ class PrayerRequestController extends GetxController implements GetxService {
   }
 
   void toggle(id) {
+    print(id);
     var getPrayer = _prayerRequestList.firstWhere((item) => item.id == id,
         orElse: () => null!);
 

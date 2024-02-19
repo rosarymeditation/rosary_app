@@ -45,6 +45,7 @@ import 'package:rosary/main_screens/start_screen.dart';
 import 'package:rosary/songs/deep_sleep_screen.dart';
 import 'package:rosary/songs/song_screen.dart';
 import 'package:rosary/splash/splash_page.dart';
+import 'package:rosary/stations/station_page.dart';
 import 'package:rosary/tab_home.dart';
 
 import '../screens/rosary_progress_prayer.dart';
@@ -92,6 +93,7 @@ class RouteHelpers {
   static const String mysterySelectionPage = "/mystery-selection-page";
   static const String rosaryIntroPage = "/rosary-intro-page";
   static const String popUpPrayer = "/popUpPrayer";
+  static const String wayOfCross = "/wayOfCross";
   static const String mysteryPage = "/mystery-page";
   static const String settingsPage = "/setting-page";
   static const String endPrayerPage = "/end-prayer-page";
@@ -128,6 +130,7 @@ class RouteHelpers {
 
     GetPage(name: rosaryBenefitPage, page: () => RosaryBenefitPage()),
     GetPage(name: endPrayerPage, page: () => RosaryEndPrayerScreen()),
+    GetPage(name: wayOfCross, page: () => StationPage()),
     GetPage(name: signInPage, page: () => SignInPage()),
     GetPage(name: signUpPage, page: () => SignUpPage()),
     GetPage(name: forgotPasswordPage, page: () => ForgotPasswordPage()),

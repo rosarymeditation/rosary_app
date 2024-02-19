@@ -181,59 +181,101 @@ class _StartScreenState extends State<StartScreen> {
               ),
               Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          _prayerController
-                              .setPrayerType(AppConstant.PRAYER_TYPE_CATHOLIC);
-                          Get.toNamed(RouteHelpers.prayersPage);
-                        },
-                        child: DashRoundWidget(
-                          title: "catholic_prayers",
-                          img: "eucharist.jpg",
-                        ),
+                  SizedBox(
+                    height: 170.h,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 10),
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              _prayerController.setPrayerType(
+                                  AppConstant.PRAYER_TYPE_CATHOLIC);
+                              Get.toNamed(RouteHelpers.prayersPage);
+                            },
+                            child: DashRoundWidget(
+                              title: "catholic_prayers",
+                              img: "eucharist.jpg",
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10.h,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              _prayerController.setPrayerType(
+                                  AppConstant.PRAYER_TYPE_OTHERS);
+                              Get.toNamed(RouteHelpers.prayersPage);
+                            },
+                            child: DashRoundWidget(
+                              title: "general_prayers",
+                              img: "g-prayer.jpg",
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10.h,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Get.toNamed(RouteHelpers.psalmListPage);
+                            },
+                            child: DashRoundWidget(
+                              title: "powerful_psalms",
+                              img: "bible.webp",
+                            ),
+                          ),
+                        ],
                       ),
-                      InkWell(
-                        onTap: () {
-                          _prayerController
-                              .setPrayerType(AppConstant.PRAYER_TYPE_OTHERS);
-                          Get.toNamed(RouteHelpers.prayersPage);
-                        },
-                        child: DashRoundWidget(
-                          title: "general_prayers",
-                          img: "g-prayer.jpg",
-                        ),
-                      )
-                    ],
+                    ),
                   ),
                   SizedBox(
                     height: 10.h,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Get.toNamed(RouteHelpers.psalmListPage);
-                        },
-                        child: DashRoundWidget(
-                          title: "powerful_psalms",
-                          img: "bible.webp",
-                        ),
+                  SizedBox(
+                    height: 170.h,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 10),
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Get.toNamed(RouteHelpers.novenaListPage);
+                            },
+                            child: DashRoundWidget(
+                              title: "powerful_novena",
+                              img: "powerful_prayer.jpeg",
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Get.toNamed(RouteHelpers.wayOfCross);
+                            },
+                            child: DashRoundWidget(
+                              title: "station_cross",
+                              img: "0.jpeg",
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Get.toNamed(RouteHelpers.prayerRequestPage);
+                            },
+                            child: DashRoundWidget(
+                              title: "prayer_intention",
+                              img: "intention.webp",
+                            ),
+                          )
+                        ],
                       ),
-                      InkWell(
-                        onTap: () {
-                          Get.toNamed(RouteHelpers.novenaListPage);
-                        },
-                        child: DashRoundWidget(
-                          title: "powerful_novena",
-                          img: "powerful_prayer.jpeg",
-                        ),
-                      )
-                    ],
-                  ),
+                    ),
+                  )
                 ],
               ),
               SizedBox(
@@ -341,13 +383,16 @@ class _StartScreenState extends State<StartScreen> {
                                 size: 12.sp,
                                 color: AppColor.subTitle,
                               ),
-                            )
+                            ),
                           ],
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 20.h,
               )
             ]),
           ),

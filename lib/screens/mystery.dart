@@ -31,7 +31,7 @@ class _MysteryScreenState extends State<MysteryScreen> {
   bool hasLoded = false;
   @override
   void initState() {
-    _prayerController.getSelectedPrayerRequest();
+    // _prayerController.prayerRequestList();
     // TODO: implement initState
     super.initState();
     print(_mainController.currentMystery);
@@ -114,32 +114,6 @@ class _MysteryScreenState extends State<MysteryScreen> {
                                 fontFamily: "Georgian"),
                           },
                         ),
-                        GetBuilder<PrayerRequestController>(builder: (prayer) {
-                          return prayer.selectedtList.length > 0
-                              ? ExpansionTile(
-                                  expandedCrossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                  title: MainText(
-                                    align: TextAlign.left,
-                                    text: 'my_prayer_request',
-                                    color: Colors.green,
-                                    size: 18.sp,
-                                    isBold: true,
-                                  ),
-                                  children: prayer.selectedtList
-                                      .map((item) => ListTile(
-                                            leading: CircleAvatar(
-                                              backgroundImage: AssetImage(
-                                                AppConstant.getImagePath(
-                                                    "hand.png"),
-                                              ),
-                                            ),
-                                            title: Text(item.content!),
-                                          ))
-                                      .toList(),
-                                )
-                              : Container();
-                        }),
                         SizedBox(
                           height: 20.h,
                         )

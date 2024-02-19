@@ -26,45 +26,45 @@ class PrayerRequestScreen extends StatelessWidget {
         var prayerList = prayer.prayerRequestList ?? [];
 
         return Scaffold(
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.tertiary,
           appBar: MainAppBarWidget(text: "Prayer Request"),
           body: Container(
-            child: SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
-              child: Container(
-                child: Container(
-                  color: Colors.white.withOpacity(.80),
-                  child: Column(
-                    children: [
-                      prayerList.length > 0
-                          ? InfoBoxWidget(text: "prayer_request_info")
-                          : Container(),
-                      SizedBox(
-                        height: 20.w,
-                      ),
-                      ListView.builder(
-                          shrinkWrap: true,
-                          itemCount:
-                              prayerList.length == 0 ? 1 : prayerList.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return prayerList.length == 0
-                                ? MainText(
-                                    text:
-                                        "You have no prayer requests at the Moment",
-                                    color: Colors.black54,
-                                    size: 18.sp,
-                                  )
-                                : buildCard(context, prayerList[index]);
-                          }),
-                    ],
-                  ),
+            color: Theme.of(context).colorScheme.tertiary,
+            child: Container(
+              child: SingleChildScrollView(
+                physics: AlwaysScrollableScrollPhysics(),
+                child: Column(
+                  children: [
+                    prayerList.length > 0
+                        ? InfoBoxWidget(text: "prayer_request_privacy")
+                        : Container(),
+                    SizedBox(
+                      height: 20.w,
+                    ),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        itemCount:
+                            prayerList.length == 0 ? 1 : prayerList.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return prayerList.length == 0
+                              ? MainText(
+                                  text:
+                                      "You have no prayer requests at the Moment",
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .inversePrimary,
+                                  size: 18.sp,
+                                )
+                              : buildCard(context, prayerList[index]);
+                        }),
+                  ],
                 ),
               ),
             ),
           ),
           floatingActionButton: FloatingActionButton.extended(
-            splashColor: Colors.grey,
-            backgroundColor: AppColor.primaryColor,
+            splashColor: Theme.of(context).colorScheme.primary,
+            backgroundColor: Theme.of(context).colorScheme.secondary,
 
             icon: Icon(
               Icons.add,
@@ -108,15 +108,17 @@ class PrayerRequestScreen extends StatelessWidget {
       FocusedMenuHolder(
         menuItems: [
           FocusedMenuItem(
-              title: Text('edit'.tr),
-              trailingIcon: Icon(Icons.edit),
-              onPressed: () {
-                _prayerController.edit(item);
-                Get.toNamed(RouteHelpers.prayerRequestAddPage);
-              }),
+            title: Text('edit'.tr),
+            trailingIcon: Icon(Icons.edit),
+            onPressed: () {
+              _prayerController.edit(item);
+              Get.toNamed(RouteHelpers.prayerRequestAddPage);
+            },
+          ),
           FocusedMenuItem(
-            title: Text('delete'.tr, style: TextStyle(color: Colors.white)),
-            trailingIcon: Icon(Icons.delete_forever, color: Colors.white),
+            title:
+                Text('delete'.tr, style: const TextStyle(color: Colors.white)),
+            trailingIcon: const Icon(Icons.delete_forever, color: Colors.white),
             backgroundColor: Colors.red,
             onPressed: () {
               showYesNoAlert(item.id);
@@ -138,24 +140,9 @@ class PrayerRequestScreen extends StatelessWidget {
                   AssetImage(AppConstant.getImagePath("hand.png"))),
           title: MainText(
             text: item.content!,
+            color: Theme.of(context).colorScheme.inversePrimary,
             size: 14.sp,
             align: TextAlign.left,
-          ),
-          trailing: InkWell(
-            onTap: () {
-              _prayerController.toggle(item.id);
-            },
-            child: item.isChecked ?? false
-                ? Icon(
-                    Icons.check_circle_rounded,
-                    color: Colors.green,
-                    size: 30.sp,
-                  )
-                : Icon(
-                    Icons.check_box_outline_blank_sharp,
-                    color: Colors.grey,
-                    size: 30.sp,
-                  ),
           ),
         ),
       );

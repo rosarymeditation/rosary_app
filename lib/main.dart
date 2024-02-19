@@ -15,6 +15,7 @@ import 'package:rosary/controllers/langauge_controller.dart';
 import 'package:rosary/donation/donation_error_screen.dart';
 import 'package:rosary/donation/donation_success.dart';
 import 'package:rosary/firebase_options.dart';
+import 'package:rosary/stations/station_page.dart';
 import 'package:rosary/themes/dark_theme.dart';
 import 'package:rosary/themes/light_theme.dart';
 import 'package:rosary/utils/constants.dart';
@@ -106,7 +107,7 @@ class MyApp extends StatelessWidget {
                 AppConstant.languages[0].countryCode),
             initialRoute: RouteHelpers.initial,
             getPages: RouteHelpers.routes,
-            // home: DonationErrorScreen(),
+            // home: StationPage(),
 
             // initialRoute: RouteHelpers.endPrayerPage,
             // getPages: RouteHelpers.routes,

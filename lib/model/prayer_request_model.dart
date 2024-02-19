@@ -14,7 +14,7 @@ class PrayerRequestModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.id;
+    data['id'] = this.id;
     data['isChecked'] = this.isChecked;
     data['content'] = this.content;
 

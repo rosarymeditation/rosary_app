@@ -35,67 +35,60 @@ class _PrayerRequestAddScreenState extends State<PrayerRequestAddScreen> {
     return GetBuilder<PrayerRequestController>(
       builder: (prayer) {
         return Scaffold(
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.tertiary,
           appBar: MainAppBarWidget(text: 'Add Prayer Request'),
-          body: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage("assets/images/pray.jpg"),
+          body: Column(
+            children: [
+              SizedBox(
+                height: 120.h,
               ),
-            ),
-            child: Container(
-              color: Colors.white.withOpacity(.50),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 120.h,
-                  ),
-                  InfoBoxWidget(text: "prayer_privacy_message".tr),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  AppTextField(
-                    maxLength: 200,
-                    hasIcon: false,
-                    minLine: 3,
-                    textController: _contentController,
-                    hintText: "type_in_request".tr,
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                ],
+              InfoBoxWidget(text: "prayer_request_privacy".tr),
+              SizedBox(
+                height: 50.h,
               ),
-            ),
+              AppTextField(
+                maxLength: 200,
+                hasIcon: false,
+                minLine: 3,
+                textController: _contentController,
+                hintText: "type_in_request".tr,
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+            ],
           ),
           bottomNavigationBar: Padding(
             padding: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 20.h),
             child: InkWell(
-                onTap: () {
-                  var content = _contentController.value.text;
-                  if (content == "") {
-                    showCustomSnackBar(
-                      "prayer_request_empty".tr,
-                      title: "invalid_content".tr,
-                      backColor: Colors.orange.shade800,
-                    );
+              onTap: () {
+                var content = _contentController.value.text;
+                if (content == "") {
+                  showCustomSnackBar(
+                    "prayer_request_empty".tr,
+                    title: "invalid_content".tr,
+                    backColor: Colors.orange.shade800,
+                  );
+                } else {
+                  if (_prayerController.editContent.content == "") {
+                    prayer.add(_contentController.text);
                   } else {
-                    if (_prayerController.editContent.content == "") {
-                      prayer.add(_contentController.text);
-                    } else {
-                      prayer.updateContent(prayer.editContent.id, content);
-                    }
-
-                    showCustomSnackBar(
-                      "prayer_saved".tr,
-                      title: "",
-                      backColor: Colors.green.shade800,
-                    );
-                    Navigator.pop(context);
+                    prayer.updateContent(prayer.editContent.id, content);
                   }
-                },
-                child: DisplayButtonWidget(text: 'submit_request')),
+
+                  showCustomSnackBar(
+                    "prayer_saved".tr,
+                    title: "",
+                    backColor: Colors.green.shade800,
+                  );
+                  Navigator.pop(context);
+                }
+              },
+              child: DisplayButtonWidget(
+                text: 'submit_request',
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+            ),
           ),
         );
       },
