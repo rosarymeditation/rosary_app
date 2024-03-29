@@ -10,6 +10,7 @@ import 'package:just_audio_background/just_audio_background.dart';
 import 'package:rosary/api/firebase_api.dart';
 import 'package:rosary/controllers/affirmation_controller.dart';
 import 'package:rosary/controllers/dailyVerse_controller.dart';
+import 'package:rosary/controllers/distress_controller.dart';
 import 'package:rosary/controllers/feed_controller.dart';
 import 'package:rosary/controllers/langauge_controller.dart';
 import 'package:rosary/donation/donation_error_screen.dart';
@@ -63,6 +64,8 @@ class MyApp extends StatelessWidget {
         dailyVerseRepo: Get.find(), sharedPreferences: Get.find()));
     var _affirmationController = Get.put(AffirmationController(
         dailyAffirmationRepo: Get.find(), sharedPreferences: Get.find()));
+    var _distressController =
+        Get.put(DistressController(distressRepo: Get.find()));
     var _prayerController = Get.put(PrayerController(prayerRepo: Get.find()));
     Get.put(LogController(logRepo: Get.find()));
     var _psalmController = Get.put(PsalmController(psalmRepo: Get.find()));
@@ -76,6 +79,7 @@ class MyApp extends StatelessWidget {
     _prayerController.getCatholicPrayerList();
     _prayerController.getCatholicPrayerList();
     _prayerController.getNovenaPrayerList();
+    _distressController.getDistressList();
     _psalmController.getPsalmList();
     _verseController.getDailyVerse(_languageController.selectedIndex);
     _affirmationController

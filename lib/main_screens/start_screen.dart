@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rosary/controllers/langauge_controller.dart';
 import 'package:rosary/route/route_helpers.dart';
+import 'package:rosary/widgets/dash_simple_widget.dart';
 import 'package:rosary/widgets/start_rosary_widget.dart';
 
 import '../api/firebase_api.dart';
@@ -139,7 +140,7 @@ class _StartScreenState extends State<StartScreen> {
               SizedBox(
                 height: 10.h,
               ),
-              Divider(),
+              const Divider(),
               InkWell(
                 onTap: () {
                   _logController.logMystery();
@@ -281,6 +282,30 @@ class _StartScreenState extends State<StartScreen> {
               SizedBox(
                 height: 30.h,
               ),
+              InkWell(
+                onTap: () {
+                  Get.toNamed(RouteHelpers.distressPage);
+                },
+                child: DashSimpleWidget(
+                    title: "finding_comfort_long".tr,
+                    subTitle: "click_here_to_find_comfort".tr),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              // InkWell(
+              //   onTap: () {
+              //     Get.toNamed(RouteHelpers.adioListingPage);
+              //   },
+              //   child: DashAudioWidget(
+              //     title: "Finding Comfort in Times of Distress",
+              //     subTitle: "rosary_subtitle",
+              //     icon: Icons.play_circle,
+              //     img: "rosary.png",
+              //     iconColor: Colors.orange.shade700,
+              //     num: AudioPlaylist.songsRosary.length,
+              //   ),
+              // ),
               DashLabelWidget(title: "audio_label"),
               SizedBox(
                 height: 10.h,

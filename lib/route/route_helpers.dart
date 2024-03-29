@@ -3,6 +3,7 @@ import 'package:rosary/auth_screens/change_password.dart';
 import 'package:rosary/auth_screens/forgot_password.dart';
 import 'package:rosary/auth_screens/otp.dart';
 import 'package:rosary/auth_screens/sign_in.dart';
+import 'package:rosary/distress_screens/distress.dart';
 import 'package:rosary/donation/donation_display_screen.dart';
 import 'package:rosary/donation/donation_error_screen.dart';
 import 'package:rosary/donation/donation_screen.dart';
@@ -48,6 +49,7 @@ import 'package:rosary/splash/splash_page.dart';
 import 'package:rosary/stations/station_page.dart';
 import 'package:rosary/tab_home.dart';
 
+import '../distress_screens/distress_detail.dart';
 import '../screens/rosary_progress_prayer.dart';
 import '../auth_screens/sign_up.dart';
 
@@ -55,6 +57,8 @@ class RouteHelpers {
   static const String initial = "/";
   static const String home = "/tab-home";
   static const String deepSleepPage = "/deep-sleep";
+  static const String distressPage = "/distress-page";
+  static const String distressDetailPage = "/distress-detail-page";
   static const String chapletPage = "/home";
   static const String psalmListPage = "/psalm-list-page";
   static const String affirmationAndVerse = "/affirmation_verse";
@@ -110,6 +114,8 @@ class RouteHelpers {
     GetPage(name: donationErrorPage, page: () => DonationErrorScreen()),
     GetPage(name: aboutPage, page: () => AboutPage()),
     GetPage(name: donationPage, page: () => DonationScreen()),
+    GetPage(name: distressPage, page: () => DistressScreen()),
+    GetPage(name: distressDetailPage, page: () => DistressDetailScreen()),
     GetPage(name: bugFeedbackPage, page: () => BugFeedbackPage()),
     GetPage(name: prayerDetailPage, page: () => PrayerDetailScreen()),
     GetPage(name: prayersPage, page: () => PrayersScreen()),

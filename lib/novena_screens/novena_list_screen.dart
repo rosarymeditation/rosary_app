@@ -49,19 +49,20 @@ class _PsalmListScreenState extends State<NovenaListScreen> {
                     var item = prayer.novenaPrayerList[index];
 
                     return InkWell(
-                        onTap: () {
-                          prayer.setPrayer(item);
-                          Get.toNamed(RouteHelpers.novenaDetailPage);
-                        },
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
-                              child: _titleWidget(item.title!),
-                            ),
-                            Divider()
-                          ],
-                        ));
+                      onTap: () {
+                        prayer.setPrayer(item);
+                        Get.toNamed(RouteHelpers.novenaDetailPage);
+                      },
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: _titleWidget(item.title!),
+                          ),
+                          Divider()
+                        ],
+                      ),
+                    );
                   },
                 )
               : Center(child: timeoutWidget());

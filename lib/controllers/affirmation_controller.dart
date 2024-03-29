@@ -26,7 +26,9 @@ class AffirmationController extends GetxController implements GetxService {
   final AffirmationRepo dailyAffirmationRepo;
   final SharedPreferences sharedPreferences;
   AffirmationController(
-      {required this.dailyAffirmationRepo, required this.sharedPreferences});
+      {required this.dailyAffirmationRepo, required this.sharedPreferences}) {
+    _dailyAffirmation = dailyAffirmationRepo.getAffirmationCache();
+  }
   var _authController = Get.find<AuthController>();
 
   bool _isLoading = false;

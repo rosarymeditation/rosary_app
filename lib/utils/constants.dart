@@ -23,6 +23,7 @@ class AppConstant {
   //userFeeds
   static const String COMMENTS_BY_FEED_URL = "CommentsByFeed";
   static const String ALL_PRAYERS_URL = "prayers";
+  static const String ALL_DISTRESS_URL = "distressList";
   static const String ALL_PSALMS_URL = "psalms";
   static const String ALL_NOVENA_PRAYERS_URL = "novenas";
   static const String ALL_CATHOLIC_PRAYERS_URL = "catholic-prayers";
@@ -86,6 +87,7 @@ class AppConstant {
   static const String PSALM_CACHE = "psalm_cache";
   static const String NOVENA_PRAYER_CACHE = "novena_prayer_cache";
   static const String CATHOLIC_PRAYER_CACHE = "catholic_prayer_cache";
+  static const String DISTRESS_LIST_CACHE = "distress_list_cache";
   static const String DAILY_VERSE_CACHE = "daily_verse_cache";
   static const String AFFIRMATION_CACHE = "affirmation_cache";
   static const String PASSWORD_LENGTH_MSG =

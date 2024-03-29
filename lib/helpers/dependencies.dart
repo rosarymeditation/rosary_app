@@ -11,11 +11,11 @@ import 'package:rosary/controllers/payment_controller.dart';
 import 'package:rosary/controllers/prayer_request_controller.dart';
 import 'package:rosary/data/repository/affirmation_repo.dart';
 import 'package:rosary/data/repository/bugFeedback_repo.dart';
+import 'package:rosary/data/repository/distress_repo.dart';
 import 'package:rosary/data/repository/feedComment_repo.dart';
 import 'package:rosary/data/repository/feed_repo.dart';
 import 'package:rosary/data/repository/payment_repo.dart';
 import 'package:rosary/data/repository/prayer_request_repo.dart';
-import 'package:rosary/model/feed_model.dart';
 import 'package:rosary/model/language_model.dart';
 import 'package:rosary/utils/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,6 +23,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../controllers/affirmation_controller.dart';
 import '../controllers/audio_controller.dart';
 import '../controllers/auth_controller.dart';
+import '../controllers/distress_controller.dart';
 import '../controllers/feedComment_controller.dart';
 import '../controllers/log_controller.dart';
 import '../controllers/main_controller.dart';
@@ -57,6 +58,8 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(
       () => PaymentRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
   Get.lazyPut(
+      () => DistressRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
+  Get.lazyPut(
       () => PsalmRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
   Get.lazyPut(() =>
       DailyVerseRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
@@ -88,6 +91,9 @@ Future<Map<String, Map<String, String>>> init() async {
   //     () => RecommendedProductController(recommendedProductRepo: Get.find()));
   Get.lazyPut(() => PsalmController(
         psalmRepo: Get.find(),
+      ));
+  Get.lazyPut(() => DistressController(
+        distressRepo: Get.find(),
       ));
   Get.lazyPut(() => LogController(
         logRepo: Get.find(),
