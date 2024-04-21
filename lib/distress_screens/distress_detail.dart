@@ -11,6 +11,7 @@ import 'package:rosary/utils/constants.dart';
 import 'package:rosary/utils/dimensions.dart';
 import 'package:rosary/widgets/avatar_widget.dart';
 import 'package:rosary/widgets/banner_widget.dart';
+import 'package:rosary/widgets/distress_image.dart';
 import 'package:rosary/widgets/main_app_bar_widget.dart';
 import 'package:rosary/widgets/main_text.dart';
 import 'package:rosary/widgets/name_widget.dart';
@@ -40,25 +41,6 @@ class _PrayerDetailScreenState extends State<DistressDetailScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
-    // flutterTts.setStartHandler(() {
-    //   setState(() {
-    //     print("playing");
-    //     ttsState = TtsState.playing;
-    //   });
-    // });
-
-    flutterTts.setCompletionHandler(() {
-      setState(() {
-        isSpeaking = false;
-      });
-    });
-  }
-
-  String removeHtmlTags(String htmlString) {
-    final document = parse(htmlString);
-    final text = parse(document.body!.text).documentElement!.text;
-    return text;
   }
 
   @override
@@ -70,6 +52,15 @@ class _PrayerDetailScreenState extends State<DistressDetailScreen> {
           slivers: [
             SliverAppBar(
               centerTitle: true,
+              leading: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.white,
+                ),
+              ),
               title: MainText(
                 text: item.distress.title!,
                 color: Colors.white,
@@ -89,7 +80,7 @@ class _PrayerDetailScreenState extends State<DistressDetailScreen> {
                   // Build your news article content here
                   return Column(
                     children: [
-                      Image.network(item.distress.url!),
+                      DistressImageWidget(imageUrl: item.distress.url!),
                       Container(
                         color: Theme.of(context).colorScheme.background,
                         child: Html(
@@ -117,6 +108,5 @@ class _PrayerDetailScreenState extends State<DistressDetailScreen> {
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    flutterTts.stop(); // Stop any ongoing speech
   }
 }

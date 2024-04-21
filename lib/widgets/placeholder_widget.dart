@@ -35,7 +35,7 @@ class PlaceholderWidget extends StatelessWidget {
             width: double.maxFinite,
             height: height,
             child: Image.asset(
-              AppConstant.getImagePath("blank.webp"),
+              assetImage,
               fit: BoxFit.cover,
             ),
           );

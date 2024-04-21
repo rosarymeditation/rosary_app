@@ -45,7 +45,7 @@ class _PrayersScreenState extends State<DistressScreen> {
         return Scaffold(
             appBar: MainAppBarWidget(text: "finding_comfort".tr),
             backgroundColor: Theme.of(context).colorScheme.background,
-            body: distress.isLoaded
+            body: distress.distressList.isNotEmpty
                 ? SmartRefresher(
                     enablePullUp: true,
                     header: const WaterDropHeader(),

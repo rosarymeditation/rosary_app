@@ -1,22 +1,17 @@
 import 'dart:io';
 
 import 'package:audio_service/audio_service.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:just_audio_background/just_audio_background.dart';
-import 'package:rosary/api/firebase_api.dart';
 import 'package:rosary/controllers/affirmation_controller.dart';
 import 'package:rosary/controllers/dailyVerse_controller.dart';
 import 'package:rosary/controllers/distress_controller.dart';
 import 'package:rosary/controllers/feed_controller.dart';
 import 'package:rosary/controllers/langauge_controller.dart';
-import 'package:rosary/donation/donation_error_screen.dart';
-import 'package:rosary/donation/donation_success.dart';
-import 'package:rosary/firebase_options.dart';
-import 'package:rosary/stations/station_page.dart';
+import 'package:rosary/notification/notification.dart';
 import 'package:rosary/themes/dark_theme.dart';
 import 'package:rosary/themes/light_theme.dart';
 import 'package:rosary/utils/constants.dart';
@@ -27,7 +22,6 @@ import 'controllers/psalm_controller.dart';
 import 'helpers/dependencies.dart' as dep;
 import 'controllers/main_controller.dart';
 import 'route/route_helpers.dart';
-import 'utils/appColor.dart';
 import 'utils/messages.dart';
 
 late AudioHandler _audioHandler;
@@ -42,15 +36,33 @@ Future<void> main() async {
 
   Map<String, Map<String, String>> _languages = await dep.init();
 
+  // await AwesomeNotifications().initialize(null, [
+  //   NotificationChannel(
+  //     channelKey: 'basic_channel',
+  //     channelName: 'Rosary Notifications',
+  //     defaultColor: Colors.orange.shade800,
+  //     importance: NotificationImportance.High,
+  //    // channelShowBadge: true,
+  //   ),
+  //   NotificationChannel(
+  //     channelKey: 'scheduled_channel',
+  //     channelName: 'Scheduled Notifications',
+  //     defaultColor: Colors.orange.shade800,
+  //     locked: true,
+  //     importance: NotificationImportance.High,
+  //     channelShowBadge: true,
+  //     // soundSource: "resource//raw/res_knock"
+  //   ),
+  // ]);
   runApp(MyApp(
     languages: _languages,
   ));
-  if (Platform.isIOS) {
-    Firebase.initializeApp();
-  } else {
-    // await Firebase.initializeApp(
-    //     options: DefaultFirebaseOptions.currentPlatform);
-  }
+  // if (Platform.isIOS) {
+  //   Firebase.initializeApp();
+  // } else {
+  //   // await Firebase.initializeApp(
+  //   //     options: DefaultFirebaseOptions.currentPlatform);
+  // }
 }
 
 class MyApp extends StatelessWidget {

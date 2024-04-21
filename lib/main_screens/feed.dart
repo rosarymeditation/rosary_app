@@ -41,7 +41,7 @@ class _FeedScreenState extends State<FeedScreen> {
             hasBackBtn: false,
           ),
           backgroundColor: Theme.of(context).colorScheme.tertiary,
-          body: feeds.isLoaded
+          body: feeds.feedList.isNotEmpty
               ? SmartRefresher(
                   enablePullUp: true,
                   header: WaterDropHeader(),
