@@ -6,14 +6,11 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rosary/controllers/prayer_request_controller.dart';
-import 'package:rosary/main.dart';
 import 'package:rosary/model/data.dart';
 import 'package:rosary/route/route_helpers.dart';
 import 'package:rosary/utils/appColor.dart';
-import 'package:rosary/utils/constants.dart';
-import 'package:rosary/widgets/big_text.dart';
 import 'package:rosary/widgets/main_text.dart';
-
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 import '../controllers/main_controller.dart';
 import '../widgets/app_icon.dart';
 import '../widgets/rosary_app_bar_widget.dart';
@@ -99,7 +96,7 @@ class _MysteryScreenState extends State<MysteryScreen> {
                                 fontFamily: "Georgian"),
                           },
                         ),
-                        Divider(),
+                        const Divider(),
                         Text(
                           'relection'.tr,
                           style: TextStyle(
@@ -137,7 +134,7 @@ class _MysteryScreenState extends State<MysteryScreen> {
               } else {
                 _mainController.setBidFocus(11);
                 _mainController.setMysteryCounterDecrement(1);
-                Get.toNamed(RouteHelpers.chapletPage);
+                Navigator.pop(context);
               }
             },
             child: AppIcon(

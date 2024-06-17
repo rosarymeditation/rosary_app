@@ -7,10 +7,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:rosary/controllers/affirmation_controller.dart';
+import 'package:rosary/controllers/chaplet_template_controller.dart';
 import 'package:rosary/controllers/dailyVerse_controller.dart';
 import 'package:rosary/controllers/distress_controller.dart';
 import 'package:rosary/controllers/feed_controller.dart';
 import 'package:rosary/controllers/langauge_controller.dart';
+import 'package:rosary/controllers/terms_controller.dart';
 import 'package:rosary/notification/notification.dart';
 import 'package:rosary/themes/dark_theme.dart';
 import 'package:rosary/themes/light_theme.dart';
@@ -71,6 +73,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var _termsController = Get.put(
+        TermsController(termsRepo: Get.find(), sharedPreferences: Get.find()));
     var _languageController = Get.find<LocalizationController>();
     var _verseController = Get.put(DailyVerseController(
         dailyVerseRepo: Get.find(), sharedPreferences: Get.find()));
@@ -82,6 +86,7 @@ class MyApp extends StatelessWidget {
     Get.put(LogController(logRepo: Get.find()));
     var _psalmController = Get.put(PsalmController(psalmRepo: Get.find()));
     Get.put(FeedCommentController(feedCommentRepo: Get.find()));
+    Get.put(ChapletController(chapletRepo: Get.find()));
     Get.put(
         FeedController(feedRepo: Get.find(), sharedPreferences: Get.find()));
 

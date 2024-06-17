@@ -31,6 +31,9 @@ class PrayerRequestController extends GetxController implements GetxService {
   int _page = 1;
   int get page => _page;
 
+  String _deviceToken = "";
+  String get deviceToken => _deviceToken;
+
   late PrayerRequestModel _editContent;
   PrayerRequestModel get editContent => _editContent;
   List<PrayerRequestModel> _prayerRequestList = [];
@@ -56,6 +59,25 @@ class PrayerRequestController extends GetxController implements GetxService {
 
     prayerRequestRepo.savePrayerRequestAsString(_prayerRequestList);
     update();
+  }
+
+  Future<ResponseModel> assistPrayer(
+      String prayerId, String randomToken) async {
+    // _isLoaded = false;
+    update();
+    Response response =
+        await prayerRequestRepo.assistPrayer(prayerId, randomToken);
+    late ResponseModel responseModel;
+
+    if (response.statusCode == 200) {
+      getPrayerList();
+      responseModel = ResponseModel(true, "OK");
+    } else {
+      responseModel = ResponseModel(false, "Not OK");
+    }
+    _isLoaded = true;
+    update();
+    return responseModel;
   }
 
   void clear() {
@@ -111,8 +133,6 @@ class PrayerRequestController extends GetxController implements GetxService {
       [String? name = "Anonymous"]) async {
     _isLoaded = false;
     update();
-    print(name);
-    print("--4-4--4-4-4--4-4-4--440");
     Response response =
         await prayerRequestRepo.submitRequest(content, name ?? "Anonymous");
     late ResponseModel responseModel;
@@ -170,5 +190,16 @@ class PrayerRequestController extends GetxController implements GetxService {
       _isMoreLoaded = true;
       update();
     }
+  }
+
+  Future<void> setRandomToken() async {
+    Random random = Random();
+    int token = AppConstant.generate12DigitRandomNumber(random);
+    prayerRequestRepo.setRandomToken(token.toString());
+  }
+
+  Future<void> getRandomToken() async {
+    _deviceToken = await prayerRequestRepo.getRandomToken();
+    update();
   }
 }

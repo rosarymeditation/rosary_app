@@ -59,8 +59,8 @@ class _StartScreenState extends State<StartScreen> {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text("Allow Notifications"),
-            content: Text(
+            title: const Text("Allow Notifications"),
+            content: const Text(
                 "Rosary Meditation Guide would like to send you notifications"),
             actions: [
               TextButton(
@@ -105,359 +105,345 @@ class _StartScreenState extends State<StartScreen> {
             backgroundColor: Theme.of(context).colorScheme.secondary,
           ),
           body: SingleChildScrollView(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              InkWell(
-                  onTap: () {
-                    if (_mainController.getHasCache()) {
-                      showYesNoAlert();
-                    } else {
-                      main.setIntroBidFocus(0);
-                      Get.toNamed(RouteHelpers.rosaryIntroPage);
-                    }
-                  },
-                  child: const StartRosaryWidget()),
-              SizedBox(
-                height: 20.h,
-              ),
-              SizedBox(
-                height: 120.h,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    SizedBox(
-                      width: 10.w,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        _verseController
-                            .getDailyVerse(_languageController.selectedIndex);
-                        _affirmationController.getDailyAffirmation(
-                            _languageController.selectedIndex);
-                        Get.toNamed(RouteHelpers.affirmationPage);
-                      },
-                      child: InspirationWidget(
-                          title: "affirmation_title",
-                          subTitle: _affirmationController.hasAffirmation
-                              ? _affirmationController
-                                  .dailyAffirmationModel.content!
-                              : "daily_affirmation",
-                          img: "back1.jpg"),
-                    ),
-                    SizedBox(
-                      width: 10.w,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        _verseController
-                            .getDailyVerse(_languageController.selectedIndex);
-                        _affirmationController.getDailyAffirmation(
-                            _languageController.selectedIndex);
-                        Get.toNamed(RouteHelpers.dailyVersePage);
-                      },
-                      child: InspirationWidget(
-                        title: "daily_verse_title",
-                        subTitle: _verseController.hasVerse
-                            ? _verseController.dailyVerseModel.content!
-                            : "daily_verse",
-                        img: "back2.jpeg",
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10.w,
-                    ),
-                  ],
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                InkWell(
+                    onTap: () {
+                      if (_mainController.getHasCache()) {
+                        showYesNoAlert();
+                      } else {
+                        main.setIntroBidFocus(0);
+                        Get.toNamed(RouteHelpers.rosaryIntroPage);
+                      }
+                    },
+                    child: const StartRosaryWidget()),
+                SizedBox(
+                  height: 20.h,
                 ),
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              const Divider(),
-              // ElevatedButton(
-              //     onPressed: () async {
-              //       await createReminderMorning();
-              //       // createReminderNoon();
-              //     },
-              //     child: MainText(text: "Notification")),
-              InkWell(
-                onTap: () {
-                  _logController.logMystery();
-                  Get.toNamed(RouteHelpers.mysterySelectionPage);
-                },
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  margin: EdgeInsets.symmetric(horizontal: 10),
-                  height: 40.h,
-                  width: double.maxFinite,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.secondary,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                SizedBox(
+                  height: 120.h,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
                     children: [
-                      MainText(
-                        text: "choose_mystery",
-                        color: Colors.white,
-                        size: 16.sp,
+                      SizedBox(
+                        width: 10.w,
                       ),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        color: Colors.grey.shade100,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              DashLabelWidget(
-                title: "prayer_label",
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              Column(
-                children: [
-                  SizedBox(
-                    height: 170.h,
-                    child: Container(
-                      margin: EdgeInsets.only(left: 10),
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              _prayerController.setPrayerType(
-                                  AppConstant.PRAYER_TYPE_CATHOLIC);
-                              Get.toNamed(RouteHelpers.prayersPage);
-                            },
-                            child: DashRoundWidget(
-                              title: "catholic_prayers",
-                              img: "eucharist.jpg",
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10.h,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              _prayerController.setPrayerType(
-                                  AppConstant.PRAYER_TYPE_OTHERS);
-                              Get.toNamed(RouteHelpers.prayersPage);
-                            },
-                            child: DashRoundWidget(
-                              title: "general_prayers",
-                              img: "g-prayer.jpg",
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10.h,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Get.toNamed(RouteHelpers.psalmListPage);
-                            },
-                            child: DashRoundWidget(
-                              title: "powerful_psalms",
-                              img: "bible.webp",
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  SizedBox(
-                    height: 170.h,
-                    child: Container(
-                      margin: EdgeInsets.only(left: 10),
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Get.toNamed(RouteHelpers.novenaListPage);
-                            },
-                            child: DashRoundWidget(
-                              title: "powerful_novena",
-                              img: "powerful_prayer.jpeg",
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Get.toNamed(RouteHelpers.wayOfCross);
-                            },
-                            child: DashRoundWidget(
-                              title: "station_cross",
-                              img: "0.jpeg",
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Get.toNamed(RouteHelpers.prayerRequestPage);
-                            },
-                            child: DashRoundWidget(
-                              title: "prayer_intention",
-                              img: "intention.webp",
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 30.h,
-              ),
-              InkWell(
-                onTap: () {
-                  Get.toNamed(RouteHelpers.distressPage);
-                },
-                child: DashSimpleWidget(
-                    title: "finding_comfort_long".tr,
-                    subTitle: "click_here_to_find_comfort".tr),
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              // InkWell(
-              //   onTap: () {
-              //     Get.toNamed(RouteHelpers.adioListingPage);
-              //   },
-              //   child: DashAudioWidget(
-              //     title: "Finding Comfort in Times of Distress",
-              //     subTitle: "rosary_subtitle",
-              //     icon: Icons.play_circle,
-              //     img: "rosary.png",
-              //     iconColor: Colors.orange.shade700,
-              //     num: AudioPlaylist.songsRosary.length,
-              //   ),
-              // ),
-              DashLabelWidget(title: "audio_label"),
-              SizedBox(
-                height: 10.h,
-              ),
-              InkWell(
-                onTap: () {
-                  Get.toNamed(RouteHelpers.adioListingPage);
-                },
-                child: DashAudioWidget(
-                  title: "listen",
-                  subTitle: "rosary_subtitle",
-                  icon: Icons.play_circle,
-                  img: "rosary.png",
-                  iconColor: Colors.orange.shade700,
-                  num: AudioPlaylist.songsRosary.length,
-                ),
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              InkWell(
-                onTap: () {
-                  Get.toNamed(RouteHelpers.songsPage);
-                },
-                child: DashAudioWidget(
-                  title: "songs",
-                  subTitle: "song_subtitle",
-                  icon: Icons.play_circle,
-                  img: "play.png",
-                  iconColor: Colors.orange.shade700,
-                  num: AudioPlaylist.audioSource.length,
-                ),
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              InkWell(
-                onTap: () {
-                  _prayerController
-                      .setPrayerType(AppConstant.PRAYER_TYPE_OTHERS);
-                  Get.toNamed(RouteHelpers.deepSleepPage);
-                },
-                child: DashAudioWidget(
-                  title: "deep_sleep_music",
-                  subTitle: "sleep_subtitle",
-                  icon: Icons.bedtime_rounded,
-                  img: "sleeping.png",
-                  iconColor: Colors.blue.shade700,
-                  num: AudioPlaylist.deepSleepSource.length,
-                ),
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              DashLabelWidget(title: "prayer_request".tr),
-              SizedBox(
-                height: 10.h,
-              ),
-              InkWell(
-                onTap: () {
-                  Get.toNamed(RouteHelpers.publicPrayerRequestPage);
-                },
-                child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 20.w),
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  width: double.maxFinite,
-                  height: 80.h,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.tertiary,
-                    borderRadius: BorderRadius.circular(10.sp),
-                  ),
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundImage: AssetImage(
-                            AppConstant.getImagePath("prayer_request.png")),
+                      InkWell(
+                        onTap: () {
+                          _verseController
+                              .getDailyVerse(_languageController.selectedIndex);
+                          _affirmationController.getDailyAffirmation(
+                              _languageController.selectedIndex);
+                          Get.toNamed(RouteHelpers.affirmationPage);
+                        },
+                        child: InspirationWidget(
+                            title: "affirmation_title",
+                            subTitle: _affirmationController.hasAffirmation
+                                ? _affirmationController
+                                    .dailyAffirmationModel.content!
+                                : "daily_affirmation",
+                            img: "back1.jpg"),
                       ),
                       SizedBox(
                         width: 10.w,
                       ),
-                      Flexible(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                      InkWell(
+                        onTap: () {
+                          _verseController
+                              .getDailyVerse(_languageController.selectedIndex);
+                          _affirmationController.getDailyAffirmation(
+                              _languageController.selectedIndex);
+                          Get.toNamed(RouteHelpers.dailyVersePage);
+                        },
+                        child: InspirationWidget(
+                          title: "daily_verse_title",
+                          subTitle: _verseController.hasVerse
+                              ? _verseController.dailyVerseModel.content!
+                              : "daily_verse",
+                          img: "back2.jpeg",
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                const Divider(),
+                InkWell(
+                  onTap: () {
+                    _logController.logMystery();
+                    Get.toNamed(RouteHelpers.mysterySelectionPage);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    height: 40.h,
+                    width: double.maxFinite,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.secondary,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        MainText(
+                          text: "choose_mystery",
+                          color: Colors.white,
+                          size: 16.sp,
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.grey.shade100,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                DashLabelWidget(
+                  title: "prayer_label",
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                Column(
+                  children: [
+                    SizedBox(
+                      height: 170.h,
+                      child: Container(
+                        margin: EdgeInsets.only(left: 10),
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
                           children: [
-                            MainText(
-                              text: "ask_for_prayers".tr,
-                              size: 16.sp,
-                              isBold: true,
-                              color: AppColor.title,
+                            InkWell(
+                              onTap: () {
+                                _prayerController.setPrayerType(
+                                    AppConstant.PRAYER_TYPE_CATHOLIC);
+                                Get.toNamed(RouteHelpers.prayersPage);
+                              },
+                              child: DashRoundWidget(
+                                title: "catholic_prayers",
+                                img: "eucharist.jpg",
+                              ),
                             ),
-                            const SizedBox(
-                              height: 5,
+                            SizedBox(
+                              width: 10.h,
                             ),
-                            Flexible(
-                              child: MainText(
-                                align: TextAlign.left,
-                                overflow: TextOverflow.ellipsis,
-                                text: "ask_for_prayers_subtitle".tr,
-                                size: 12.sp,
-                                color: AppColor.subTitle,
+                            InkWell(
+                              onTap: () {
+                                _prayerController.setPrayerType(
+                                    AppConstant.PRAYER_TYPE_OTHERS);
+                                Get.toNamed(RouteHelpers.prayersPage);
+                              },
+                              child: DashRoundWidget(
+                                title: "general_prayers",
+                                img: "g-prayer.jpg",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10.h,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Get.toNamed(RouteHelpers.psalmListPage);
+                              },
+                              child: DashRoundWidget(
+                                title: "powerful_psalms",
+                                img: "bible.webp",
                               ),
                             ),
                           ],
                         ),
                       ),
-                    ],
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    SizedBox(
+                      height: 170.h,
+                      child: Container(
+                        margin: EdgeInsets.only(left: 10),
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Get.toNamed(RouteHelpers.novenaListPage);
+                              },
+                              child: DashRoundWidget(
+                                title: "powerful_novena",
+                                img: "powerful_prayer.jpeg",
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Get.toNamed(RouteHelpers.wayOfCross);
+                              },
+                              child: DashRoundWidget(
+                                title: "station_cross",
+                                img: "0.jpeg",
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Get.toNamed(RouteHelpers.prayerRequestPage);
+                              },
+                              child: DashRoundWidget(
+                                title: "prayer_intention",
+                                img: "intention.webp",
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 30.h,
+                ),
+                InkWell(
+                  onTap: () {
+                    Get.toNamed(RouteHelpers.distressPage);
+                  },
+                  child: SizedBox(
+                    height: 150.h,
+                    child: DashSimpleWidget(
+                        title: "finding_comfort_long".tr,
+                        subTitle: "click_here_to_find_comfort".tr),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 20.h,
-              )
-            ]),
+                SizedBox(
+                  height: 20.h,
+                ),
+                DashLabelWidget(title: "audio_label"),
+                SizedBox(
+                  height: 10.h,
+                ),
+                InkWell(
+                  onTap: () {
+                    Get.toNamed(RouteHelpers.adioListingPage);
+                  },
+                  child: DashAudioWidget(
+                    title: "listen",
+                    subTitle: "rosary_subtitle",
+                    icon: Icons.play_circle,
+                    img: "rosary.png",
+                    iconColor: Colors.orange.shade700,
+                    num: AudioPlaylist.songsRosary.length,
+                  ),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                InkWell(
+                  onTap: () {
+                    Get.toNamed(RouteHelpers.songsPage);
+                  },
+                  child: DashAudioWidget(
+                    title: "songs",
+                    subTitle: "song_subtitle",
+                    icon: Icons.play_circle,
+                    img: "play.png",
+                    iconColor: Colors.orange.shade700,
+                    num: AudioPlaylist.audioSource.length,
+                  ),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                InkWell(
+                  onTap: () {
+                    _prayerController
+                        .setPrayerType(AppConstant.PRAYER_TYPE_OTHERS);
+                    Get.toNamed(RouteHelpers.deepSleepPage);
+                  },
+                  child: DashAudioWidget(
+                    title: "deep_sleep_music",
+                    subTitle: "sleep_subtitle",
+                    icon: Icons.bedtime_rounded,
+                    img: "sleeping.png",
+                    iconColor: Colors.blue.shade700,
+                    num: AudioPlaylist.deepSleepSource.length,
+                  ),
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                DashLabelWidget(title: "prayer_request".tr),
+                SizedBox(
+                  height: 10.h,
+                ),
+                InkWell(
+                  onTap: () {
+                    Get.toNamed(RouteHelpers.publicPrayerRequestPage);
+                  },
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 20.w),
+                    padding: EdgeInsets.symmetric(horizontal: 20.w),
+                    width: double.maxFinite,
+                    height: 80.h,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.tertiary,
+                      borderRadius: BorderRadius.circular(10.sp),
+                    ),
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundImage: AssetImage(
+                              AppConstant.getImagePath("prayer_request.png")),
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        Flexible(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              MainText(
+                                text: "ask_for_prayers".tr,
+                                size: 16.sp,
+                                isBold: true,
+                                color: AppColor.title,
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Flexible(
+                                child: MainText(
+                                  align: TextAlign.left,
+                                  overflow: TextOverflow.ellipsis,
+                                  text: "ask_for_prayers_subtitle".tr,
+                                  size: 12.sp,
+                                  color: AppColor.subTitle,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.h,
+                )
+              ],
+            ),
           ),
         );
       },

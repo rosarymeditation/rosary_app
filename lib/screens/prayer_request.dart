@@ -30,35 +30,32 @@ class PrayerRequestScreen extends StatelessWidget {
           appBar: MainAppBarWidget(text: "Prayer Request"),
           body: Container(
             color: Theme.of(context).colorScheme.tertiary,
-            child: Container(
-              child: SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
-                child: Column(
-                  children: [
-                    prayerList.length > 0
-                        ? InfoBoxWidget(text: "prayer_request_privacy")
-                        : Container(),
-                    SizedBox(
-                      height: 20.w,
-                    ),
-                    ListView.builder(
-                        shrinkWrap: true,
-                        itemCount:
-                            prayerList.length == 0 ? 1 : prayerList.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return prayerList.length == 0
-                              ? MainText(
-                                  text:
-                                      "You have no prayer requests at the Moment",
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .inversePrimary,
-                                  size: 18.sp,
-                                )
-                              : buildCard(context, prayerList[index]);
-                        }),
-                  ],
-                ),
+            child: SingleChildScrollView(
+              physics: AlwaysScrollableScrollPhysics(),
+              child: Column(
+                children: [
+                  prayerList.length > 0
+                      ? InfoBoxWidget(text: "prayer_request_privacy")
+                      : Container(),
+                  SizedBox(
+                    height: 20.w,
+                  ),
+                  ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: prayerList.length == 0 ? 1 : prayerList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return prayerList.length == 0
+                            ? MainText(
+                                text:
+                                    "You have no prayer requests at the Moment",
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .inversePrimary,
+                                size: 18.sp,
+                              )
+                            : buildCard(context, prayerList[index]);
+                      }),
+                ],
               ),
             ),
           ),

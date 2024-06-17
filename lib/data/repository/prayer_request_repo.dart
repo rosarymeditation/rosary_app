@@ -29,11 +29,9 @@ class PrayerRequestRepo {
     List<String> prayerRequestString = [];
     List<PrayerRequestModel> prayerList = [];
     if (sharedPreferences.containsKey(AppConstant.PRAYER_REQUEST_KEY)) {
-      print("------------------------Has prayer request");
       prayerRequestString =
           sharedPreferences.getStringList(AppConstant.PRAYER_REQUEST_KEY)!;
     } else {
-      print("------------------------Has no request");
       return [];
     }
 
@@ -62,5 +60,18 @@ class PrayerRequestRepo {
   Future<Response> getPrayerRequest(int page, int limit) async {
     return await apiClient.postData(
         AppConstant.ALL_PRAYER_REQUEST_URL, {"page": page, "limit": limit});
+  }
+
+  Future<Response> assistPrayer(String prayerId, String randomToken) async {
+    return await apiClient.postData(AppConstant.ASSIST_PRAYER_URL,
+        {"prayerId": prayerId, "randomToken": randomToken});
+  }
+
+  Future<void> setRandomToken(String token) async {
+    await sharedPreferences.setString(AppConstant.RANDOM_TOKEN, token);
+  }
+
+  Future<String> getRandomToken() async {
+    return await sharedPreferences.getString(AppConstant.RANDOM_TOKEN) ?? "";
   }
 }

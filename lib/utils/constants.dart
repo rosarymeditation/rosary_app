@@ -1,15 +1,22 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rosary/model/bid_draw_model.dart';
 import 'package:rosary/model/language_model.dart';
 import 'package:rosary/model/prayer_model.dart';
 import 'package:rosary/utils/show_custom_snackbar.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import '../controllers/chaplet_template_controller.dart';
 import '../model/days_model.dart';
 import '../model/mystery_model.dart';
 
+var _chapletController = Get.find<ChapletController>();
+
 class AppConstant {
-  //https://rosary-api.onrender.com/api/
+  // https://rosary-api.onrender.com/api/
+
   static const String BASE_URL = "https://softnergy.co.uk/api/";
   //static const String BASE_URL = "http://localhost:8001/api/";
   static const String ALL_FEED_URL = "allFeeds";
@@ -20,9 +27,15 @@ class AppConstant {
   static const String DELETE_USER_URL = "delete-user";
   static const String GET_PROFILE_DATA = "find-Profile-Data";
   static const String GET_USER_FEEDS = "userFeeds";
+
+  static const String CHAPLET_TEMPLATE_ONE = "template_1";
+  static const String CHAPLET_TEMPLATE_TWO = "template_2";
+  static const String CHAPLET_TEMPLATE_THREE = "template_3";
   //userFeeds
   static const String COMMENTS_BY_FEED_URL = "CommentsByFeed";
   static const String ALL_PRAYERS_URL = "prayers";
+  static const String ASSIST_PRAYER_URL = "assist-prayer";
+  //assist-prayer
   static const String ALL_DISTRESS_URL = "distressList";
   static const String ALL_PSALMS_URL = "psalms";
   static const String ALL_NOVENA_PRAYERS_URL = "novenas";
@@ -37,6 +50,7 @@ class AppConstant {
   static const String USER_INFO_URL = "userInfo";
   static const String TODAYS_VERSE_URL = "todaysVerse";
   static const String TODAYS_AFFIRMATION_URL = "todaysAffirmation";
+  static const String TERMS_URL = "findTerm";
   //todaysVerse
   static const String FORGOT_PASSWORD_URL = "forgot-password";
   static const String PASSWORD_VERIFICATION_URL = "verify-password";
@@ -83,6 +97,8 @@ class AppConstant {
   static const String MYSTERY_COUNTER = "mystery_counter";
   static const String MYSTERY_NAME = "mystery_name";
   static const String HAS_CACHE = "has_cache";
+  static const String HAS_SEEN_SETTINGS = "has_seen_settings";
+  static const String RANDOM_TOKEN = "random_token";
   static const String OTHERS_PRAYER_CACHE = "others_prayer_cache";
   static const String PSALM_CACHE = "psalm_cache";
   static const String NOVENA_PRAYER_CACHE = "novena_prayer_cache";
@@ -90,6 +106,7 @@ class AppConstant {
   static const String DISTRESS_LIST_CACHE = "distress_list_cache";
   static const String DAILY_VERSE_CACHE = "daily_verse_cache";
   static const String AFFIRMATION_CACHE = "affirmation_cache";
+  static const String TERMS_CACHE = "terms_cache";
   static const String PASSWORD_LENGTH_MSG =
       "Password length must not be less than 4 characters";
   static const String SORROWFUL_AUDIO_URL = "url_sorrowful_cache";
@@ -108,6 +125,7 @@ class AppConstant {
   static const String GLORIOUS_IMG_PATH = "assets/glorious/";
   static const String END_OR_BEGIN_BID = "end_or_begin_bid";
   static const String TOKEN = "login_token";
+  static const String TEMPLATE = "template";
   static const String USER_ID = "user-id";
   static const String JOYFUL_MYSTERY = "joyful_mystery";
   static const String RESPONSE = "Response";
@@ -124,6 +142,12 @@ class AppConstant {
     final difference = now.difference(DateTime.parse(time));
 
     return timeago.format(now.subtract(difference), locale: 'en');
+  }
+
+  static int generate12DigitRandomNumber(Random random) {
+    int min = 100000000; // 12-digit minimum
+    int max = 999999999; // 12-digit maximum
+    return min + random.nextInt(max - min + 1);
   }
 
   static List<LanguageModel> languages = [
@@ -284,5 +308,43 @@ class AppConstant {
         ),
         margin: EdgeInsets.zero,
         snackStyle: SnackStyle.GROUNDED);
+  }
+
+  static getBead(
+    int counter,
+    int currentBead,
+  ) {
+    if (_chapletController.templateType == AppConstant.CHAPLET_TEMPLATE_TWO) {
+      return counter >= currentBead
+          ? Image.asset(
+              "assets/images/circle_1.png",
+              height: 60.r,
+              width: 60.r,
+              fit: BoxFit.contain,
+            )
+          : Image.asset(
+              "assets/images/circle_2.png",
+              height: 60.r,
+              width: 60.r,
+              fit: BoxFit.contain,
+            );
+    } else if (_chapletController.templateType ==
+        AppConstant.CHAPLET_TEMPLATE_THREE) {
+      return counter >= currentBead
+          ? Image.asset(
+              "assets/images/circle_3.png",
+              height: 60.r,
+              width: 60.r,
+              fit: BoxFit.contain,
+            )
+          : Image.asset(
+              "assets/images/circle_4.png",
+              height: 60.r,
+              width: 60.r,
+              fit: BoxFit.contain,
+            );
+    } else {
+      return Container();
+    }
   }
 }

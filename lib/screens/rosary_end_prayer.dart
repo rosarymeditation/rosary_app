@@ -175,7 +175,8 @@ class _RosaryEndPrayerScreenState extends State<RosaryEndPrayerScreen> {
               onTap: () {
                 main.setStoredMysteryCounter(5);
                 main.setBidFocus(11);
-                Get.toNamed(RouteHelpers.chapletPage);
+                Navigator.pop(context);
+                //Get.toNamed(RouteHelpers.chapletPage);
               },
               child: AppIcon(
                 backgroundColor: AppColor.iconColor,

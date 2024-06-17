@@ -29,9 +29,18 @@ class _PublicPrayerRequestState extends State<PublicPrayerRequest> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    generateUserToken();
     _prayerRequestController.getPrayerList();
 
     // _verseController.getDailyVerse();
+  }
+
+  void generateUserToken() async {
+    //this is a unique key that identifies every user that prays
+    await _prayerRequestController.getRandomToken();
+    if (_prayerRequestController.deviceToken == "") {
+      await _prayerRequestController.setRandomToken();
+    }
   }
 
   @override
@@ -109,7 +118,8 @@ class _PublicPrayerRequestState extends State<PublicPrayerRequest> {
               : const Center(
                   child: CircularProgressIndicator(
                       //backgroundColor: AppColor.primaryColor,
-                      )),
+                      ),
+                ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
               Get.toNamed(RouteHelpers.publicPrayerRequestCreatePage);
@@ -141,7 +151,10 @@ class _PublicPrayerRequestState extends State<PublicPrayerRequest> {
                 itemBuilder: (context, index) {
                   var item = _prayer.publicRequestList[index];
 
-                  return PrayerRequestItemWidget(item: item);
+                  return PrayerRequestItemWidget(
+                    item: item,
+                    token: _prayerRequestController.deviceToken,
+                  );
                 },
               ),
             ],

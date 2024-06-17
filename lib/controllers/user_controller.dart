@@ -111,7 +111,6 @@ class UserController extends GetxController implements GetxService {
           Uri.parse(AppConstant.BASE_URL + AppConstant.UPDATE_USER_PROFILE));
 
       for (var file in _files) {
-        print("kekkekekeke");
         //final imageFile = File(file.file.path);
         // final imageStream = http.ByteStream(imageFile.openRead());
         // final imageLength = await imageFile.length();

@@ -25,8 +25,11 @@ class _SplashSreenState extends State<SplashSreen>
 
   @override
   void initState() {
+    Future.delayed(Duration(seconds: 1), () {
+      _loadResources();
+    });
     super.initState();
-    _loadResources();
+
     controller = new AnimationController(
       vsync: this,
       duration: const Duration(seconds: 4),
@@ -85,6 +88,7 @@ class _SplashSreenState extends State<SplashSreen>
   @override
   void dispose() {
     // _userController.hasUserSeenIntro();
+    controller.dispose();
     super.dispose();
   }
 }

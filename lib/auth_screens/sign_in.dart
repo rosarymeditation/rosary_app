@@ -8,14 +8,12 @@ import 'package:rosary/widgets/main_text.dart';
 import 'package:rosary/widgets/password_text_field.dart';
 import '../../route/route_helpers.dart';
 import '../../utils/dimensions.dart';
-import '../../widgets/big_text.dart';
 import '../controllers/auth_controller.dart';
 import '../controllers/user_controller.dart';
 import '../utils/appColor.dart';
 import '../utils/show_custom_snackbar.dart';
 import '../widgets/auth_button.dart';
 import '../widgets/auth_text_field.dart';
-import '../widgets/regular_button.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -118,7 +116,7 @@ class SignInPage extends StatelessWidget {
                           color: AppColor.subTitle,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       GestureDetector(

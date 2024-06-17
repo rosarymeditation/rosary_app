@@ -3,11 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:rosary/route/route_helpers.dart';
-import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/utils/constants.dart';
-import 'package:rosary/widgets/app_icon.dart';
-import 'package:rosary/widgets/big_text.dart';
 import 'package:rosary/widgets/main_app_bar_widget.dart';
 import 'package:rosary/widgets/select_widget.dart';
 

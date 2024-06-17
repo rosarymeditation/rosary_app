@@ -15,9 +15,15 @@ import '../utils/show_custom_snackbar.dart';
 import '../widgets/main_app_bar_widget.dart';
 import '../widgets/main_text.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   SignUpPage({Key? key}) : super(key: key);
 
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  bool _agreedToEULA = false;
   @override
   Widget build(BuildContext context) {
     var emailController = TextEditingController();
@@ -27,7 +33,10 @@ class SignUpPage extends StatelessWidget {
 
     void _registration() {
       var _auth = Get.find<AuthController>();
-
+      if (!_agreedToEULA) {
+        showCustomSnackBar("eula_error".tr, isError: false);
+        return;
+      }
       String firstname = firstnameController.text.trim();
       String lastname = lastnameController.text.trim();
       String email = emailController.text.trim();
@@ -137,6 +146,38 @@ class SignUpPage extends StatelessWidget {
                         height: Dimensions.height20,
                       ),
                       SizedBox(
+                        height: 20.h,
+                        child: Row(
+                          children: [
+                            Checkbox(
+                              value: _agreedToEULA,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  _agreedToEULA = value ?? false;
+                                });
+                              },
+                            ),
+                            Row(
+                              children: [
+                                Text("I agree to the "),
+                                InkWell(
+                                  onTap: () {
+                                    Get.toNamed(RouteHelpers.termsPage);
+                                  },
+                                  child: Text(
+                                    "EULA",
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
                         height: Dimensions.height20,
                       ),
                       GestureDetector(
@@ -160,16 +201,17 @@ class SignUpPage extends StatelessWidget {
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () =>
                                       Get.toNamed(RouteHelpers.signInPage),
-                                text: "Have an account already?",
+                                text: "already_have_account".tr,
                                 style: TextStyle(
-                                    color: AppColor.subTitle,
-                                    fontSize: Dimensions.font15),
+                                  color: AppColor.subTitle,
+                                  fontSize: Dimensions.font15,
+                                ),
                               ),
                             ),
                             MainText(
                               size: 16.sp,
-                              text: ' Sign In',
-                              color: AppColor.subTitle,
+                              text: "sign_in".tr,
+                              color: Colors.blue,
                             )
                           ],
                         ),

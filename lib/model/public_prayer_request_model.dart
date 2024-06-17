@@ -27,6 +27,7 @@ class PublicPrayerRequestModel {
   bool? hasUpdated;
   String? id;
   String? content;
+  List<Counter>? counter;
   String? name;
 
   String? createdAt;
@@ -35,6 +36,7 @@ class PublicPrayerRequestModel {
     this.hasUpdated,
     this.id,
     this.content,
+    this.counter,
     this.name,
     this.createdAt,
   });
@@ -42,6 +44,12 @@ class PublicPrayerRequestModel {
   PublicPrayerRequestModel.fromJson(Map<String, dynamic> json) {
     hasUpdated = json['hasUpdated'];
     id = json['_id'];
+    if (json['counter'] != null) {
+      counter = <Counter>[];
+      json['counter'].forEach((v) {
+        counter!.add(new Counter.fromJson(v));
+      });
+    }
     content = json['content'];
     name = json['name'];
     createdAt = json['createdAt'];
@@ -56,6 +64,25 @@ class PublicPrayerRequestModel {
 
     data['createdAt'] = createdAt;
 
+    return data;
+  }
+}
+
+class Counter {
+  String? id;
+  String? randomToken;
+
+  Counter({this.id, this.randomToken});
+
+  Counter.fromJson(Map<String, dynamic> json) {
+    id = json['_id'];
+    randomToken = json['randomToken'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['_id'] = this.id;
+    data['randomToken'] = this.randomToken;
     return data;
   }
 }

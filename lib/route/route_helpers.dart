@@ -43,6 +43,8 @@ import 'package:rosary/screens/rosary_completion_screen.dart';
 import 'package:rosary/screens/rosary_end_prayer.dart';
 import 'package:rosary/screens/rosary_intro.dart';
 import 'package:rosary/main_screens/start_screen.dart';
+import 'package:rosary/screens/template_selection.dart';
+import 'package:rosary/screens/terms.dart';
 import 'package:rosary/songs/deep_sleep_screen.dart';
 import 'package:rosary/songs/song_screen.dart';
 import 'package:rosary/splash/splash_page.dart';
@@ -63,8 +65,10 @@ class RouteHelpers {
   static const String psalmListPage = "/psalm-list-page";
   static const String affirmationAndVerse = "/affirmation_verse";
   static const String privacyPage = "/privacy";
+  static const String templatePage = "/templatePage";
   static const String donationDisplayPage = "/donation-display-page";
   static const String songsPage = "/song-page";
+  static const String termsPage = "/terms-page";
   static const String donationPage = "/donation-page";
   static const String donationErrorPage = "/donation-error-page";
   static const String donationSuccessPage = "/donation-success-page";
@@ -158,6 +162,13 @@ class RouteHelpers {
       transition: Transition.downToUp,
     ),
     GetPage(
+      name: templatePage,
+      page: () {
+        return TemplateSelectionScreen();
+      },
+      transition: Transition.downToUp,
+    ),
+    GetPage(
       name: popUpPrayer,
       page: () {
         return PopUpPrayer();
@@ -203,6 +214,13 @@ class RouteHelpers {
       name: adioListingPage,
       page: () {
         return AudioListingScreen();
+      },
+      transition: Transition.downToUp,
+    ),
+    GetPage(
+      name: termsPage,
+      page: () {
+        return TermsScreen();
       },
       transition: Transition.downToUp,
     ),

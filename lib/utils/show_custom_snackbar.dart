@@ -5,19 +5,19 @@ import '../widgets/big_text.dart';
 
 void showCustomSnackBar(String message,
     {bool isError = true,
-    String title = "Error",
+    String title = "alert",
     Color backColor = Colors.orange}) {
   Get.snackbar(title, message,
       titleText: BigText(
-        text: title,
-        color: Colors.white,
+        text: "alert".tr,
+        color: Colors.black,
       ),
       duration: Duration(seconds: 6),
       messageText: Text(
         message,
-        style: const TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.black),
       ),
       colorText: Colors.white,
       snackPosition: SnackPosition.TOP,
-      backgroundColor: isError ? backColor : Colors.green.shade300);
+      backgroundColor: Colors.blue.shade200);
 }

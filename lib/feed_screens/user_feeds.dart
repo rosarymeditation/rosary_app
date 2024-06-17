@@ -37,52 +37,55 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
     return GetBuilder<FeedController>(
       builder: (feeds) {
         return Scaffold(
-            backgroundColor: Theme.of(context).colorScheme.background,
-            appBar: MainAppBarWidget(text: "My Posts"),
-            body: feeds.isLoaded
-                ? SmartRefresher(
-                    enablePullUp: true,
-                    header: const WaterDropHeader(),
-                    controller: _refreshController,
-                    onRefresh: () async {
-                      feeds.getUserFeedList();
-                      await Future.delayed(
-                        Duration(seconds: 0, milliseconds: 2000),
-                      );
-                      if (feeds.isLoaded)
-                        _refreshController.refreshCompleted();
-                      else
-                        _refreshController.refreshFailed();
-                    },
-                    onLoading: () async {
-                      feeds.loadMoreUserFeed();
+          backgroundColor: Theme.of(context).colorScheme.background,
+          appBar: MainAppBarWidget(text: "My Posts"),
+          body: feeds.isLoaded
+              ? SmartRefresher(
+                  enablePullUp: true,
+                  header: const WaterDropHeader(),
+                  controller: _refreshController,
+                  onRefresh: () async {
+                    feeds.getUserFeedList();
+                    await Future.delayed(
+                      Duration(seconds: 0, milliseconds: 2000),
+                    );
+                    if (feeds.isLoaded)
+                      _refreshController.refreshCompleted();
+                    else
+                      _refreshController.refreshFailed();
+                  },
+                  onLoading: () async {
+                    feeds.loadMoreUserFeed();
 
-                      await Future.delayed(
-                        Duration(seconds: 0, milliseconds: 2000),
-                      );
-                      if (feeds.isMoreLoaded)
-                        _refreshController.loadComplete();
-                      else
-                        _refreshController.loadFailed();
-                    },
-                    child: GetBuilder<FeedController>(builder: (feed) {
-                      int itemLength = feed.feedList.length;
-                      return ListView.builder(
-                        physics: BouncingScrollPhysics(),
-                        itemCount: feed.feedList.length,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          var item = feed.feedList[index];
+                    await Future.delayed(
+                      Duration(seconds: 0, milliseconds: 2000),
+                    );
+                    if (feeds.isMoreLoaded)
+                      _refreshController.loadComplete();
+                    else
+                      _refreshController.loadFailed();
+                  },
+                  child: GetBuilder<FeedController>(builder: (feed) {
+                    int itemLength = feed.feedList.length;
+                    return ListView.builder(
+                      physics: BouncingScrollPhysics(),
+                      itemCount: feed.feedList.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        var item = feed.feedList[index];
 
-                          return FeedItemWidget(
-                            item: item,
-                            isForProfile: true,
-                          );
-                        },
-                      );
-                    }),
-                  )
-                : const Center(child: CircularProgressIndicator()));
+                        return FeedItemWidget(
+                          item: item,
+                          isForProfile: true,
+                        );
+                      },
+                    );
+                  }),
+                )
+              : const Center(
+                  child: CircularProgressIndicator(),
+                ),
+        );
       },
     );
   }

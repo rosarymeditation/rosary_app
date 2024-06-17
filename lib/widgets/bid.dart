@@ -11,7 +11,7 @@ import '../controllers/main_controller.dart';
 class BidWidget extends StatelessWidget {
   final int id;
   final String type;
-  BidWidget({required this.id, required this.type});
+  const BidWidget({required this.id, required this.type});
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MainController>(

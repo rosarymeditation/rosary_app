@@ -119,6 +119,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:rate_my_app/rate_my_app.dart';
+import 'package:rosary/product_screens/market_screen.dart';
 import 'package:rosary/songs/song_screen.dart';
 import 'controllers/auth_controller.dart';
 import 'main_screens/feed.dart';
@@ -146,7 +147,12 @@ class _TabHomePageState extends State<TabHomePage> {
     appStoreIdentifier: '6463201997',
     googlePlayIdentifier: 'com.rosarysoftnergy.app',
   );
-  List pages = [StartScreen(), FeedScreen(), MoreScreen()];
+  List pages = [
+    StartScreen(),
+    FeedScreen(),
+    // const MarketplaceScreen(),
+    MoreScreen()
+  ];
   @override
   void initState() {
     super.initState();
@@ -188,6 +194,13 @@ class _TabHomePageState extends State<TabHomePage> {
                 ),
                 label: "community".tr,
               ),
+              // BottomNavigationBarItem(
+              //   icon: Icon(
+              //     Icons.store,
+              //     size: 20.sp,
+              //   ),
+              //   label: "market place".tr,
+              // ),
               // BottomNavigationBarItem(
               //   icon: Icon(
               //     Icons.music_note,
