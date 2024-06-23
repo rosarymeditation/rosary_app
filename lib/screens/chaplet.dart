@@ -167,10 +167,10 @@ class _ChapletPageState extends State<ChapletPage> {
                             Icons.double_arrow_outlined), // Your desired icon
                         label: Text('continue'.tr), // Your desired text
                         style: ElevatedButton.styleFrom(
-                          primary: Theme.of(context)
-                              .colorScheme
-                              .secondary, // Background color
-                          onPrimary: Colors.white, // Text and icon color
+                          // primary: Theme.of(context)
+                          //     .colorScheme
+                          //     .secondary, // Background color
+                          // onPrimary: Colors.white, // Text and icon color
                           padding: const EdgeInsets.symmetric(
                               horizontal: 16, vertical: 12),
                           textStyle: TextStyle(fontSize: 16.sp),
@@ -195,10 +195,10 @@ class _ChapletPageState extends State<ChapletPage> {
                         label: const Text(
                             'Back to Mysteries'), // Your desired text
                         style: ElevatedButton.styleFrom(
-                          primary: Theme.of(context)
-                              .colorScheme
-                              .secondary, // Background color
-                          onPrimary: Colors.white, // Text and icon color
+                          // primary: Theme.of(context)
+                          //     .colorScheme
+                          //     .secondary, // Background color
+                          // onPrimary: Colors.white, // Text and icon color
                           padding: const EdgeInsets.symmetric(
                               horizontal: 16, vertical: 12),
                           textStyle: const TextStyle(fontSize: 16),

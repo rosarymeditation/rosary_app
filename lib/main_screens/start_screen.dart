@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -15,7 +14,6 @@ import '../controllers/dailyVerse_controller.dart';
 import '../controllers/log_controller.dart';
 import '../controllers/main_controller.dart';
 import '../controllers/prayer_controller.dart';
-import '../notification/notification.dart';
 import '../songs/play_list.dart';
 import '../utils/appColor.dart';
 import '../utils/constants.dart';
@@ -54,42 +52,7 @@ class _StartScreenState extends State<StartScreen> {
     super.initState();
 
     _mainController.getStaticMystery();
-    AwesomeNotifications().isNotificationAllowed().then((isAllow) {
-      if (!isAllow) {
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: const Text("Allow Notifications"),
-            content: const Text(
-                "Rosary Meditation Guide would like to send you notifications"),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: MainText(
-                  text: "Don't allow",
-                  color: Colors.grey,
-                  size: 18.sp,
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  AwesomeNotifications()
-                      .requestPermissionToSendNotifications()
-                      .then((_) => Navigator.pop(context));
-                },
-                child: MainText(
-                  text: "Allow",
-                  color: Colors.orange.shade700,
-                  size: 18.sp,
-                ),
-              )
-            ],
-          ),
-        );
-      }
-    });
+
   }
 
   @override

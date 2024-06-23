@@ -117,7 +117,6 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:rate_my_app/rate_my_app.dart';
 import 'package:rosary/product_screens/market_screen.dart';
 import 'package:rosary/songs/song_screen.dart';
@@ -136,7 +135,7 @@ class TabHomePage extends StatefulWidget {
 }
 
 class _TabHomePageState extends State<TabHomePage> {
-  late PersistentTabController _controller;
+
   var _authController = Get.find<AuthController>();
   int _selectedIndex = 0;
   final RateMyApp rateMyApp = RateMyApp(
@@ -156,7 +155,7 @@ class _TabHomePageState extends State<TabHomePage> {
   @override
   void initState() {
     super.initState();
-    _controller = PersistentTabController(initialIndex: 0);
+   // _controller = PersistentTabController(initialIndex: 0);
   }
 
   void onTapNav(int index) {

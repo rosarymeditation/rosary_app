@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:audio_service/audio_service.dart';
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -13,7 +12,6 @@ import 'package:rosary/controllers/distress_controller.dart';
 import 'package:rosary/controllers/feed_controller.dart';
 import 'package:rosary/controllers/langauge_controller.dart';
 import 'package:rosary/controllers/terms_controller.dart';
-import 'package:rosary/notification/notification.dart';
 import 'package:rosary/themes/dark_theme.dart';
 import 'package:rosary/themes/light_theme.dart';
 import 'package:rosary/utils/constants.dart';

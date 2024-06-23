@@ -23,13 +23,16 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  final _formKey = GlobalKey<FormState>();
   bool _agreedToEULA = false;
-  @override
-  Widget build(BuildContext context) {
-    var emailController = TextEditingController();
+
+   var emailController = TextEditingController();
     var passwordController = TextEditingController();
     var firstnameController = TextEditingController();
     var lastnameController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+   
 
     void _registration() {
       var _auth = Get.find<AuthController>();
@@ -91,135 +94,139 @@ class _SignUpPageState extends State<SignUpPage> {
               ? Center(child: CircularProgressIndicator())
               : SingleChildScrollView(
                   physics: BouncingScrollPhysics(),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 30.h,
-                      ),
-                      CircleAvatar(
-                        backgroundColor: Colors.white,
-                        radius: 30.sp,
-                        backgroundImage: AssetImage(AppConstant.DEFAULT_LOGO),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      MainText(
-                        color: AppColor.subTitle,
-                        size: 16.sp,
-                        text: "Sign up to join our community.",
-                      ),
-                      SizedBox(
-                        height: 15.h,
-                      ),
-                      AuthTextField(
-                        textController: firstnameController,
-                        hintText: "First name",
-                        icon: Icons.account_box,
-                      ),
-                      SizedBox(
-                        height: Dimensions.height20,
-                      ),
-                      AuthTextField(
-                        textController: lastnameController,
-                        hintText: "Last name",
-                        icon: Icons.account_box,
-                      ),
-                      SizedBox(
-                        height: Dimensions.height20,
-                      ),
-                      AuthTextField(
-                        textController: emailController,
-                        hintText: "Email",
-                        icon: Icons.email,
-                      ),
-                      SizedBox(
-                        height: Dimensions.height20,
-                      ),
-                      PasswordTextField(
-                        textController: passwordController,
-                        hintText: "Password",
-                        icon: Icons.password_sharp,
-                        isObscure: true,
-                      ),
-                      SizedBox(
-                        height: Dimensions.height20,
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                        child: Row(
-                          children: [
-                            Checkbox(
-                              value: _agreedToEULA,
-                              onChanged: (bool? value) {
-                                setState(() {
-                                  _agreedToEULA = value ?? false;
-                                });
-                              },
-                            ),
-                            Row(
-                              children: [
-                                Text("I agree to the "),
-                                InkWell(
-                                  onTap: () {
-                                    Get.toNamed(RouteHelpers.termsPage);
-                                  },
-                                  child: Text(
-                                    "EULA",
-                                    style: TextStyle(
-                                      color: Colors.blue,
-                                      decoration: TextDecoration.underline,
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 30.h,
+                        ),
+                        CircleAvatar(
+                          backgroundColor: Colors.white,
+                          radius: 30.sp,
+                          backgroundImage: AssetImage(AppConstant.DEFAULT_LOGO),
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        MainText(
+                          color: AppColor.subTitle,
+                          size: 16.sp,
+                          text: "Sign up to join our community.",
+                        ),
+                        SizedBox(
+                          height: 15.h,
+                        ),
+                        AuthTextField(
+                          textController: firstnameController,
+                          hintText: "First name",
+                          icon: Icons.account_box,
+                        ),
+                        SizedBox(
+                          height: Dimensions.height20,
+                        ),
+                        AuthTextField(
+                          textController: lastnameController,
+                          hintText: "Last name",
+                          icon: Icons.account_box,
+                        ),
+                        SizedBox(
+                          height: Dimensions.height20,
+                        ),
+                        AuthTextField(
+                          textController: emailController,
+                          hintText: "Email",
+                          icon: Icons.email,
+                        ),
+                        SizedBox(
+                          height: Dimensions.height20,
+                        ),
+                        PasswordTextField(
+                          textController: passwordController,
+                          hintText: "Password",
+                          icon: Icons.password_sharp,
+                          isObscure: true,
+                        ),
+                        SizedBox(
+                          height: Dimensions.height20,
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                          child: Row(
+                            children: [
+                              Checkbox(
+                                 activeColor: Colors.blue,
+                                value: _agreedToEULA,
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    _agreedToEULA = value ?? false;
+                                  });
+                                },
+                              ),
+                              Row(
+                                children: [
+                                  const Text("I agree to the "),
+                                  InkWell(
+                                    onTap: () {
+                                      Get.toNamed(RouteHelpers.termsPage);
+                                    },
+                                    child: const Text(
+                                      "EULA",
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        decoration: TextDecoration.underline,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: Dimensions.height20,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          _registration();
-                        },
-                        child: AuthButtonWidget(title: AppConstant.SIGN_UP),
-                      ),
-                      SizedBox(
-                        height: Dimensions.height10,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Get.toNamed(RouteHelpers.signInPage);
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RichText(
-                              text: TextSpan(
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () =>
-                                      Get.toNamed(RouteHelpers.signInPage),
-                                text: "already_have_account".tr,
-                                style: TextStyle(
-                                  color: AppColor.subTitle,
-                                  fontSize: Dimensions.font15,
+                        SizedBox(
+                          height: Dimensions.height20,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            _registration();
+                          },
+                          child: AuthButtonWidget(title: AppConstant.SIGN_UP),
+                        ),
+                        SizedBox(
+                          height: Dimensions.height10,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Get.toNamed(RouteHelpers.signInPage);
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              RichText(
+                                text: TextSpan(
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () =>
+                                        Get.toNamed(RouteHelpers.signInPage),
+                                  text: "already_have_account".tr,
+                                  style: TextStyle(
+                                    color: AppColor.subTitle,
+                                    fontSize: Dimensions.font15,
+                                  ),
                                 ),
                               ),
-                            ),
-                            MainText(
-                              size: 16.sp,
-                              text: "sign_in".tr,
-                              color: Colors.blue,
-                            )
-                          ],
+                              MainText(
+                                size: 16.sp,
+                                text: "sign_in".tr,
+                                color: Colors.blue,
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: Dimensions.screenHeight * 0.05,
-                      ),
-                    ],
+                        SizedBox(
+                          height: Dimensions.screenHeight * 0.05,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
         );
