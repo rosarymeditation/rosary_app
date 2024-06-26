@@ -255,23 +255,27 @@ class FeedItemWidget extends StatelessWidget {
         builder: (context) => Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            InkWell(
-              onTap: () {
-                _feedController.setEditingContent(feed);
-                Navigator.of(context).pop();
-                Get.toNamed(RouteHelpers.feedEdittPage);
-              },
-              child: ListTile(
-                  leading: const Icon(Icons.edit),
-                  title: MainText(
-                    text: "Edit",
-                    color: AppColor.subTitle,
-                  ),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  }),
-            ),
-            InkWell(
+            ListTile(
+                leading: const Icon(Icons.edit),
+                title: MainText(
+                  text: "Edit",
+                  color: AppColor.subTitle,
+                ),
+                onTap: () {
+                  print("Helloooo----------------------");
+              // _feedController.setEditingContent(feed);
+              // Navigator.of(context).pop();
+              // Get.toNamed(RouteHelpers.feedEdittPage);
+               _feedController.setEditingContent(feed);
+                  Navigator.of(context).pop();
+                  Get.toNamed(RouteHelpers.feedEdittPage);
+                }),
+            ListTile(
+              leading: const Icon(Icons.delete),
+              title: MainText(
+                text: "Delete",
+                color: AppColor.subTitle,
+              ),
               onTap: () {
                 _feedController.deleteFeed(feed.id!).then((result) {
                   if (result.isSuccess) {
@@ -282,14 +286,6 @@ class FeedItemWidget extends StatelessWidget {
                 });
                 Navigator.of(context).pop();
               },
-              child: ListTile(
-                leading: const Icon(Icons.delete),
-                title: MainText(
-                  text: "Delete",
-                  color: AppColor.subTitle,
-                ),
-                onTap: () => Navigator.of(context).pop(),
-              ),
             )
           ],
         ),
