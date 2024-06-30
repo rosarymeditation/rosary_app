@@ -8,7 +8,9 @@ import 'package:rosary/model/language_model.dart';
 import 'package:rosary/model/prayer_model.dart';
 import 'package:rosary/utils/show_custom_snackbar.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:vibration/vibration.dart';
 import '../controllers/chaplet_template_controller.dart';
+import '../controllers/main_controller.dart';
 import '../model/days_model.dart';
 import '../model/mystery_model.dart';
 
@@ -97,6 +99,7 @@ class AppConstant {
   static const String MYSTERY_COUNTER = "mystery_counter";
   static const String MYSTERY_NAME = "mystery_name";
   static const String HAS_CACHE = "has_cache";
+  static const String HAS_VIBRATION = "has_vibration";
   static const String HAS_SEEN_SETTINGS = "has_seen_settings";
   static const String RANDOM_TOKEN = "random_token";
   static const String OTHERS_PRAYER_CACHE = "others_prayer_cache";
@@ -310,10 +313,25 @@ class AppConstant {
         snackStyle: SnackStyle.GROUNDED);
   }
 
-  static getBead(
+  static void vibrator() async {
+    final _mainController = Get.find<MainController>();
+    if (_mainController.getHasVibration() == "false") {
+      return;
+    }
+    bool? hasVibrator = await Vibration.hasVibrator();
+    if (hasVibrator!) {
+      Vibration.vibrate(duration: 500);
+    }
+  }
+
+  static Widget getBead(
     int counter,
     int currentBead,
   ) {
+    if (currentBead >= 11 || currentBead == 0) {
+      return Container();
+    }
+
     if (_chapletController.templateType == AppConstant.CHAPLET_TEMPLATE_TWO) {
       return counter >= currentBead
           ? Image.asset(

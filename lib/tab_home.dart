@@ -114,6 +114,8 @@
 //   }
 // }
 
+import 'dart:io';
+
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -146,7 +148,12 @@ class _TabHomePageState extends State<TabHomePage> {
     appStoreIdentifier: '6463201997',
     googlePlayIdentifier: 'com.rosarysoftnergy.app',
   );
-  List pages = [
+  List pages = Platform.isIOS?[
+    StartScreen(),
+    //FeedScreen(),
+    // const MarketplaceScreen(),
+    MoreScreen()
+  ]:[
     StartScreen(),
     FeedScreen(),
     // const MarketplaceScreen(),
@@ -178,7 +185,7 @@ class _TabHomePageState extends State<TabHomePage> {
             unselectedFontSize: 0.0,
             currentIndex: auth.currentIndex,
             onTap: onTapNav,
-            items: <BottomNavigationBarItem>[
+            items:Platform.isIOS? <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.home,
@@ -186,6 +193,31 @@ class _TabHomePageState extends State<TabHomePage> {
                 ),
                 label: "home".tr,
               ),
+              
+              // BottomNavigationBarItem(
+              //   icon: Icon(
+              //     Icons.groups_3,
+              //     size: 20.sp,
+              //   ),
+              //   label: "community".tr,
+              // ),
+
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.view_headline_sharp,
+                  size: 20.sp,
+                ),
+                label: "more".tr,
+              ),
+            ]: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                  size: 20.sp,
+                ),
+                label: "home".tr,
+              ),
+              
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.groups_3,
@@ -193,20 +225,7 @@ class _TabHomePageState extends State<TabHomePage> {
                 ),
                 label: "community".tr,
               ),
-              // BottomNavigationBarItem(
-              //   icon: Icon(
-              //     Icons.store,
-              //     size: 20.sp,
-              //   ),
-              //   label: "market place".tr,
-              // ),
-              // BottomNavigationBarItem(
-              //   icon: Icon(
-              //     Icons.music_note,
-              //     size: 20.sp,
-              //   ),
-              //   label: "songs".tr,
-              // ),
+
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.view_headline_sharp,

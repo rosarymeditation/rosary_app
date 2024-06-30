@@ -63,6 +63,14 @@ class MainRepo {
     return sharedPreferences.containsKey(AppConstant.HAS_CACHE);
   }
 
+   Future<bool> setHasVibration(boolVal) async {
+    return await sharedPreferences.setString(AppConstant.HAS_VIBRATION, boolVal.toString());
+  }
+
+  String getHasVibration() {
+    return sharedPreferences.getString(AppConstant.HAS_VIBRATION) ?? "";
+  }
+
   bool clearSharedData() {
     sharedPreferences.remove(AppConstant.COUNTER);
     sharedPreferences.remove(AppConstant.INTRO_COUNTER);

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rosary/controllers/chaplet_template_controller.dart';
+import 'package:rosary/utils/show_custom_snackbar.dart';
 import 'package:rosary/widgets/main_text.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
@@ -24,6 +25,7 @@ class RosaryAppBarWidget extends StatefulWidget implements PreferredSizeWidget {
 class _RosaryAppBarWidgetState extends State<RosaryAppBarWidget> {
   List<TargetFocus> targets = [];
   TutorialCoachMark? tutorialCoachMark;
+
   final _chapletController = Get.find<ChapletController>();
   @override
   void initState() {
@@ -113,19 +115,45 @@ class _RosaryAppBarWidgetState extends State<RosaryAppBarWidget> {
       ),
       backgroundColor: Theme.of(context).colorScheme.secondary,
       actions: <Widget>[
-        IconButton(
-          key: resetKey,
-          icon: Icon(
-            Icons.autorenew_sharp,
-            size: 22.sp,
-          ),
-          onPressed: () {
-            Get.toNamed(RouteHelpers.templatePage);
-          },
-        ),
+        GetBuilder<MainController>(builder: (main) {
+          return IconButton(
+            key: resetKey,
+            icon: Row(
+              children: [
+
+               main.getHasVibration() == "true"? InkWell(
+                onTap: (){
+                  main.setHasVibration(false);
+                  showCustomSnackBar("vibration_disabled".tr);
+                },
+                 child: Icon(
+                    color: Colors.white,
+                    Icons.vibration_rounded,
+                    size: 22.sp,
+                  ),
+               ):InkWell(
+                onTap: (){
+                   main.setHasVibration(true);
+                   showCustomSnackBar("vibration_enabled".tr);
+                },
+                 child: Icon(
+                    color: Colors.grey.shade500,
+                    Icons.vibration_rounded,
+                    size: 22.sp,
+                  ),
+               ),
+                // Icons.par,
+              ],
+            ),
+            onPressed: () {
+              //Get.toNamed(RouteHelpers.templatePage);
+            },
+          );
+        }),
         IconButton(
           key: settingsKey,
           icon: Icon(
+            color: Colors.white,
             Icons.settings,
             size: 22.sp,
           ),

@@ -9,6 +9,7 @@ import 'package:rosary/utils/constants.dart';
 import 'package:rosary/widgets/app_icon.dart';
 import 'package:rosary/widgets/bead_number_widget.dart';
 import 'package:rosary/widgets/main_text.dart';
+import 'package:vibration/vibration.dart';
 
 import '../controllers/main_controller.dart';
 import '../utils/dimensions.dart';
@@ -25,13 +26,16 @@ class ChapletPage extends StatefulWidget {
 
 class _ChapletPageState extends State<ChapletPage> {
   final _mainController = Get.find<MainController>();
-
+  late ScrollController _scrollController;
   final _chapletController = Get.find<ChapletController>();
-  final PageController _pageController = PageController();
+  late PageController _pageController;
 
   @override
   void initState() {
     super.initState();
+    _scrollController = ScrollController();
+    _pageController =
+        PageController(initialPage: _mainController.currentBidFocusId);
     _chapletController.getTemplate();
     // Perform initialization tasks here
 
@@ -60,8 +64,6 @@ class _ChapletPageState extends State<ChapletPage> {
     // Add more instances as needed
   ];
 
-  final ScrollController _scrollController = ScrollController();
-
   var gloryPrayer = AppConstant.GLORY_BE_TO_FATHER;
 
   var hailMaryPrayer = AppConstant.HAIL_MARY;
@@ -69,20 +71,29 @@ class _ChapletPageState extends State<ChapletPage> {
   var ourFatherPrayer = AppConstant.OUR_FATHER;
 
   void scrollRight() {
-    _scrollController.animateTo(
-      _scrollController.position.maxScrollExtent,
-      duration: const Duration(milliseconds: 100),
-      curve: Curves.easeInOut,
-    );
+    try {
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 100),
+        curve: Curves.easeInOut,
+      );
+    } catch (err) {
+      print(err);
+    }
   }
 
   void scrollLeft() {
-    _scrollController.animateTo(
-      _scrollController.offset -
-          400, // Adjust this value for desired scrolling distance
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
+    try {
+      _scrollController.animateTo(
+        _scrollController.offset -
+            400, // Adjust this value for desired scrolling distance
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    } catch (err) {
+     
+      print(err);
+    }
   }
 
   @override
@@ -151,60 +162,6 @@ class _ChapletPageState extends State<ChapletPage> {
                 SizedBox(
                   height: 15.h,
                 ),
-                counter >= 10
-                    ? ElevatedButton.icon(
-                        onPressed: () {
-                          // Get.toNamed(RouteHelpers.mysteryPage);
-                          main.setMysteryCounter(1);
-                          if (main.currentMyesteryCounter == 6) {
-                            Get.toNamed(RouteHelpers.endPrayerPage);
-                          } else {
-                            Get.toNamed(RouteHelpers.mysteryPage);
-                            //Get.toNamed(RouteHelpers.progressPrayerPage);
-                          }
-                        },
-                        icon: const Icon(
-                            Icons.double_arrow_outlined), // Your desired icon
-                        label: Text('continue'.tr), // Your desired text
-                        style: ElevatedButton.styleFrom(
-                          // primary: Theme.of(context)
-                          //     .colorScheme
-                          //     .secondary, // Background color
-                          // onPrimary: Colors.white, // Text and icon color
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 12),
-                          textStyle: TextStyle(fontSize: 16.sp),
-                        ),
-                      )
-                    : Container(),
-                counter == 0
-                    ? ElevatedButton.icon(
-                        onPressed: () {
-                          var count = main.currentBidFocusId;
-
-                          if (count <= 0) {
-                            // if(main.currentDecade >1)
-                            // main.setMysteryCounterDecrement(1);
-                            Get.toNamed(RouteHelpers.mysteryPage);
-                            return;
-                          }
-                          main.setBidFocus(count - 1);
-                        },
-                        icon: const Icon(
-                            Icons.double_arrow_outlined), // Your desired icon
-                        label: const Text(
-                            'Back to Mysteries'), // Your desired text
-                        style: ElevatedButton.styleFrom(
-                          // primary: Theme.of(context)
-                          //     .colorScheme
-                          //     .secondary, // Background color
-                          // onPrimary: Colors.white, // Text and icon color
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 12),
-                          textStyle: const TextStyle(fontSize: 16),
-                        ),
-                      )
-                    : Container(),
                 chaplet.templateType == AppConstant.CHAPLET_TEMPLATE_ONE ||
                         chaplet.templateType == ""
                     ? SizedBox(
@@ -218,6 +175,8 @@ class _ChapletPageState extends State<ChapletPage> {
                             return InkWell(
                               onTap: () {
                                 main.setBidFocus(item.id);
+                                print(item.id);
+                                item.id == 11 ? null : AppConstant.vibrator();
                               },
                               child: BidWidget(
                                 id: item.id,
@@ -236,8 +195,30 @@ class _ChapletPageState extends State<ChapletPage> {
                           onPageChanged: (page) {
                             counter = page;
                             main.setBidFocus(page);
+
+                            if (counter == 0) {
+                              Get.toNamed(RouteHelpers.mysteryPage);
+                              return;
+                            }
+                            if (counter <= 10) {
+                              AppConstant.vibrator();
+                            } else if (counter == 11) {
+                              null;
+                            } else if (counter == 12) {
+                              _pageController.jumpToPage(
+                                counter,
+                              );
+                              main.setMysteryCounter(1);
+                              if (main.currentMyesteryCounter == 6) {
+                                Get.toNamed(RouteHelpers.endPrayerPage);
+                              } else {
+                                Get.toNamed(RouteHelpers.mysteryPage);
+                                //Get.toNamed(RouteHelpers.progressPrayerPage);
+                              }
+                              return;
+                            }
                           },
-                          itemCount: 11,
+                          itemCount: 14,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             return Container(
@@ -247,22 +228,102 @@ class _ChapletPageState extends State<ChapletPage> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Container(),
-                                      AppConstant.getBead(counter, 1),
-                                      AppConstant.getBead(counter, 2),
-                                      AppConstant.getBead(counter, 3),
-                                      AppConstant.getBead(counter, 4),
-                                      AppConstant.getBead(counter, 5)
+                                      InkWell(
+                                          onTap: () {
+                                            _pageController.jumpToPage(0);
+                                            main.setBidFocus(0);
+                                            AppConstant.vibrator();
+                                          },
+                                          child:
+                                              AppConstant.getBead(counter, 0)),
+                                      InkWell(
+                                          onTap: () {
+                                            _pageController.jumpToPage(1);
+                                            main.setBidFocus(1);
+                                            AppConstant.vibrator();
+                                          },
+                                          child:
+                                              AppConstant.getBead(counter, 1)),
+                                      InkWell(
+                                          onTap: () {
+                                            _pageController.jumpToPage(2);
+                                            main.setBidFocus(2);
+                                            AppConstant.vibrator();
+                                          },
+                                          child:
+                                              AppConstant.getBead(counter, 2)),
+                                      InkWell(
+                                          onTap: () {
+                                            _pageController.jumpToPage(3);
+                                            main.setBidFocus(3);
+                                            AppConstant.vibrator();
+                                          },
+                                          child:
+                                              AppConstant.getBead(counter, 3)),
+                                      InkWell(
+                                          onTap: () {
+                                            _pageController.jumpToPage(4);
+                                            main.setBidFocus(4);
+                                            AppConstant.vibrator();
+                                          },
+                                          child:
+                                              AppConstant.getBead(counter, 4)),
+                                      InkWell(
+                                          onTap: () {
+                                            _pageController.jumpToPage(5);
+                                            main.setBidFocus(5);
+                                            AppConstant.vibrator();
+                                          },
+                                          child:
+                                              AppConstant.getBead(counter, 5))
                                     ],
                                   ),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      AppConstant.getBead(counter, 6),
-                                      AppConstant.getBead(counter, 7),
-                                      AppConstant.getBead(counter, 8),
-                                      AppConstant.getBead(counter, 9),
-                                      AppConstant.getBead(counter, 10)
+                                      InkWell(
+                                          onTap: () {
+                                            _pageController.jumpToPage(6);
+                                            main.setBidFocus(6);
+                                            AppConstant.vibrator();
+                                          },
+                                          child:
+                                              AppConstant.getBead(counter, 6)),
+                                      InkWell(
+                                          onTap: () {
+                                            _pageController.jumpToPage(7);
+                                            main.setBidFocus(7);
+                                            AppConstant.vibrator();
+                                          },
+                                          child:
+                                              AppConstant.getBead(counter, 7)),
+                                      InkWell(
+                                          onTap: () {
+                                            _pageController.jumpToPage(8);
+                                            main.setBidFocus(8);
+                                            AppConstant.vibrator();
+                                          },
+                                          child:
+                                              AppConstant.getBead(counter, 8)),
+                                      InkWell(
+                                          onTap: () {
+                                            _pageController.jumpToPage(9);
+                                            main.setBidFocus(9);
+                                            AppConstant.vibrator();
+                                          },
+                                          child:
+                                              AppConstant.getBead(counter, 9)),
+                                      InkWell(
+                                          onTap: () {
+                                            _pageController.jumpToPage(10);
+                                            main.setBidFocus(10);
+                                            AppConstant.vibrator();
+                                          },
+                                          child:
+                                              AppConstant.getBead(counter, 10)),
+                                      AppConstant.getBead(counter, 11),
+                                      AppConstant.getBead(counter, 12),
+                                      //AppConstant.getBead(counter, 11)
                                     ],
                                   ),
                                 ],
@@ -282,22 +343,36 @@ class _ChapletPageState extends State<ChapletPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: () {
-                    var count = main.currentBidFocusId;
+                  onTap: () async {
+                    try {
+                      var count = main.currentBidFocusId;
 
-                    if (count <= 0) {
-                      // if(main.currentDecade >1)
-                      // main.setMysteryCounterDecrement(1);
-                      Get.toNamed(RouteHelpers.mysteryPage);
-                      return;
-                    }
-                    main.setBidFocus(count - 1);
-                    if (count == 6) {
-                      if (chaplet.templateType ==
-                              AppConstant.CHAPLET_TEMPLATE_ONE ||
-                          chaplet.templateType == "") {
-                        scrollLeft();
+                      if (count <= 0) {
+                        // if(main.currentDecade >1)
+                        // main.setMysteryCounterDecrement(1);
+                        Get.toNamed(RouteHelpers.mysteryPage);
+                        return;
                       }
+                      count == 11 ? null : AppConstant.vibrator();
+
+                      main.setBidFocus(count - 1);
+
+                      if (chaplet.templateType !=
+                              AppConstant.CHAPLET_TEMPLATE_ONE &&
+                          chaplet.templateType != "") {
+                       
+                        _pageController.jumpToPage(count - 1);
+                      }
+
+                      if (count == 6) {
+                        if (chaplet.templateType ==
+                                AppConstant.CHAPLET_TEMPLATE_ONE ||
+                            chaplet.templateType == "") {
+                          scrollLeft();
+                        }
+                      }
+                    } catch (er) {
+                      print(er);
                     }
                   },
                   child: AppIcon(
@@ -309,30 +384,43 @@ class _ChapletPageState extends State<ChapletPage> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {
-                    var count = main.currentBidFocusId;
-                    if (count == 11) {
-                      _pageController.jumpToPage(
-                        counter,
-                      );
-                      main.setMysteryCounter(1);
-                      if (main.currentMyesteryCounter == 6) {
-                        Get.toNamed(RouteHelpers.endPrayerPage);
-                      } else {
-                        Get.toNamed(RouteHelpers.mysteryPage);
-                        //Get.toNamed(RouteHelpers.progressPrayerPage);
-                      }
-                      return;
-                    }
+                  onTap: () async {
+                    try {
+                      var count = main.currentBidFocusId;
 
-                    main.setBidFocus(count + 1);
-
-                    if (count > 4) {
-                      if (chaplet.templateType ==
-                              AppConstant.CHAPLET_TEMPLATE_ONE ||
-                          chaplet.templateType == "") {
-                        scrollRight();
+                      if (count >= 11) {
+                        // _pageController.jumpToPage(
+                        //   counter,
+                        // );
+                        main.setMysteryCounter(1);
+                        if (main.currentMyesteryCounter == 6) {
+                          Get.toNamed(RouteHelpers.endPrayerPage);
+                        } else {
+                          Get.toNamed(RouteHelpers.mysteryPage);
+                          //Get.toNamed(RouteHelpers.progressPrayerPage);
+                        }
+                        return;
                       }
+                      AppConstant.vibrator();
+                      main.setBidFocus(count + 1);
+                      if (chaplet.templateType !=
+                              AppConstant.CHAPLET_TEMPLATE_ONE  &&
+                          chaplet.templateType != "") {
+                       
+                        _pageController.jumpToPage(count + 1);
+                      }
+
+                      if (count > 4) {
+                       
+                        if (chaplet.templateType ==
+                                AppConstant.CHAPLET_TEMPLATE_ONE ||
+                            chaplet.templateType == "") {
+                          scrollRight();
+                        }
+                      }
+                    } catch (err) {
+                      
+                      print(err);
                     }
                   },
                   child: AppIcon(
@@ -351,9 +439,20 @@ class _ChapletPageState extends State<ChapletPage> {
     });
   }
 
+  // void _vibrator({bool isLast = true}) async {
+  //   print("is last: $isLast");
+  //   bool? hasVibrator = await Vibration.hasVibrator();
+  //   if (hasVibrator!) {
+  //     isLast
+  //         ? Vibration.vibrate(duration: 1000)
+  //         : Vibration.vibrate(duration: 500);
+  //   }
+  // }
+
   @override
   void dispose() {
     _pageController.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 }

@@ -6,35 +6,37 @@ PODS:
   - connectivity (0.0.1):
     - Flutter
     - Reachability
-  - DKImagePickerController/Core (4.3.4):
+  - device_info_plus (0.0.1):
+    - Flutter
+  - DKImagePickerController/Core (4.3.9):
     - DKImagePickerController/ImageDataManager
     - DKImagePickerController/Resource
-  - DKImagePickerController/ImageDataManager (4.3.4)
-  - DKImagePickerController/PhotoGallery (4.3.4):
+  - DKImagePickerController/ImageDataManager (4.3.9)
+  - DKImagePickerController/PhotoGallery (4.3.9):
     - DKImagePickerController/Core
     - DKPhotoGallery
-  - DKImagePickerController/Resource (4.3.4)
-  - DKPhotoGallery (0.0.17):
-    - DKPhotoGallery/Core (= 0.0.17)
-    - DKPhotoGallery/Model (= 0.0.17)
-    - DKPhotoGallery/Preview (= 0.0.17)
-    - DKPhotoGallery/Resource (= 0.0.17)
+  - DKImagePickerController/Resource (4.3.9)
+  - DKPhotoGallery (0.0.19):
+    - DKPhotoGallery/Core (= 0.0.19)
+    - DKPhotoGallery/Model (= 0.0.19)
+    - DKPhotoGallery/Preview (= 0.0.19)
+    - DKPhotoGallery/Resource (= 0.0.19)
     - SDWebImage
     - SwiftyGif
-  - DKPhotoGallery/Core (0.0.17):
+  - DKPhotoGallery/Core (0.0.19):
     - DKPhotoGallery/Model
     - DKPhotoGallery/Preview
     - SDWebImage
     - SwiftyGif
-  - DKPhotoGallery/Model (0.0.17):
+  - DKPhotoGallery/Model (0.0.19):
     - SDWebImage
     - SwiftyGif
-  - DKPhotoGallery/Preview (0.0.17):
+  - DKPhotoGallery/Preview (0.0.19):
     - DKPhotoGallery/Model
     - DKPhotoGallery/Resource
     - SDWebImage
     - SwiftyGif
-  - DKPhotoGallery/Resource (0.0.17):
+  - DKPhotoGallery/Resource (0.0.19):
     - SDWebImage
     - SwiftyGif
   - file_picker (0.0.1):
@@ -43,9 +45,9 @@ PODS:
   - Flutter (1.0.0)
   - flutter_tts (0.0.1):
     - Flutter
-  - FMDB (2.7.5):
-    - FMDB/standard (= 2.7.5)
-  - FMDB/standard (2.7.5)
+  - FMDB (2.7.11):
+    - FMDB/standard (= 2.7.11)
+  - FMDB/standard (2.7.11)
   - image_picker_ios (0.0.1):
     - Flutter
   - just_audio (0.0.1):
@@ -59,12 +61,12 @@ PODS:
     - FlutterMacOS
   - rate_my_app (1.1.4):
     - Flutter
-  - Reachability (3.2)
+  - Reachability (3.7.6)
   - rive_common (0.0.1):
     - Flutter
-  - SDWebImage (5.18.5):
-    - SDWebImage/Core (= 5.18.5)
-  - SDWebImage/Core (5.18.5)
+  - SDWebImage (5.19.2):
+    - SDWebImage/Core (= 5.19.2)
+  - SDWebImage/Core (5.19.2)
   - share (0.0.1):
     - Flutter
   - shared_preferences_foundation (0.0.1):
@@ -73,7 +75,9 @@ PODS:
   - sqflite (0.0.3):
     - Flutter
     - FMDB (>= 2.7.5)
-  - SwiftyGif (5.4.4)
+  - SwiftyGif (5.4.5)
+  - vibration (1.7.5):
+    - Flutter
   - webview_flutter_wkwebview (0.0.1):
     - Flutter
 
@@ -81,6 +85,7 @@ DEPENDENCIES:
   - audio_service (from `.symlinks/plugins/audio_service/ios`)
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
   - connectivity (from `.symlinks/plugins/connectivity/ios`)
+  - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - file_picker (from `.symlinks/plugins/file_picker/ios`)
   - Flutter (from `Flutter`)
   - flutter_tts (from `.symlinks/plugins/flutter_tts/ios`)
@@ -94,6 +99,7 @@ DEPENDENCIES:
   - share (from `.symlinks/plugins/share/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
+  - vibration (from `.symlinks/plugins/vibration/ios`)
   - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
 
 SPEC REPOS:
@@ -112,6 +118,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/audio_session/ios"
   connectivity:
     :path: ".symlinks/plugins/connectivity/ios"
+  device_info_plus:
+    :path: ".symlinks/plugins/device_info_plus/ios"
   file_picker:
     :path: ".symlinks/plugins/file_picker/ios"
   Flutter:
@@ -138,6 +146,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
+  vibration:
+    :path: ".symlinks/plugins/vibration/ios"
   webview_flutter_wkwebview:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
@@ -145,27 +155,29 @@ SPEC CHECKSUMS:
   audio_service: f509d65da41b9521a61f1c404dd58651f265a567
   audio_session: 4f3e461722055d21515cf3261b64c973c062f345
   connectivity: c4130b2985d4ef6fd26f9702e886bd5260681467
-  DKImagePickerController: b512c28220a2b8ac7419f21c491fc8534b7601ac
-  DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
+  device_info_plus: 97af1d7e84681a90d0693e63169a5d50e0839a0d
+  DKImagePickerController: 946cec48c7873164274ecc4624d19e3da4c1ef3c
+  DKPhotoGallery: b3834fecb755ee09a593d7c9e389d8b5d6deed60
   file_picker: 15fd9539e4eb735dc54bae8c0534a7a9511a03de
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_tts: 0f492aab6accf87059b72354fcb4ba934304771d
-  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  FMDB: 57486c1117fd8e0e6b947b2f54c3f42bf8e57a4e
   image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
   just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
   launch_review: 75d5a956ba8eaa493e9c9d4bf4c05e505e8d5ed0
   open_file: 02eb5cb6b21264bd3a696876f5afbfb7ca4f4b7d
   path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
   rate_my_app: e249ec0751c276811746ff89558c23dc0da39f0c
-  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  Reachability: fd0ecd23705e2599e4cceeb943222ae02296cbc6
   rive_common: 8a159d68033a8b073e5853acc50f03aa486a2888
-  SDWebImage: 7ac2b7ddc5e8484c79aa90fc4e30b149d6a2c88f
+  SDWebImage: dfe95b2466a9823cf9f0c6d01217c06550d7b29a
   share: 0b2c3e82132f5888bccca3351c504d0003b3b410
   shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126
   sqflite: 31f7eba61e3074736dff8807a9b41581e4f7f15a
-  SwiftyGif: 93a1cc87bf3a51916001cf8f3d63835fb64c819f
+  SwiftyGif: 706c60cf65fa2bc5ee0313beece843c8eb8194d4
+  vibration: 7d883d141656a1c1a6d8d238616b2042a51a1241
   webview_flutter_wkwebview: b7e70ef1ddded7e69c796c7390ee74180182971f
 
-PODFILE CHECKSUM: 19fae339846e85ad5ab5534342ce99c8810b2acf
+PODFILE CHECKSUM: 7bb08e8bd89bec0588bdb44b8f8bbb6ec0b86ee0
 
 COCOAPODS: 1.15.2

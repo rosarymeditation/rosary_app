@@ -333,6 +333,9 @@ class MainController extends GetxController implements GetxService {
   bool _isContinueRosary = false;
   bool get isContinueRosary => _isContinueRosary;
 
+  bool _hasVibration = true;
+  bool get hasVibration => _hasVibration;
+
   late PrayerModel _currentPrayer;
   PrayerModel get currentPrayer => _currentPrayer;
 
@@ -522,6 +525,21 @@ class MainController extends GetxController implements GetxService {
 
   Future<bool> setHasCache(boolVal) {
     return mainRepo.setHasCache(boolVal);
+  }
+
+  Future<void>? setHasVibration(bool boolVal) async {
+    _hasVibration = boolVal;
+   
+    await  mainRepo.setHasVibration(boolVal);
+     getHasVibration();
+      update();
+  }
+
+  String getHasVibration() {
+   // _hasVibration =  mainRepo.getHasVibration();
+    
+   print(mainRepo.getHasVibration());
+    return mainRepo.getHasVibration();
   }
 
   bool getHasCache() {
