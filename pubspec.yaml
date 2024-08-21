@@ -2,7 +2,7 @@ name: rosary
 description: A rosary app built by softnergy limited.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -16,10 +16,10 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.0+48
+version: 1.0.0+49
 
 environment:
-  sdk: '>=3.1.0-262.1.beta <4.0.0'
+  sdk: ">=3.1.0-262.1.beta <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -47,8 +47,8 @@ dependencies:
   connectivity: ^3.0.6
   focused_menu: ^1.0.2
   flutter_spinkit: ^5.1.0
-  shimmer: 
-  confetti: 
+  shimmer:
+  confetti:
   cached_network_image:
   pull_to_refresh: ^2.0.0
   cupertino_icons: ^1.0.5
@@ -59,22 +59,22 @@ dependencies:
   showcaseview: ^1.1.8
   image_picker: ^0.8.5+3
   font_awesome_flutter: ^9.1.0
-  file_picker: 
+  file_picker:
   open_file:
   audio_service: ^0.18.9
-  audio_video_progress_bar: 
+  audio_video_progress_bar:
   just_audio: ^0.9.30
   just_audio_background:
   rxdart: ^0.27.5
-  html: ^0.15.0 
+  html: ^0.15.0
   rate_my_app: ^1.1.2
   flutter_tts: ^3.8.3
   avatar_glow: ^2.0.2
-  flutter_paypal: 
+  flutter_paypal:
   getwidget: ^4.0.0
   html_unescape: ^2.0.0
   tutorial_coach_mark: ^1.2.11
-  
+
 dependency_overrides:
   # Waiting for https://github.com/GetStream/stream-chat-flutter/issues/1920
   audio_video_progress_bar: ^2.0.2
@@ -105,7 +105,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -113,16 +112,16 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/images/
-     - assets/data/
-     - assets/flags/
-     - assets/icon/
-     - assets/language/
-     - assets/images/sorrow/
-     - assets/joyful/
-     - assets/luminous/
-     - assets/glorious/
-     - assets/sorrowful/
+    - assets/images/
+    - assets/data/
+    - assets/flags/
+    - assets/icon/
+    - assets/language/
+    - assets/images/sorrow/
+    - assets/joyful/
+    - assets/luminous/
+    - assets/glorious/
+    - assets/sorrowful/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -140,16 +139,16 @@ flutter:
     - family: Cinzel
       fonts:
         - asset: assets/fonts/Cinzel-VariableFont_wght.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+    #       - asset: fonts/Schyler-Italic.ttf
+    #         style: italic
     - family: Garamond
       fonts:
         - asset: assets/fonts/CormorantGaramond-Regular.ttf
-          
+
     - family: Playfair
       fonts:
         - asset: assets/fonts/PlayfairDisplay-VariableFont_wght.ttf
-          
+
     - family: Georgian
       fonts:
         - asset: assets/fonts/NotoSerifGeorgian-VariableFont_wdth,wght.ttf
