@@ -125,7 +125,9 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(() => BugFeedbackController(
       bugFeedbackRepo: Get.find(), sharedPreferences: Get.find()));
   Get.lazyPut(() => PrayerRequestController(prayerRequestRepo: Get.find()));
-  Get.lazyPut(() => AudioController(audioRepo: Get.find()));
+  Get.lazyPut(() => AudioController(
+        audioRepo: Get.find(),
+      ));
   Get.lazyPut(() => LocalizationController(sharedPreferences: Get.find()));
   Get.lazyPut(() =>
       UserController(userRepo: Get.find(), sharedPreferences: Get.find()));

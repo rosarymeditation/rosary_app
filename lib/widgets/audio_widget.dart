@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:rosary/model/audio_model_cache.dart';
 import 'package:rosary/widgets/main_text.dart';
 
 import '../controllers/audio_controller.dart';
@@ -61,6 +62,7 @@ class AudioWidget extends StatelessWidget {
                         final playing = playerState?.playing;
                         if (!(playing ?? false)) {
                           return CircleAvatar(
+                            backgroundColor: Colors.grey.shade500,
                             radius: 25.sp,
                             child: IconButton(
                               onPressed: () async {
@@ -73,11 +75,15 @@ class AudioWidget extends StatelessWidget {
                                 // );
                               },
                               iconSize: 30.sp,
-                              icon: const Icon(Icons.play_arrow),
+                              icon: const Icon(
+                                //color: Colors.red,
+                                Icons.play_arrow,
+                              ),
                             ),
                           );
                         } else {
                           return CircleAvatar(
+                            backgroundColor: Colors.grey.shade500,
                             radius: 25.sp,
                             child: IconButton(
                               onPressed: () async {
@@ -90,7 +96,7 @@ class AudioWidget extends StatelessWidget {
                         }
                       })
                   : CircleAvatar(
-                      backgroundColor: Theme.of(context).colorScheme.tertiary,
+                      backgroundColor: Colors.grey.shade500,
                       radius: 25.sp,
                       child: IconButton(
                         onPressed: () async {
@@ -102,7 +108,9 @@ class AudioWidget extends StatelessWidget {
                           await audioPlayer.play();
                         },
                         iconSize: 30.sp,
-                        icon: Icon(Icons.play_arrow),
+                        icon: Icon(
+                          Icons.play_arrow,
+                        ),
                       ),
                     ),
             ],

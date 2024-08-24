@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:rosary/controllers/langauge_controller.dart';
 import 'package:rosary/route/route_helpers.dart';
 import 'package:rosary/widgets/dash_simple_widget.dart';
+import 'package:rosary/widgets/main_app_bar_widget.dart';
 import 'package:rosary/widgets/start_rosary_widget.dart';
 import '../controllers/affirmation_controller.dart';
 import '../controllers/dailyVerse_controller.dart';
@@ -52,7 +53,6 @@ class _StartScreenState extends State<StartScreen> {
     super.initState();
 
     _mainController.getStaticMystery();
-
   }
 
   @override
@@ -61,12 +61,13 @@ class _StartScreenState extends State<StartScreen> {
       builder: (main) {
         return Scaffold(
           backgroundColor: Theme.of(context).colorScheme.background,
-          appBar: AppBar(
-            centerTitle: true,
-            automaticallyImplyLeading: false,
-            title: Text('${AppConstant.APP_NAME.tr}'),
-            backgroundColor: Theme.of(context).colorScheme.secondary,
-          ),
+          appBar: MainAppBarWidget(text: AppConstant.APP_NAME.tr),
+          // AppBar(
+          //   centerTitle: true,
+          //   automaticallyImplyLeading: false,
+          //   title: Text('${AppConstant.APP_NAME.tr}'),
+          //   backgroundColor: Theme.of(context).colorScheme.secondary,
+          // ),
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

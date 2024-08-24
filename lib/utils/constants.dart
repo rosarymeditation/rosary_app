@@ -94,6 +94,7 @@ class AppConstant {
   static const String MAIN_BID = "main_bid";
   static const String NETWORK_TIMEOUT_MESSAGE = "network_timeout_message";
   static const String PRAYER_REQUEST_KEY = "request_key";
+  static const String AUDIO_CACHE_KEY = "audi_cache_k";
   static const String INTRO_COUNTER = "intro_counter";
   static const String COUNTER = "counter";
   static const String MYSTERY_COUNTER = "mystery_counter";

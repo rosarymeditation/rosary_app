@@ -154,7 +154,6 @@ class _AudioEngineState extends State<AudioEngine> {
                         return InkWell(
                           onTap: () async {
                             //_audioController.audioPlayer.play();
-                            print("id outer ${e.id}");
 
                             // await_audioController.audioPlayer.seek(
                             //   Duration.zero,

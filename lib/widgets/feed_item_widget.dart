@@ -142,12 +142,12 @@ class FeedItemWidget extends StatelessWidget {
                               color:
                                   Theme.of(context).colorScheme.inversePrimary)
                           : Text(""),
-                      SizedBox(
-                        width: 2.w,
-                      ),
-                      MainText(
-                          text: 'Love',
-                          color: Theme.of(context).colorScheme.inversePrimary)
+                      // SizedBox(
+                      //   width: 2.w,
+                      // ),
+                      // MainText(
+                      //     text: 'Love',
+                      //     color: Theme.of(context).colorScheme.inversePrimary)
                     ],
                   ),
                 ),
@@ -263,10 +263,10 @@ class FeedItemWidget extends StatelessWidget {
                 ),
                 onTap: () {
                   print("Helloooo----------------------");
-              // _feedController.setEditingContent(feed);
-              // Navigator.of(context).pop();
-              // Get.toNamed(RouteHelpers.feedEdittPage);
-               _feedController.setEditingContent(feed);
+                  // _feedController.setEditingContent(feed);
+                  // Navigator.of(context).pop();
+                  // Get.toNamed(RouteHelpers.feedEdittPage);
+                  _feedController.setEditingContent(feed);
                   Navigator.of(context).pop();
                   Get.toNamed(RouteHelpers.feedEdittPage);
                 }),
