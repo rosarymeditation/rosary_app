@@ -8,6 +8,7 @@ import 'package:rosary/widgets/main_text.dart';
 
 import '../controllers/affirmation_controller.dart';
 import '../controllers/dailyVerse_controller.dart';
+import '../main_screens/ad_mob_banner.dart';
 
 class DailyVerseScreen extends StatefulWidget {
   const DailyVerseScreen({super.key});
@@ -48,6 +49,9 @@ class _DailyVerseScreenState extends State<DailyVerseScreen> {
                           text: data.dailyVerseModel.content!,
                           size: 20.sp,
                         ),
+                        SizedBox(
+                          height: 80.h,
+                        ),
                       ])
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,10 +72,16 @@ class _DailyVerseScreenState extends State<DailyVerseScreen> {
                           text: "daily_verse",
                           size: 20.sp,
                         ),
+                        SizedBox(
+                          height: 80.h,
+                        ),
                       ]),
           ),
         );
       }),
+      bottomNavigationBar: Container(
+        child: AdMobBanner(),
+      ),
     );
   }
 }

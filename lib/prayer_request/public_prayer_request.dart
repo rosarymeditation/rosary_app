@@ -9,6 +9,7 @@ import 'package:rosary/widgets/big_text.dart';
 import 'package:rosary/widgets/main_app_bar_widget.dart';
 import 'package:rosary/widgets/main_text.dart';
 
+import '../main_screens/ad_mob_banner.dart';
 import '../utils/dimensions.dart';
 import '../widgets/feed_item_widget.dart';
 import '../widgets/prayer_request_item_widget.dart';
@@ -120,6 +121,9 @@ class _PublicPrayerRequestState extends State<PublicPrayerRequest> {
                       //backgroundColor: AppColor.primaryColor,
                       ),
                 ),
+          bottomNavigationBar: Container(
+            child: AdMobBanner(),
+          ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
               Get.toNamed(RouteHelpers.publicPrayerRequestCreatePage);

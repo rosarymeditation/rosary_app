@@ -14,6 +14,7 @@ import 'package:rosary/songs/meta_data.dart';
 import 'package:rosary/widgets/audio_widget.dart';
 
 import '../controllers/audio_controller.dart';
+import '../main_screens/ad_mob_banner.dart';
 import '../utils/constants.dart';
 import 'controls.dart';
 
@@ -171,7 +172,11 @@ class _AudioEngineState extends State<AudioEngine> {
                           ),
                         ); // Replace YourWidget with the widget you want to use for each song
                       }).toList(),
-                    )
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    AdMobBanner(),
                   ],
                 ),
               ),

@@ -10,6 +10,7 @@ import 'package:rosary/utils/constants.dart';
 import 'package:rosary/widgets/main_text.dart';
 import 'package:share/share.dart';
 
+import '../main_screens/ad_mob_banner.dart';
 import '../route/route_helpers.dart';
 import '../widgets/big_text.dart';
 
@@ -149,8 +150,9 @@ class _RosaryCompletionScreenState extends State<RosaryCompletionScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 20.h,
+                      height: 30.h,
                     ),
+                    AdMobBanner(),
                     // ElevatedButton(
                     //   onPressed: () {},
                     //   child: Padding(

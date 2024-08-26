@@ -149,6 +149,8 @@
   "luminous_mystery": "Luminous Mystery",
   "todays_mystery": "Today's Mystery",
   "first_joyful_id": 1,
+   "why_ads":"Why We've Introduced Ads",
+   "why_ads_content": "<div><p>We’ve introduced ads with the utmost care, ensuring they remain unobtrusive so they don’t interfere with your experience. This decision comes after much reflection, as we’ve removed the donation page due to the lack of contributions. Maintaining and improving this app is costly, especially as we strive to provide the best experience for you.</p><p>Our developers have been dedicated to enhancing the app, and these ads help us cover those essential expenses and support future improvements. Our commitment to creating something special for you remains unwavering, and your support is invaluable. We deeply appreciate your understanding and continued presence in our community. Thank you for standing by us as we work to make this app even better.</p></div>",
   "relection": "Reflection",
   "our_father": "<p>Our Father, who art in heaven,</p> <p>Hallowed be thy Name. Thy Kingdom come, thy will be done, On earth as it is in heaven.</p><p>Give us this day our daily bread.</p><p>And forgive us our trespasses, As we forgive those who trespass against us.</p><p>And lead us not into temptation, But deliver us from evil. Amen.</p>",
   "our_father_title": "Our Father",

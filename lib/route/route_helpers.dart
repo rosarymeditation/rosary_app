@@ -45,6 +45,7 @@ import 'package:rosary/screens/rosary_intro.dart';
 import 'package:rosary/main_screens/start_screen.dart';
 import 'package:rosary/screens/template_selection.dart';
 import 'package:rosary/screens/terms.dart';
+import 'package:rosary/screens/why_ads.dart';
 import 'package:rosary/songs/deep_sleep_screen.dart';
 import 'package:rosary/songs/song_screen.dart';
 import 'package:rosary/splash/splash_page.dart';
@@ -78,6 +79,7 @@ class RouteHelpers {
   static const String editProfilePage = "/profile-update-home";
   static const String feedPostPage = "/feed-post";
   static const String commentEdittPage = "/comment-edit";
+  static const String whyAdsPage = "/why-ads";
   static const String prayerDetailPage = "/prayer-detail";
   static const String publicPrayerRequestCreatePage =
       "/public-prayer-request_create";
@@ -129,6 +131,7 @@ class RouteHelpers {
     GetPage(name: chapletPage, page: () => ChapletPage()),
     GetPage(name: donationDisplayPage, page: () => DonationDisplayScreen()),
     GetPage(name: startScreenPage, page: () => StartScreen()),
+    GetPage(name: whyAdsPage, page: () => WhyAdsPage()),
     GetPage(name: profilePage, page: () => ProfileScreen()),
     GetPage(name: rosaryIntroPage, page: () => RosaryIntroPage()),
     //GetPage(name: mysterySelectionPage, page: () => MysterySelectionPage()),

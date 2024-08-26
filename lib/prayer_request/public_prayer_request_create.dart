@@ -10,6 +10,7 @@ import 'package:rosary/widgets/auth_button.dart';
 import 'package:rosary/widgets/main_app_bar_widget.dart';
 import 'package:rosary/widgets/main_text.dart';
 
+import '../main_screens/ad_mob_banner.dart';
 import '../widgets/prayer_request_text_field.dart';
 
 class PublicPrayerRequestCreate extends StatefulWidget {
@@ -79,34 +80,48 @@ class _PublicPrayerRequestCreateState extends State<PublicPrayerRequestCreate> {
                 maxLength: 2,
                 textController: nameController,
                 hintText: "op_name".tr,
-              )
+              ),
+              SizedBox(
+                height: 50.h,
+              ),
             ],
           ),
         ),
         bottomNavigationBar: Container(
+          height: 150.h,
           margin: EdgeInsets.only(bottom: 40.h),
           child: _prayer.isLoaded
-              ? InkWell(
-                  onTap: () {
-                    String content = contentController.text.trim();
-                    String name = nameController.text.trim();
-                    if (content.isEmpty) {
-                      showCustomSnackBar("prayer_request_empty".tr,
-                          title: "invalid_content".tr);
-                      return;
-                    }
-                    _prayer.submitPublicRequest(content, name).then((res) {
-                      if (res.isSuccess) {
-                        showCustomSnackBar("prayer_request_success".tr,
-                            title: "success".tr, isError: false);
-                        Navigator.of(context).pop();
-                      } else {
-                        showCustomSnackBar("error_msg".tr,
-                            title: "Prayer Submission Error");
-                      }
-                    });
-                  },
-                  child: AuthButtonWidget(title: "submit".tr))
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        String content = contentController.text.trim();
+                        String name = nameController.text.trim();
+                        if (content.isEmpty) {
+                          showCustomSnackBar("prayer_request_empty".tr,
+                              title: "invalid_content".tr);
+                          return;
+                        }
+                        _prayer.submitPublicRequest(content, name).then((res) {
+                          if (res.isSuccess) {
+                            showCustomSnackBar("prayer_request_success".tr,
+                                title: "success".tr, isError: false);
+                            Navigator.of(context).pop();
+                          } else {
+                            showCustomSnackBar("error_msg".tr,
+                                title: "Prayer Submission Error");
+                          }
+                        });
+                      },
+                      child: AuthButtonWidget(title: "submit".tr),
+                    ),
+                    SizedBox(
+                      height: 30.h,
+                    ),
+                    AdMobBanner(),
+                  ],
+                )
               : Container(
                   height: 40.h,
                   child: Center(

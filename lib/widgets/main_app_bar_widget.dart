@@ -19,6 +19,7 @@ class MainAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      foregroundColor: Colors.white,
       automaticallyImplyLeading: hasBackBtn,
       // foregroundColor: Colors.white,
       centerTitle: true,

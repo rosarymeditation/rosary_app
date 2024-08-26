@@ -6,23 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 import 'package:rosary/controllers/distress_controller.dart';
-import 'package:rosary/route/route_helpers.dart';
-import 'package:rosary/utils/constants.dart';
-import 'package:rosary/utils/dimensions.dart';
-import 'package:rosary/widgets/avatar_widget.dart';
-import 'package:rosary/widgets/banner_widget.dart';
 import 'package:rosary/widgets/distress_image.dart';
-import 'package:rosary/widgets/main_app_bar_widget.dart';
 import 'package:rosary/widgets/main_text.dart';
-import 'package:rosary/widgets/name_widget.dart';
-import 'package:rosary/widgets/prayer_banner_widget.dart';
-import 'package:html/parser.dart' show parse;
-import '../controllers/auth_controller.dart';
 import '../controllers/langauge_controller.dart';
-import '../controllers/prayer_controller.dart';
-import '../controllers/user_controller.dart';
-import '../utils/appColor.dart';
-import '../widgets/expandable_text_widget.dart';
+import '../main_screens/ad_mob_banner.dart';
 
 class DistressDetailScreen extends StatefulWidget {
   DistressDetailScreen({super.key});
@@ -92,6 +79,10 @@ class _PrayerDetailScreenState extends State<DistressDetailScreen> {
                           },
                         ),
                       ),
+                      SizedBox(
+                        height: 30.h,
+                      ),
+                      AdMobBanner(),
                     ],
                   );
                 },

@@ -9,6 +9,7 @@ import 'package:rosary/widgets/main_text.dart';
 import 'package:rosary/widgets/prayer_title_widget.dart';
 
 import '../controllers/main_controller.dart';
+import '../main_screens/ad_mob_banner.dart';
 import '../widgets/app_icon.dart';
 
 class RosaryEndPrayerScreen extends StatefulWidget {
@@ -159,6 +160,7 @@ class _RosaryEndPrayerScreenState extends State<RosaryEndPrayerScreen> {
                       SizedBox(
                         height: 20.h,
                       ),
+                      AdMobBanner(),
                     ],
                   ),
                 ),

@@ -3,23 +3,20 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rosary/utils/constants.dart';
+import 'package:rosary/widgets/main_app_bar_widget.dart';
 
-import '../main_screens/ad_mob_banner.dart';
-
-class AboutPage extends StatelessWidget {
+class WhyAdsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: AppBar(
-        title: Text('about_us'.tr),
-      ),
+      appBar: MainAppBarWidget(text: 'why_ads'.tr),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: Html(
-          data: "about_content".tr,
+          data: "why_ads_content".tr,
           style: {
-            'ul': Style(fontSize: FontSize(18.sp), fontFamily: "Georgian"),
+            'ol': Style(fontSize: FontSize(16.sp), fontFamily: "Georgian"),
             'p': Style(fontSize: FontSize(18.sp), fontFamily: "Georgian"),
           },
         ),
@@ -48,10 +45,6 @@ class AboutPage extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-            height: 20.h,
-          ),
-          AdMobBanner(),
         ],
       ),
     );

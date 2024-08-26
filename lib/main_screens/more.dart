@@ -6,9 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:launch_review/launch_review.dart';
 import 'package:rosary/controllers/auth_controller.dart';
+import 'package:rosary/main_screens/ad_mob_banner.dart';
 import 'package:rosary/route/route_helpers.dart';
 import 'package:rosary/widgets/account_widget.dart';
-import 'package:rosary/widgets/donate_button.dart';
 import 'package:share/share.dart';
 import '../utils/constants.dart';
 
@@ -30,26 +30,12 @@ class _MoreScreenState extends State<MoreScreen> {
       builder: (auth) {
         return Scaffold(
           backgroundColor: Theme.of(context).colorScheme.background,
-          appBar: Platform.isIOS?AppBar(
+          appBar: AppBar(
             backgroundColor: Theme.of(context).colorScheme.background,
             centerTitle: true,
             elevation: 0,
             automaticallyImplyLeading: false,
             toolbarHeight: 60.h,
-          
-          ):AppBar(
-            backgroundColor: Theme.of(context).colorScheme.background,
-            centerTitle: true,
-            elevation: 0,
-            automaticallyImplyLeading: false,
-            toolbarHeight: 60.h,
-            actions: [
-              InkWell(
-                  onTap: () {
-                    Get.toNamed(RouteHelpers.donationPage);
-                  },
-                  child: const DonateBtnWidget())
-            ],
           ),
           body: SingleChildScrollView(
             child: Padding(
@@ -58,6 +44,19 @@ class _MoreScreenState extends State<MoreScreen> {
                 children: [
                   SizedBox(
                     height: 30.h,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Get.toNamed(RouteHelpers.whyAdsPage);
+                    },
+                    child: AccountWidget(
+                        iconBackgroundColor: Colors.orange.shade600,
+                        hasArrow: true,
+                        leftIcon: Icons.ads_click_outlined,
+                        text: "why_ads"),
+                  ),
+                  SizedBox(
+                    height: 20.h,
                   ),
                   InkWell(
                     onTap: () {
@@ -169,6 +168,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   SizedBox(
                     height: 60.h,
                   ),
+                  AdMobBanner()
                 ],
               ),
             ),

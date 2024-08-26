@@ -10,6 +10,7 @@ import 'package:rosary/route/route_helpers.dart';
 import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/widgets/main_text.dart';
 import '../controllers/main_controller.dart';
+import '../main_screens/ad_mob_banner.dart';
 import '../widgets/app_icon.dart';
 import '../widgets/rosary_app_bar_widget.dart';
 
@@ -136,7 +137,8 @@ class _MysteryScreenState extends State<MysteryScreen> {
                             ),
                             SizedBox(
                               height: 20.h,
-                            )
+                            ),
+                            AdMobBanner(),
                           ],
                         ),
                 ),
@@ -199,7 +201,6 @@ class _MysteryScreenState extends State<MysteryScreen> {
   fetchData(id, type) async {
     String data = await rootBundle.loadString('assets/data/mystery.json');
     var jsonResult = json.decode(data);
-   
 
     for (var item in jsonResult["data"]) {
       if (item["id"] == id &&

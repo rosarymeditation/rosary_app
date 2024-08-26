@@ -4,6 +4,7 @@ import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:rosary/controllers/affirmation_controller.dart';
 import 'package:rosary/controllers/chaplet_template_controller.dart';
@@ -27,6 +28,7 @@ import 'utils/messages.dart';
 late AudioHandler _audioHandler;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await MobileAds.instance.initialize();
 
   await JustAudioBackground.init(
     androidNotificationChannelId: "com.ryanheise.bg_demo.channel.audio",
@@ -65,10 +67,17 @@ Future<void> main() async {
   // }
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   MyApp({required this.languages});
   final Map<String, Map<String, String>> languages;
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     var _termsController = Get.put(
@@ -121,7 +130,7 @@ class MyApp extends StatelessWidget {
 
             locale: localizatonController.locale,
 
-            translations: Messages(languages: languages),
+            translations: Messages(languages: widget.languages),
             fallbackLocale: Locale(AppConstant.languages[0].languageCode,
                 AppConstant.languages[0].countryCode),
             initialRoute: RouteHelpers.initial,

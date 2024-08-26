@@ -19,6 +19,7 @@ import '../controllers/auth_controller.dart';
 import '../controllers/langauge_controller.dart';
 import '../controllers/prayer_controller.dart';
 import '../controllers/user_controller.dart';
+import '../main_screens/ad_mob_banner.dart';
 import '../utils/appColor.dart';
 import '../widgets/expandable_text_widget.dart';
 

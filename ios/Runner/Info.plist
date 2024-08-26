@@ -10,6 +10,8 @@
 	<string>Rosary Meditation Guide</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>GADApplicationIdentifier</key>  
+    <string>ca-app-pub-9069247877868754~8503748619</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>

@@ -5,7 +5,9 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:rosary/controllers/langauge_controller.dart';
+import 'package:rosary/main_screens/ad_mob_banner.dart';
 import 'package:rosary/route/route_helpers.dart';
 import 'package:rosary/widgets/dash_simple_widget.dart';
 import 'package:rosary/widgets/main_app_bar_widget.dart';
@@ -50,6 +52,7 @@ class _StartScreenState extends State<StartScreen> {
 
   @override
   void initState() {
+    // CreateBannerAds();
     super.initState();
 
     _mainController.getStaticMystery();
@@ -404,8 +407,9 @@ class _StartScreenState extends State<StartScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 20.h,
-                )
+                  height: 40.h,
+                ),
+                AdMobBanner(),
               ],
             ),
           ),

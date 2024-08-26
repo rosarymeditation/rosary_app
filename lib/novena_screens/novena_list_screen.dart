@@ -10,6 +10,7 @@ import 'package:rosary/widgets/main_text.dart';
 
 import '../controllers/prayer_controller.dart';
 import '../controllers/psalm_controller.dart';
+import '../main_screens/ad_mob_banner.dart';
 import '../route/route_helpers.dart';
 import '../utils/constants.dart';
 
@@ -34,39 +35,45 @@ class _PsalmListScreenState extends State<NovenaListScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: MainAppBarWidget(text: "powerful_novena"),
-      body: Container(
-        margin: EdgeInsets.only(top: 20.h),
-        padding: EdgeInsets.symmetric(horizontal: 10.w),
-        width: double.maxFinite,
-        child: GetBuilder<PrayerController>(builder: (prayer) {
-          int itemLength = prayer.novenaPrayerList.length;
-          return itemLength > 0
-              ? ListView.builder(
-                  physics: BouncingScrollPhysics(),
-                  itemCount: prayer.novenaPrayerList.length,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    var item = prayer.novenaPrayerList[index];
+      body: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 20.h),
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            width: double.maxFinite,
+            child: GetBuilder<PrayerController>(builder: (prayer) {
+              int itemLength = prayer.novenaPrayerList.length;
+              return itemLength > 0
+                  ? ListView.builder(
+                      physics: BouncingScrollPhysics(),
+                      itemCount: prayer.novenaPrayerList.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        var item = prayer.novenaPrayerList[index];
 
-                    return InkWell(
-                      onTap: () {
-                        prayer.setPrayer(item);
-                        Get.toNamed(RouteHelpers.novenaDetailPage);
-                      },
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: _titleWidget(item.title!),
+                        return InkWell(
+                          onTap: () {
+                            prayer.setPrayer(item);
+                            Get.toNamed(RouteHelpers.novenaDetailPage);
+                          },
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 10),
+                                child: _titleWidget(item.title!),
+                              ),
+                              Divider()
+                            ],
                           ),
-                          Divider()
-                        ],
-                      ),
-                    );
-                  },
-                )
-              : Center(child: timeoutWidget());
-        }),
+                        );
+                      },
+                    )
+                  : Center(child: timeoutWidget());
+            }),
+          ),
+          AdMobBanner(),
+        ],
       ),
     );
   }

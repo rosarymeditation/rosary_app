@@ -8,6 +8,7 @@ import 'package:rosary/widgets/main_text.dart';
 
 import '../controllers/affirmation_controller.dart';
 import '../controllers/dailyVerse_controller.dart';
+import '../main_screens/ad_mob_banner.dart';
 
 class AffirmationScreen extends StatefulWidget {
   const AffirmationScreen({super.key});
@@ -50,6 +51,7 @@ class _AffirmationScreenState extends State<AffirmationScreen> {
                     text: "daily_affirmation",
                     size: 20.sp,
                   ),
+            AdMobBanner(),
           ]),
         );
       }),
