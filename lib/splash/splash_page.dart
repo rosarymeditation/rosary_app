@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:rosary/controllers/dailyReading_controller.dart';
 import 'package:rosary/route/route_helpers.dart';
 import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/utils/constants.dart';
@@ -9,7 +10,6 @@ import 'package:rosary/widgets/big_text.dart';
 
 import '../controllers/audio_controller.dart';
 import '../controllers/feed_controller.dart';
-import '../controllers/main_controller.dart';
 
 class SplashSreen extends StatefulWidget {
   const SplashSreen({Key? key}) : super(key: key);
@@ -45,6 +45,7 @@ class _SplashSreenState extends State<SplashSreen>
 
   var _feedController = Get.find<FeedController>();
   var _audioController = Get.find<AudioController>();
+  var _dailyReadingController = Get.find<DailyReadingController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,6 +84,7 @@ class _SplashSreenState extends State<SplashSreen>
   _loadResources() {
     _feedController.getFeedList();
     _audioController.getVideoList();
+    _dailyReadingController.getFontSizeCache();
   }
 
   @override

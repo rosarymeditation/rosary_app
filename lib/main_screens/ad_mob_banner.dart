@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -15,8 +17,9 @@ class _AdMobBannerState extends State<AdMobBanner> {
     super.initState();
 
     _bannerAd = BannerAd(
-      adUnitId:
-          'ca-app-pub-3632903445022591/1566373978', // Replace with your actual ad unit ID
+      adUnitId: Platform.isAndroid
+          ? 'ca-app-pub-3632903445022591/1566373978'
+          : 'ca-app-pub-3632903445022591/8485175545', // Replace with your actual ad unit ID
       size: AdSize.banner,
       request: AdRequest(),
       listener: BannerAdListener(

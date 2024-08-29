@@ -18,7 +18,9 @@ class DailyVerseRepo {
 
   void cacheDailyVerse(DailyVerseModel data) {
     sharedPreferences.setString(
-        AppConstant.DAILY_VERSE_CACHE, jsonEncode(data));
+      AppConstant.DAILY_VERSE_CACHE,
+      jsonEncode(data),
+    );
   }
 
   DailyVerseModel getDailyVerseCache() {

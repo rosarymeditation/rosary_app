@@ -28,6 +28,7 @@ import 'utils/messages.dart';
 late AudioHandler _audioHandler;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await MobileAds.instance.initialize();
 
   await JustAudioBackground.init(

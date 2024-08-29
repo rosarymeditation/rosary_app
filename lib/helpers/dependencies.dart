@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:rosary/controllers/bugFeedback_controller.dart';
 import 'package:rosary/controllers/chaplet_template_controller.dart';
+import 'package:rosary/controllers/dailyReading_controller.dart';
 import 'package:rosary/controllers/dailyVerse_controller.dart';
 import 'package:rosary/controllers/feed_controller.dart';
 import 'package:rosary/controllers/langauge_controller.dart';
@@ -14,6 +15,7 @@ import 'package:rosary/controllers/terms_controller.dart';
 import 'package:rosary/data/repository/affirmation_repo.dart';
 import 'package:rosary/data/repository/bugFeedback_repo.dart';
 import 'package:rosary/data/repository/chaplet_repo.dart';
+import 'package:rosary/data/repository/dailyReading_repo.dart';
 import 'package:rosary/data/repository/distress_repo.dart';
 import 'package:rosary/data/repository/feedComment_repo.dart';
 import 'package:rosary/data/repository/feed_repo.dart';
@@ -88,6 +90,8 @@ Future<Map<String, Map<String, String>>> init() async {
       () => PrayerRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
   Get.lazyPut(
       () => AudioRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
+  Get.lazyPut(() =>
+      DailyReadingRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
   // Get.lazyPut(() => UserRepo(apiClient: Get.find()));
   // Get.lazyPut(() => CourierRepo(apiClient: Get.find()));
   // Get.lazyPut(
@@ -127,6 +131,10 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(() => PrayerRequestController(prayerRequestRepo: Get.find()));
   Get.lazyPut(() => AudioController(
         audioRepo: Get.find(),
+      ));
+  Get.lazyPut(() => DailyReadingController(
+        dailyReadingRepo: Get.find(),
+        sharedPreferences: Get.find(),
       ));
   Get.lazyPut(() => LocalizationController(sharedPreferences: Get.find()));
   Get.lazyPut(() =>

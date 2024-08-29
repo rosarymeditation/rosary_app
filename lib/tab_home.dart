@@ -120,6 +120,7 @@ import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rate_my_app/rate_my_app.dart';
+import 'package:rosary/main_screens/daily_reading_screen.dart';
 import 'package:rosary/product_screens/market_screen.dart';
 import 'package:rosary/songs/song_screen.dart';
 import 'controllers/auth_controller.dart';
@@ -137,7 +138,6 @@ class TabHomePage extends StatefulWidget {
 }
 
 class _TabHomePageState extends State<TabHomePage> {
-
   var _authController = Get.find<AuthController>();
   int _selectedIndex = 0;
   final RateMyApp rateMyApp = RateMyApp(
@@ -148,21 +148,26 @@ class _TabHomePageState extends State<TabHomePage> {
     appStoreIdentifier: '6463201997',
     googlePlayIdentifier: 'com.rosarysoftnergy.app',
   );
-  List pages = Platform.isIOS?[
-    StartScreen(),
-    //FeedScreen(),
-    // const MarketplaceScreen(),
-    MoreScreen()
-  ]:[
-    StartScreen(),
-    FeedScreen(),
-    // const MarketplaceScreen(),
-    MoreScreen()
-  ];
+  List pages = Platform.isIOS
+      ? [
+          StartScreen(),
+          //FeedScreen(),
+          // const MarketplaceScreen(),
+          DailyReadingScreen(),
+          MoreScreen()
+        ]
+      : [
+          StartScreen(),
+          DailyReadingScreen(),
+          FeedScreen(),
+
+          // const MarketplaceScreen(),
+          MoreScreen()
+        ];
   @override
   void initState() {
     super.initState();
-   // _controller = PersistentTabController(initialIndex: 0);
+    // _controller = PersistentTabController(initialIndex: 0);
   }
 
   void onTapNav(int index) {
@@ -177,63 +182,76 @@ class _TabHomePageState extends State<TabHomePage> {
         return Scaffold(
           body: pages[auth.currentIndex],
           bottomNavigationBar: BottomNavigationBar(
-            selectedItemColor: AppColor.subTitle,
+            selectedItemColor: AppColor.primaryColor,
             unselectedItemColor: AppColor.title,
             showUnselectedLabels: true,
             showSelectedLabels: true,
-            selectedFontSize: 0.0,
-            unselectedFontSize: 0.0,
+            selectedFontSize: 14.sp,
+            unselectedFontSize: 12.sp,
             currentIndex: auth.currentIndex,
             onTap: onTapNav,
-            items:Platform.isIOS? <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                  size: 20.sp,
-                ),
-                label: "home".tr,
-              ),
-              
-              // BottomNavigationBarItem(
-              //   icon: Icon(
-              //     Icons.groups_3,
-              //     size: 20.sp,
-              //   ),
-              //   label: "community".tr,
-              // ),
+            items: Platform.isIOS
+                ? <BottomNavigationBarItem>[
+                    BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.home,
+                        size: 20.sp,
+                      ),
+                      label: "home".tr,
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.calendar_today_sharp,
+                        size: 20.sp,
+                      ),
+                      label: "Daily Reading".tr,
+                    ),
+                    // BottomNavigationBarItem(
+                    //   icon: Icon(
+                    //     Icons.groups_3,
+                    //     size: 20.sp,
+                    //   ),
+                    //   label: "community".tr,
+                    // ),
 
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.view_headline_sharp,
-                  size: 20.sp,
-                ),
-                label: "more".tr,
-              ),
-            ]: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                  size: 20.sp,
-                ),
-                label: "home".tr,
-              ),
-              
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.groups_3,
-                  size: 20.sp,
-                ),
-                label: "community".tr,
-              ),
-
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.view_headline_sharp,
-                  size: 20.sp,
-                ),
-                label: "more".tr,
-              ),
-            ],
+                    BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.view_headline_sharp,
+                        size: 20.sp,
+                      ),
+                      label: "more".tr,
+                    ),
+                  ]
+                : <BottomNavigationBarItem>[
+                    BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.home,
+                        size: 20.sp,
+                      ),
+                      label: "home".tr,
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.calendar_today_sharp,
+                        size: 20.sp,
+                      ),
+                      label: "Daily Reading".tr,
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.groups_3,
+                        size: 20.sp,
+                      ),
+                      label: "community".tr,
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.view_headline_sharp,
+                        size: 20.sp,
+                      ),
+                      label: "more".tr,
+                    ),
+                  ],
           ),
         );
       },

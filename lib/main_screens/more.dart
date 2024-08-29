@@ -42,19 +42,25 @@ class _MoreScreenState extends State<MoreScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 30.h,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Get.toNamed(RouteHelpers.whyAdsPage);
-                    },
-                    child: AccountWidget(
-                        iconBackgroundColor: Colors.orange.shade600,
-                        hasArrow: true,
-                        leftIcon: Icons.ads_click_outlined,
-                        text: "why_ads"),
-                  ),
+                  Platform.isAndroid
+                      ? Column(
+                          children: [
+                            SizedBox(
+                              height: 30.h,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Get.toNamed(RouteHelpers.whyAdsPage);
+                              },
+                              child: AccountWidget(
+                                  iconBackgroundColor: Colors.orange.shade600,
+                                  hasArrow: true,
+                                  leftIcon: Icons.ads_click_outlined,
+                                  text: "why_ads"),
+                            ),
+                          ],
+                        )
+                      : Text(""),
                   SizedBox(
                     height: 20.h,
                   ),

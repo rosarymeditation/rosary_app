@@ -51,6 +51,7 @@ class AppConstant {
   static const String SUBMIT_PRAYER_REQUEST_URL = "submit-prayer-request";
   static const String USER_INFO_URL = "userInfo";
   static const String TODAYS_VERSE_URL = "todaysVerse";
+  static const String DAILY_READING_URL = "find-dailyReading";
   static const String TODAYS_AFFIRMATION_URL = "todaysAffirmation";
   static const String TERMS_URL = "findTerm";
   //todaysVerse
@@ -108,6 +109,8 @@ class AppConstant {
   static const String NOVENA_PRAYER_CACHE = "novena_prayer_cache";
   static const String CATHOLIC_PRAYER_CACHE = "catholic_prayer_cache";
   static const String DISTRESS_LIST_CACHE = "distress_list_cache";
+  static const String FONT_SIZE_READING_CACHE = "font_size_reading_cache";
+  static const String DAILY_READING_CACHE = "daily_reading_cache";
   static const String DAILY_VERSE_CACHE = "daily_verse_cache";
   static const String AFFIRMATION_CACHE = "affirmation_cache";
   static const String TERMS_CACHE = "terms_cache";

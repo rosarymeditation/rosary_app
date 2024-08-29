@@ -1,21 +1,6 @@
-import 'dart:math';
-import 'dart:ui';
-
 import 'package:get/get.dart';
 import 'package:rosary/data/repository/distress_repo.dart';
-import 'package:rosary/data/repository/prayer_request_repo.dart';
-import 'package:rosary/model/comment_model.dart';
 import 'package:rosary/model/distress_model.dart';
-import 'package:rosary/model/prayer_request_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../data/repository/feedComment_repo.dart';
-import '../data/repository/feed_repo.dart';
-import '../data/repository/prayer_repo.dart';
-import '../model/feed_model.dart';
-import '../model/online_prayer_model.dart';
-import '../model/response_model.dart';
-import '../utils/constants.dart';
 import 'langauge_controller.dart';
 
 class DistressController extends GetxController {

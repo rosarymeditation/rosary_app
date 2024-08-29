@@ -1,17 +1,8 @@
 import 'dart:io';
-
-import 'package:connectivity/connectivity.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:path/path.dart';
-import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:async/async.dart';
-
-import '../data/repository/feed_repo.dart';
 import '../data/repository/user_repo.dart';
-import '../model/feed_model.dart';
 import '../model/file_model.dart';
 import '../model/response_model.dart';
 import '../model/user_model.dart';
@@ -24,13 +15,9 @@ class UserController extends GetxController implements GetxService {
   UserController({required this.userRepo, required this.sharedPreferences});
   var _authController = Get.find<AuthController>();
 
-  String _selectedCityName = "";
-  String _selectedCityId = "";
   bool _isLoading = false;
   bool get isLoading => _isLoading;
   bool _hasUserInfo = false;
-  bool _hasCity = false;
-  bool _hasUpdated = false;
   bool get hasUserInfo => _hasUserInfo;
 
   List<FileModel> _files = [];

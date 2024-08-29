@@ -149,6 +149,8 @@
   "luminous_mystery": "Luminous Mystery",
   "todays_mystery": "Today's Mystery",
   "first_joyful_id": 1,
+   "today_reading":"Today's Reading",
+  "today_reflection":"Today's Reflection",
    "why_ads":"Why We've Introduced Ads",
    "why_ads_content": "<div><p>We’ve introduced ads with the utmost care, ensuring they remain unobtrusive so they don’t interfere with your experience. This decision comes after much reflection, as we’ve removed the donation page due to the lack of contributions. Maintaining and improving this app is costly, especially as we strive to provide the best experience for you.</p><p>Our developers have been dedicated to enhancing the app, and these ads help us cover those essential expenses and support future improvements. Our commitment to creating something special for you remains unwavering, and your support is invaluable. We deeply appreciate your understanding and continued presence in our community. Thank you for standing by us as we work to make this app even better.</p></div>",
   "relection": "Reflection",

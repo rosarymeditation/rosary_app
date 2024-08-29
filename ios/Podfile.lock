@@ -3,6 +3,8 @@ PODS:
     - Flutter
   - audio_session (0.0.1):
     - Flutter
+  - audioplayers_darwin (0.0.1):
+    - Flutter
   - connectivity (0.0.1):
     - Flutter
     - Reachability
@@ -43,6 +45,10 @@ PODS:
     - DKImagePickerController/PhotoGallery
     - Flutter
   - Flutter (1.0.0)
+  - flutter_sound (9.2.13):
+    - Flutter
+    - flutter_sound_core (= 9.2.13)
+  - flutter_sound_core (9.2.13)
   - flutter_tts (0.0.1):
     - Flutter
   - FMDB (2.7.11):
@@ -142,10 +148,12 @@ PODS:
 DEPENDENCIES:
   - audio_service (from `.symlinks/plugins/audio_service/ios`)
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
+  - audioplayers_darwin (from `.symlinks/plugins/audioplayers_darwin/ios`)
   - connectivity (from `.symlinks/plugins/connectivity/ios`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - file_picker (from `.symlinks/plugins/file_picker/ios`)
   - Flutter (from `Flutter`)
+  - flutter_sound (from `.symlinks/plugins/flutter_sound/ios`)
   - flutter_tts (from `.symlinks/plugins/flutter_tts/ios`)
   - Google-Mobile-Ads-SDK
   - google_mobile_ads (from `.symlinks/plugins/google_mobile_ads/ios`)
@@ -166,6 +174,7 @@ SPEC REPOS:
   trunk:
     - DKImagePickerController
     - DKPhotoGallery
+    - flutter_sound_core
     - FMDB
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
@@ -182,6 +191,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/audio_service/ios"
   audio_session:
     :path: ".symlinks/plugins/audio_session/ios"
+  audioplayers_darwin:
+    :path: ".symlinks/plugins/audioplayers_darwin/ios"
   connectivity:
     :path: ".symlinks/plugins/connectivity/ios"
   device_info_plus:
@@ -190,6 +201,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/file_picker/ios"
   Flutter:
     :path: Flutter
+  flutter_sound:
+    :path: ".symlinks/plugins/flutter_sound/ios"
   flutter_tts:
     :path: ".symlinks/plugins/flutter_tts/ios"
   google_mobile_ads:
@@ -222,12 +235,15 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   audio_service: f509d65da41b9521a61f1c404dd58651f265a567
   audio_session: 4f3e461722055d21515cf3261b64c973c062f345
+  audioplayers_darwin: 877d9a4d06331c5c374595e46e16453ac7eafa40
   connectivity: c4130b2985d4ef6fd26f9702e886bd5260681467
   device_info_plus: 97af1d7e84681a90d0693e63169a5d50e0839a0d
   DKImagePickerController: 946cec48c7873164274ecc4624d19e3da4c1ef3c
   DKPhotoGallery: b3834fecb755ee09a593d7c9e389d8b5d6deed60
   file_picker: 15fd9539e4eb735dc54bae8c0534a7a9511a03de
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  flutter_sound: c60effa2a350fb977885f0db2fbc4c1ad5160900
+  flutter_sound_core: 26c10e5832e76aaacfae252d8925232281c486ae
   flutter_tts: 0f492aab6accf87059b72354fcb4ba934304771d
   FMDB: 57486c1117fd8e0e6b947b2f54c3f42bf8e57a4e
   Google-Mobile-Ads-SDK: 4fe6304b771f8467d29978cb790ec1e56e646946
@@ -240,7 +256,7 @@ SPEC CHECKSUMS:
   launch_review: 75d5a956ba8eaa493e9c9d4bf4c05e505e8d5ed0
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   open_file: 02eb5cb6b21264bd3a696876f5afbfb7ca4f4b7d
-  path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
+  path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   rate_my_app: e249ec0751c276811746ff89558c23dc0da39f0c
   Reachability: fd0ecd23705e2599e4cceeb943222ae02296cbc6
