@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:rosary/model/font_size_model.dart';
-import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/widgets/main_text.dart';
+import 'package:rosary/widgets/rate_us_widget.dart';
 
 import '../controllers/dailyReading_controller.dart';
 import '../controllers/langauge_controller.dart';
@@ -213,7 +213,11 @@ class _DailyReadingScreenState extends State<DailyReadingScreen> {
                           ),
                         ),
                         SizedBox(
-                          height: 100.h,
+                          height: 50.h,
+                        ),
+                        RateUsWidget(),
+                        SizedBox(
+                          height: 20.h,
                         ),
                         AdMobBanner()
                       ],
@@ -287,7 +291,11 @@ class _DailyReadingScreenState extends State<DailyReadingScreen> {
                         ),
                       ),
                       SizedBox(
-                        height: 100.h,
+                        height: 50.h,
+                      ),
+                      RateUsWidget(),
+                      SizedBox(
+                        height: 20.h,
                       ),
                       AdMobBanner()
                     ],
