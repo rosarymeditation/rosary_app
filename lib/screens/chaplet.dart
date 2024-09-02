@@ -9,8 +9,6 @@ import 'package:rosary/utils/constants.dart';
 import 'package:rosary/widgets/app_icon.dart';
 import 'package:rosary/widgets/bead_number_widget.dart';
 import 'package:rosary/widgets/main_text.dart';
-import 'package:vibration/vibration.dart';
-
 import '../controllers/main_controller.dart';
 import '../utils/dimensions.dart';
 import '../widgets/bid.dart';
@@ -91,7 +89,6 @@ class _ChapletPageState extends State<ChapletPage> {
         curve: Curves.easeInOut,
       );
     } catch (err) {
-     
       print(err);
     }
   }
@@ -360,7 +357,6 @@ class _ChapletPageState extends State<ChapletPage> {
                       if (chaplet.templateType !=
                               AppConstant.CHAPLET_TEMPLATE_ONE &&
                           chaplet.templateType != "") {
-                       
                         _pageController.jumpToPage(count - 1);
                       }
 
@@ -404,14 +400,12 @@ class _ChapletPageState extends State<ChapletPage> {
                       AppConstant.vibrator();
                       main.setBidFocus(count + 1);
                       if (chaplet.templateType !=
-                              AppConstant.CHAPLET_TEMPLATE_ONE  &&
+                              AppConstant.CHAPLET_TEMPLATE_ONE &&
                           chaplet.templateType != "") {
-                       
                         _pageController.jumpToPage(count + 1);
                       }
 
                       if (count > 4) {
-                       
                         if (chaplet.templateType ==
                                 AppConstant.CHAPLET_TEMPLATE_ONE ||
                             chaplet.templateType == "") {
@@ -419,7 +413,6 @@ class _ChapletPageState extends State<ChapletPage> {
                         }
                       }
                     } catch (err) {
-                      
                       print(err);
                     }
                   },

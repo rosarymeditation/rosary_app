@@ -35,7 +35,7 @@ class DailyReadingController extends GetxController implements GetxService {
 
     _isLoading = true;
     Response response = await dailyReadingRepo
-        .getDailyReading({"date": "2024-09-01", "code": languageCode});
+        .getDailyReading({"date": formattedDate, "code": languageCode});
     late ResponseModel responseModel;
 
     if (response.statusCode == 200) {

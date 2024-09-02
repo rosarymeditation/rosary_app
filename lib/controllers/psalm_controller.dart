@@ -10,8 +10,7 @@ class PsalmController extends GetxController {
 
   var _local = Get.find<LocalizationController>();
 
-  List<PsalmModel> get psalmList =>
-      _psalmList.length > 0 ? _psalmList : psalmRepo.psalmCacheList();
+  List<PsalmModel> get psalmList => _psalmList;
   List<PsalmModel> _psalmList = [];
 
   PsalmModel get psalm => _psalm;
@@ -35,6 +34,7 @@ class PsalmController extends GetxController {
   }
 
   Future<void> getPsalmList() async {
+    print(_local.selectedIndex);
     _isLoaded = false;
     update();
     _page = 1;

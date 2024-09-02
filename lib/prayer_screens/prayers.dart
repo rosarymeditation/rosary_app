@@ -2,19 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:rosary/controllers/feedComment_controller.dart';
 import 'package:rosary/controllers/prayer_controller.dart';
-import 'package:rosary/widgets/chat_text_field.dart';
-import 'package:rosary/widgets/feed_item_widget.dart';
 import 'package:rosary/widgets/main_app_bar_widget.dart';
 import 'package:rosary/widgets/main_text.dart';
 import 'package:rosary/widgets/prayer_banner_widget.dart';
-import '../controllers/feed_controller.dart';
-import '../controllers/network_controller.dart';
+import '../controllers/langauge_controller.dart';
 import '../route/route_helpers.dart';
-import '../utils/appColor.dart';
 import '../utils/constants.dart';
-import '../utils/dimensions.dart';
 
 class PrayersScreen extends StatefulWidget {
   PrayersScreen({super.key});
@@ -25,18 +19,23 @@ class PrayersScreen extends StatefulWidget {
 
 class _PrayersScreenState extends State<PrayersScreen> {
   var _prayerController = Get.find<PrayerController>();
-
+  var _languageController = Get.find<LocalizationController>();
   var textController = TextEditingController();
   final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
   @override
   void initState() {
-    if (_prayerController.prayerType == AppConstant.PRAYER_TYPE_OTHERS)
-      _prayerController.getPrayerList();
-    else
-      _prayerController.getCatholicPrayerList();
     // TODO: implement initState
     super.initState();
+
+    Future.delayed(Duration(microseconds: 100), () {
+      print(_prayerController.prayerType);
+      if (_prayerController.prayerType == AppConstant.PRAYER_TYPE_OTHERS)
+        _prayerController.getPrayerList();
+      else
+        _prayerController
+            .getCatholicPrayerList(_languageController.selectedIndex);
+    });
   }
 
   @override
@@ -45,7 +44,7 @@ class _PrayersScreenState extends State<PrayersScreen> {
       builder: (prayer) {
         return prayer.prayerType == AppConstant.PRAYER_TYPE_OTHERS
             ? Scaffold(
-                appBar: MainAppBarWidget(text: "General Prayers"),
+                appBar: MainAppBarWidget(text: "general_prayers".tr),
                 backgroundColor: Theme.of(context).colorScheme.background,
                 body: prayer.isLoaded
                     ? SmartRefresher(
@@ -99,7 +98,7 @@ class _PrayersScreenState extends State<PrayersScreen> {
                       )
                     : const Center(child: CircularProgressIndicator()))
             : Scaffold(
-                appBar: MainAppBarWidget(text: "Catholic Prayers"),
+                appBar: MainAppBarWidget(text: "catholic_prayers".tr),
                 backgroundColor: Theme.of(context).colorScheme.background,
                 body: prayer.isLoaded
                     ? SmartRefresher(
@@ -107,7 +106,8 @@ class _PrayersScreenState extends State<PrayersScreen> {
                         header: const WaterDropHeader(),
                         controller: _refreshController,
                         onRefresh: () async {
-                          prayer.getCatholicPrayerList();
+                          prayer.getCatholicPrayerList(
+                              _languageController.selectedIndex);
                           await Future.delayed(
                             Duration(seconds: 0, milliseconds: 2000),
                           );
@@ -169,7 +169,8 @@ class _PrayersScreenState extends State<PrayersScreen> {
           ),
           ElevatedButton(
               onPressed: () {
-                _prayerController.getCatholicPrayerList();
+                _prayerController
+                    .getCatholicPrayerList(_languageController.selectedIndex);
                 _prayerController.getPrayerList();
               },
               child: MainText(text: "refresh"))

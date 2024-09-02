@@ -40,11 +40,14 @@ class ApiClient extends GetConnect implements GetxService {
   Future<Response> postData(String uri, dynamic body,
       {Map<String, String>? headers}) async {
     try {
-      Response response =
-          await post(uri, body, headers: headers ?? _mainHeaders)
-              .timeout(Duration(seconds: 10));
+      Response response = await post(
+        uri,
+        body,
+        headers: headers ?? _mainHeaders,
+      );
       return response;
     } catch (e) {
+      print("Errorr--------------------");
       return Response(statusCode: 1, statusText: e.toString());
     }
   }

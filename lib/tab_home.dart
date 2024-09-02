@@ -204,7 +204,7 @@ class _TabHomePageState extends State<TabHomePage> {
                         Icons.calendar_today_sharp,
                         size: 20.sp,
                       ),
-                      label: "Daily Reading".tr,
+                      label: "daily_reading".tr,
                     ),
                     // BottomNavigationBarItem(
                     //   icon: Icon(
@@ -235,7 +235,7 @@ class _TabHomePageState extends State<TabHomePage> {
                         Icons.calendar_today_sharp,
                         size: 20.sp,
                       ),
-                      label: "Daily Reading".tr,
+                      label: "daily_reading".tr,
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(

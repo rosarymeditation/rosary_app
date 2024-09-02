@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 import 'dart:ui';
 
@@ -21,20 +22,13 @@ class PrayerController extends GetxController {
   PrayerController({required this.prayerRepo});
 
   var _local = Get.find<LocalizationController>();
-  List<OnlinePrayerModel> get catholicPrayerList =>
-      _catholicPrayerList.length > 0
-          ? _catholicPrayerList
-          : prayerRepo.catholicCacheList();
+  List<OnlinePrayerModel> get catholicPrayerList => _catholicPrayerList;
   List<OnlinePrayerModel> _catholicPrayerList = [];
 
-  List<OnlinePrayerModel> get otherPrayerList => _otherPrayerList.length > 0
-      ? _otherPrayerList
-      : prayerRepo.othersCacheList();
+  List<OnlinePrayerModel> get otherPrayerList => _otherPrayerList;
   List<OnlinePrayerModel> _otherPrayerList = [];
 
-  List<OnlinePrayerModel> get novenaPrayerList => _novenaPrayerList.length > 0
-      ? _novenaPrayerList
-      : prayerRepo.novenaCacheList();
+  List<OnlinePrayerModel> get novenaPrayerList => _novenaPrayerList;
   List<OnlinePrayerModel> _novenaPrayerList = [];
 
   // List<OnlinePrayerModel> get cachedCatholicPrayerList =>
@@ -76,19 +70,21 @@ class PrayerController extends GetxController {
     update();
     _page = 1;
     try {
-      Response response =
-          await prayerRepo.getAll(_page, _limit, _local.selectedIndex);
-      print(response.body);
+      Response response = await prayerRepo.getAll(_page, _limit, 1);
+      print("Body-----------------------------");
+      print(response.statusText);
+      //print('Sending data: ${jsonEncode(response.bodyBytes)}');
+      print("Body-----------------------------");
       if (response.statusCode == 200) {
         _otherPrayerList = [];
-        print(response.body);
 
         _otherPrayerList.addAll(Prayer.fromJson(response.body).prayers);
         prayerRepo.saveOthersAsString(_otherPrayerList);
-      }
+      } else {}
       _isLoaded = true;
       update();
     } catch (err) {
+      print(err);
       _isLoaded = true;
       update();
       print("yesssjddkdkd");
@@ -96,13 +92,14 @@ class PrayerController extends GetxController {
     }
   }
 
-  Future<void> getCatholicPrayerList() async {
+  Future<void> getCatholicPrayerList(languageCode) async {
     _isLoaded = false;
     update();
     _page = 1;
     try {
+      print(languageCode);
       Response response =
-          await prayerRepo.getAllCatholic(_page, _limit, _local.selectedIndex);
+          await prayerRepo.getAllCatholic(_page, _limit, languageCode);
       print(response.body);
       if (response.statusCode == 200) {
         _catholicPrayerList = [];

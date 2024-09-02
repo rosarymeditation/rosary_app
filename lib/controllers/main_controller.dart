@@ -455,15 +455,15 @@ class MainController extends GetxController implements GetxService {
 
   void setDecade() {
     if (_currentMysteryCounter == 1) {
-      _currentDecade = "First Decade";
+      _currentDecade = "first_decade";
     } else if (_currentMysteryCounter == 2) {
-      _currentDecade = "Second Decade";
+      _currentDecade = "second_decade";
     } else if (_currentMysteryCounter == 3) {
-      _currentDecade = "Third Decade";
+      _currentDecade = "third_decade";
     } else if (_currentMysteryCounter == 4) {
-      _currentDecade = "Fourth Decade";
+      _currentDecade = "fourth_decade";
     } else if (_currentMysteryCounter == 5) {
-      _currentDecade = "Fifth Decade";
+      _currentDecade = "fifth_decade";
     }
   }
 
@@ -529,16 +529,16 @@ class MainController extends GetxController implements GetxService {
 
   Future<void>? setHasVibration(bool boolVal) async {
     _hasVibration = boolVal;
-   
-    await  mainRepo.setHasVibration(boolVal);
-     getHasVibration();
-      update();
+
+    await mainRepo.setHasVibration(boolVal);
+    getHasVibration();
+    update();
   }
 
   String getHasVibration() {
-   // _hasVibration =  mainRepo.getHasVibration();
-    
-   print(mainRepo.getHasVibration());
+    // _hasVibration =  mainRepo.getHasVibration();
+
+    print(mainRepo.getHasVibration());
     return mainRepo.getHasVibration();
   }
 

@@ -101,8 +101,8 @@ class _MyAppState extends State<MyApp> {
     final MainController _maincontroller =
         Get.put(MainController(mainRepo: Get.find()));
     _maincontroller.getCurrentMystery();
-    _prayerController.getCatholicPrayerList();
-    _prayerController.getCatholicPrayerList();
+    // _prayerController.getCatholicPrayerList();
+    // _prayerController.getCatholicPrayerList();
     _prayerController.getNovenaPrayerList();
     _distressController.getDistressList();
     _psalmController.getPsalmList();
