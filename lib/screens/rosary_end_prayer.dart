@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rosary/route/route_helpers.dart';
@@ -46,12 +47,7 @@ class _RosaryEndPrayerScreenState extends State<RosaryEndPrayerScreen> {
         backgroundColor: Theme.of(context).colorScheme.background,
         body: SafeArea(
           child: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage("assets/images/rosary.jpeg"),
-              ),
-            ),
+            decoration: const BoxDecoration(),
             child: Container(
               color: Theme.of(context).colorScheme.background,
               child: SingleChildScrollView(
@@ -60,100 +56,60 @@ class _RosaryEndPrayerScreenState extends State<RosaryEndPrayerScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
-                      Container(
-                        height: 200.h,
-                        width: double.infinity,
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image:
-                                AssetImage(AppConstant.IMG_PATH + "mary.jpeg"),
-                          ),
-                        ),
-                      ),
                       SizedBox(
                         height: 50.h,
                       ),
                       Column(
                         children: [
-                          PrayerTitleWidget(
-                            prayer: hailHolyQueenPrayer,
-                            title: "hail_holy_queen_title".tr,
-                          ),
-                          SizedBox(
-                            height: 30.h,
-                          ),
-                          PrayerTitleWidget(
-                            prayer: loretoLitany,
-                            title: "loreto_litany_title".tr,
-                          ),
-                          SizedBox(
-                            height: 30.h,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              showDialog<String>(
-                                context: context,
-                                builder: (BuildContext context) => AlertDialog(
-                                  title: const Text(''),
-                                  content: MainText(
-                                    text: "prayer_for_pope",
-                                    color: AppColor.subTitle,
-                                  ),
-                                  actions: <Widget>[
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(context, 'OK'),
-                                      child: const Text('OK'),
-                                    ),
-                                  ],
-                                ),
-                              );
+                          Html(
+                            data: "closing_prayer".tr,
+                            style: {
+                              "h1": Style(
+                                fontSize: FontSize(18),
+                                fontWeight: FontWeight.w700,
+                                textAlign: TextAlign.center,
+                                margin: Margins.only(bottom: 20),
+                              ),
+                              "h2": Style(
+                                fontSize: FontSize(18),
+                                fontWeight: FontWeight.w600,
+                                textAlign: TextAlign.center,
+                                margin: Margins.only(bottom: 15),
+                              ),
+                              "h3": Style(
+                                fontSize: FontSize(18),
+                                fontWeight: FontWeight.w600,
+                                margin: Margins.only(top: 20, bottom: 10),
+                                textAlign: TextAlign.left,
+                              ),
+                              "p": Style(
+                                fontSize: FontSize(18),
+                                lineHeight: LineHeight(1.7),
+                                textAlign: TextAlign.justify,
+                                //color: Colors.black87,
+                                margin: Margins.only(bottom: 15),
+                              ),
+                              "strong": Style(
+                                fontWeight: FontWeight.bold,
+                                // color: Colors.black,
+                              ),
+                              "div": Style(
+                                margin: Margins.symmetric(vertical: 20),
+                                padding: HtmlPaddings.symmetric(horizontal: 10),
+                              ),
+                              "blockquote": Style(
+                                fontSize: FontSize.large,
+                                fontStyle: FontStyle.italic,
+                                //color: Colors.grey.shade700,
+                                padding: HtmlPaddings.symmetric(
+                                    horizontal: 15, vertical: 10),
+                                backgroundColor: Colors.grey.shade200,
+                                border: const Border(
+                                    left: BorderSide(
+                                        color: Colors.teal, width: 4)),
+                                margin: Margins.symmetric(vertical: 20),
+                              ),
                             },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: MainText(
-                                    isBold: true,
-                                    color: AppColor.subTitle,
-                                    text: "prayer_for_pope",
-                                    size: 20.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 30.h,
-                          ),
-                          PrayerTitleWidget(
-                            prayer: ourFather,
-                            title: "our_father_title".tr,
-                          ),
-                          SizedBox(
-                            height: 30.h,
-                          ),
-                          PrayerTitleWidget(
-                            prayer: hailMary,
-                            title: "hail_mary_title".tr,
-                          ),
-                          SizedBox(
-                            height: 30.h,
-                          ),
-                          MainText(
-                            color: AppColor.subTitle,
-                            size: 20.sp,
-                            text: "glory_to_father".tr,
-                          ),
-                          SizedBox(
-                            height: 30.h,
-                          ),
-                          MainText(
-                            text: "name_of_father",
-                            size: 18.sp,
-                            color: AppColor.subTitle,
-                            isBold: true,
                           ),
                         ],
                       ),

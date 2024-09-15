@@ -1,19 +1,6 @@
-import 'dart:convert';
-import 'dart:math';
-import 'dart:ui';
-
 import 'package:get/get.dart';
-import 'package:rosary/data/repository/prayer_request_repo.dart';
-import 'package:rosary/model/comment_model.dart';
-import 'package:rosary/model/prayer_request_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../data/repository/feedComment_repo.dart';
-import '../data/repository/feed_repo.dart';
 import '../data/repository/prayer_repo.dart';
-import '../model/feed_model.dart';
 import '../model/online_prayer_model.dart';
-import '../model/response_model.dart';
 import '../utils/constants.dart';
 import 'langauge_controller.dart';
 
@@ -22,13 +9,20 @@ class PrayerController extends GetxController {
   PrayerController({required this.prayerRepo});
 
   var _local = Get.find<LocalizationController>();
-  List<OnlinePrayerModel> get catholicPrayerList => _catholicPrayerList;
+  List<OnlinePrayerModel> get catholicPrayerList =>
+      _catholicPrayerList.length > 0
+          ? _catholicPrayerList
+          : prayerRepo.catholicCacheList();
   List<OnlinePrayerModel> _catholicPrayerList = [];
 
-  List<OnlinePrayerModel> get otherPrayerList => _otherPrayerList;
+  List<OnlinePrayerModel> get otherPrayerList => _otherPrayerList.length > 0
+      ? _otherPrayerList
+      : prayerRepo.othersCacheList();
   List<OnlinePrayerModel> _otherPrayerList = [];
 
-  List<OnlinePrayerModel> get novenaPrayerList => _novenaPrayerList;
+  List<OnlinePrayerModel> get novenaPrayerList => _novenaPrayerList.length > 0
+      ? _novenaPrayerList
+      : prayerRepo.novenaCacheList();
   List<OnlinePrayerModel> _novenaPrayerList = [];
 
   // List<OnlinePrayerModel> get cachedCatholicPrayerList =>
@@ -70,11 +64,9 @@ class PrayerController extends GetxController {
     update();
     _page = 1;
     try {
-      Response response = await prayerRepo.getAll(_page, _limit, 1);
-      print("Body-----------------------------");
-      print(response.statusText);
-      //print('Sending data: ${jsonEncode(response.bodyBytes)}');
-      print("Body-----------------------------");
+      Response response =
+          await prayerRepo.getAll(_page, _limit, _local.selectedIndex);
+
       if (response.statusCode == 200) {
         _otherPrayerList = [];
 
