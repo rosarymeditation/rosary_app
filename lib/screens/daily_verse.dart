@@ -79,9 +79,6 @@ class _DailyVerseScreenState extends State<DailyVerseScreen> {
           ),
         );
       }),
-      bottomNavigationBar: Container(
-        child: AdMobBanner(),
-      ),
     );
   }
 }

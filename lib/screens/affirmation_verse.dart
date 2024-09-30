@@ -81,7 +81,7 @@ class _AffirmationAndVerseScreenState extends State<AffirmationAndVerseScreen> {
                               SizedBox(
                                 height: 80.h,
                               ),
-                              AdMobBanner(),
+                             
                             ]),
                 ),
               );

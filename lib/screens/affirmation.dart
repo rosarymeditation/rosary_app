@@ -51,13 +51,9 @@ class _AffirmationScreenState extends State<AffirmationScreen> {
                     text: "daily_affirmation",
                     size: 20.sp,
                   ),
-            // AdMobBanner(),
           ]),
         );
       }),
-      bottomNavigationBar: Container(
-        child: AdMobBanner(),
-      ),
     );
   }
 }

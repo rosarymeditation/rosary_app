@@ -119,7 +119,7 @@ class _PublicPrayerRequestCreateState extends State<PublicPrayerRequestCreate> {
                     SizedBox(
                       height: 30.h,
                     ),
-                    AdMobBanner(),
+                   
                   ],
                 )
               : Container(

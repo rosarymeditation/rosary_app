@@ -121,9 +121,6 @@ class _PublicPrayerRequestState extends State<PublicPrayerRequest> {
                       //backgroundColor: AppColor.primaryColor,
                       ),
                 ),
-          bottomNavigationBar: Container(
-            child: AdMobBanner(),
-          ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
               Get.toNamed(RouteHelpers.publicPrayerRequestCreatePage);

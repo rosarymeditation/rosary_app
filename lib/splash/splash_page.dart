@@ -10,6 +10,7 @@ import 'package:rosary/widgets/big_text.dart';
 
 import '../controllers/audio_controller.dart';
 import '../controllers/feed_controller.dart';
+import '../controllers/langauge_controller.dart';
 
 class SplashSreen extends StatefulWidget {
   const SplashSreen({Key? key}) : super(key: key);
@@ -43,6 +44,8 @@ class _SplashSreenState extends State<SplashSreen>
     });
   }
 
+  var _languageController =
+      Get.put(LocalizationController(sharedPreferences: Get.find()));
   var _feedController = Get.find<FeedController>();
   var _audioController = Get.find<AudioController>();
   var _dailyReadingController = Get.find<DailyReadingController>();

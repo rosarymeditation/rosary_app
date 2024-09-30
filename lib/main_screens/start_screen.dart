@@ -62,6 +62,9 @@ class _StartScreenState extends State<StartScreen> {
   Widget build(BuildContext context) {
     return GetBuilder<MainController>(
       builder: (main) {
+        print("object");
+        print(_languageController.selectedIndex);
+        print("object");
         return Scaffold(
           backgroundColor: Theme.of(context).colorScheme.background,
           appBar: MainAppBarWidget(text: AppConstant.APP_NAME.tr),

@@ -51,7 +51,6 @@ class AboutPage extends StatelessWidget {
           SizedBox(
             height: 20.h,
           ),
-          AdMobBanner(),
         ],
       ),
     );

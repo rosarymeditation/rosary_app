@@ -22,8 +22,14 @@ import 'controllers/prayer_controller.dart';
 import 'controllers/psalm_controller.dart';
 import 'helpers/dependencies.dart' as dep;
 import 'controllers/main_controller.dart';
+import 'notification/notification.dart';
 import 'route/route_helpers.dart';
 import 'utils/messages.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/data/latest_all.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
+
+var _languageController = Get.find<LocalizationController>();
 
 late AudioHandler _audioHandler;
 Future<void> main() async {
@@ -36,27 +42,13 @@ Future<void> main() async {
     androidNotificationChannelName: "Rosary Meditation Guide",
     androidNotificationOngoing: true,
   );
+  await NotificationService.init();
+  tz.initializeTimeZones();
+
+  NotificationService.scheduleDailyNotificationAt8AM();
 
   Map<String, Map<String, String>> _languages = await dep.init();
 
-  // await AwesomeNotifications().initialize(null, [
-  //   NotificationChannel(
-  //     channelKey: 'basic_channel',
-  //     channelName: 'Rosary Notifications',
-  //     defaultColor: Colors.orange.shade800,
-  //     importance: NotificationImportance.High,
-  //    // channelShowBadge: true,
-  //   ),
-  //   NotificationChannel(
-  //     channelKey: 'scheduled_channel',
-  //     channelName: 'Scheduled Notifications',
-  //     defaultColor: Colors.orange.shade800,
-  //     locked: true,
-  //     importance: NotificationImportance.High,
-  //     channelShowBadge: true,
-  //     // soundSource: "resource//raw/res_knock"
-  //   ),
-  // ]);
   runApp(MyApp(
     languages: _languages,
   ));
@@ -101,8 +93,6 @@ class _MyAppState extends State<MyApp> {
     final MainController _maincontroller =
         Get.put(MainController(mainRepo: Get.find()));
     _maincontroller.getCurrentMystery();
-    // _prayerController.getCatholicPrayerList();
-    // _prayerController.getCatholicPrayerList();
     _prayerController.getNovenaPrayerList();
     _distressController.getDistressList();
     _psalmController.getPsalmList();
@@ -125,12 +115,9 @@ class _MyAppState extends State<MyApp> {
             defaultTransition: Transition.noTransition,
             debugShowCheckedModeBanner: false,
             title: 'Rosary',
-
             theme: lightTheme,
             darkTheme: darkTheme,
-
             locale: localizatonController.locale,
-
             translations: Messages(languages: widget.languages),
             fallbackLocale: Locale(AppConstant.languages[0].languageCode,
                 AppConstant.languages[0].countryCode),

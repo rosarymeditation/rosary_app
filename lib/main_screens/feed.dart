@@ -6,7 +6,6 @@ import 'package:rosary/widgets/chat_text_field.dart';
 import 'package:rosary/widgets/feed_item_widget.dart';
 import 'package:rosary/widgets/main_app_bar_widget.dart';
 import '../controllers/feed_controller.dart';
-import '../controllers/network_controller.dart';
 import '../route/route_helpers.dart';
 import '../utils/dimensions.dart';
 
