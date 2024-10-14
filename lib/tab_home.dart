@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
@@ -21,9 +20,9 @@ class TabHomePage extends StatefulWidget {
 
 class _TabHomePageState extends State<TabHomePage> {
   var _authController = Get.find<AuthController>();
-  
+
   final RateMyApp rateMyApp = RateMyApp(
-    minDays: 1,
+    minDays: 3,
     minLaunches: 3,
     remindLaunches: 2,
     remindDays: 20,

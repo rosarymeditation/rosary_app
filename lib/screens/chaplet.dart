@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rosary/controllers/chaplet_template_controller.dart';
@@ -8,6 +9,7 @@ import 'package:rosary/utils/appColor.dart';
 import 'package:rosary/utils/constants.dart';
 import 'package:rosary/widgets/app_icon.dart';
 import 'package:rosary/widgets/bead_number_widget.dart';
+import 'package:rosary/widgets/html_widget.dart';
 import 'package:rosary/widgets/main_text.dart';
 import '../controllers/main_controller.dart';
 import '../utils/dimensions.dart';
@@ -113,38 +115,18 @@ class _ChapletPageState extends State<ChapletPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       counter >= 1 && counter <= 10
-                          ? MainText(
-                              color:
-                                  Theme.of(context).colorScheme.inversePrimary,
-                              text: 'hail_mary'.tr,
-                              size: 15.sp,
-                            )
+                          ? HtmlWidget(data: 'hail_mary'.tr)
                           : Container(),
                       counter > 10
                           ? Column(children: [
-                              MainText(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .inversePrimary,
-                                text: 'glory_to_father'.tr,
-                                size: 15.sp,
-                              ),
+                              HtmlWidget(data: 'glory_to_father'.tr),
                               const Divider(),
-                              MainText(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .inversePrimary,
-                                text: 'oh_my_jesus'.tr,
-                                size: 15.sp,
-                              ),
+                              HtmlWidget(data: 'oh_my_jesus'.tr),
                             ])
                           : Container(),
                       counter == 0
-                          ? MainText(
-                              color:
-                                  Theme.of(context).colorScheme.inversePrimary,
-                              text: "our_father",
-                              size: 15.sp,
+                          ? HtmlWidget(
+                              data: "our_father".tr,
                             )
                           : Container(),
                       SizedBox(
@@ -157,7 +139,7 @@ class _ChapletPageState extends State<ChapletPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 15.h,
+                  height: 5.h,
                 ),
                 chaplet.templateType == AppConstant.CHAPLET_TEMPLATE_ONE ||
                         chaplet.templateType == ""
@@ -184,7 +166,7 @@ class _ChapletPageState extends State<ChapletPage> {
                         ),
                       )
                     : SizedBox(
-                        height: 200.h,
+                        height: Dimensions.screenHeight * 0.25,
                         child: PageView.builder(
                           controller: _pageController,
                           physics: const PageScrollPhysics(),

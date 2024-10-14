@@ -15,7 +15,7 @@ import '../widgets/main_text.dart';
 
 // ignore: must_be_immutable
 class MysterySelectionPage extends StatelessWidget {
-  var _mainController = Get.find<MainController>();
+  //var _mainController = Get.find<MainController>();
   var apostleCreedPrayer = AppConstant.APOSTLE_CREED;
   var ourFather = AppConstant.OUR_FATHER;
   var mysteryList = AppConstant.mysteryDaysList;

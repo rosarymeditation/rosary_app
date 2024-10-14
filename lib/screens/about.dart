@@ -33,17 +33,17 @@ class AboutPage extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(width: 8.0),
-          Text("•", style: TextStyle(fontSize: 16.0)),
-          SizedBox(width: 8.0),
+          const SizedBox(width: 8.0),
+          const Text("•", style: TextStyle(fontSize: 16.0)),
+          const SizedBox(width: 8.0),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(title,
-                    style:
-                        TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
-                SizedBox(height: 4.0),
+                    style: const TextStyle(
+                        fontSize: 16.0, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 4.0),
                 Text(content, style: TextStyle(fontSize: 16.0)),
               ],
             ),

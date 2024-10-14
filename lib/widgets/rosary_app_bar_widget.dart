@@ -102,16 +102,17 @@ class _RosaryAppBarWidgetState extends State<RosaryAppBarWidget> {
           key: cancelKey,
           Icons.close,
           color: Colors.white,
-          size: 22.sp,
         ),
       ),
       centerTitle: true,
-      title: BigText(
-        align: TextAlign.center,
-        text: widget.text.tr,
-        color: Colors.white,
-        size: 19.sp,
-        isBold: true,
+      title: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: BigText(
+          align: TextAlign.center,
+          text: widget.text.tr,
+          color: Colors.white,
+          size: 15.sp,
+        ),
       ),
       backgroundColor: Theme.of(context).colorScheme.secondary,
       actions: <Widget>[
@@ -120,28 +121,27 @@ class _RosaryAppBarWidgetState extends State<RosaryAppBarWidget> {
             key: resetKey,
             icon: Row(
               children: [
-
-               main.getHasVibration() == "true"? InkWell(
-                onTap: (){
-                  main.setHasVibration(false);
-                  showCustomSnackBar("vibration_disabled".tr);
-                },
-                 child: Icon(
-                    color: Colors.white,
-                    Icons.vibration_rounded,
-                    size: 22.sp,
-                  ),
-               ):InkWell(
-                onTap: (){
-                   main.setHasVibration(true);
-                   showCustomSnackBar("vibration_enabled".tr);
-                },
-                 child: Icon(
-                    color: Colors.grey.shade500,
-                    Icons.vibration_rounded,
-                    size: 22.sp,
-                  ),
-               ),
+                main.getHasVibration() == "true"
+                    ? InkWell(
+                        onTap: () {
+                          main.setHasVibration(false);
+                          showCustomSnackBar("vibration_disabled".tr);
+                        },
+                        child: Icon(
+                          color: Colors.white,
+                          Icons.vibration_rounded,
+                        ),
+                      )
+                    : InkWell(
+                        onTap: () {
+                          main.setHasVibration(true);
+                          showCustomSnackBar("vibration_enabled".tr);
+                        },
+                        child: Icon(
+                          color: Colors.grey.shade500,
+                          Icons.vibration_rounded,
+                        ),
+                      ),
                 // Icons.par,
               ],
             ),
@@ -155,7 +155,6 @@ class _RosaryAppBarWidgetState extends State<RosaryAppBarWidget> {
           icon: Icon(
             color: Colors.white,
             Icons.settings,
-            size: 22.sp,
           ),
           onPressed: () {
             // Action for notifications button

@@ -38,25 +38,6 @@ class NotificationService {
         ?.requestNotificationsPermission();
   }
 
-  static Future<void> showInstantNotification(String title, String body) async {
-    const NotificationDetails platformChannelSpecifics = NotificationDetails(
-        android: AndroidNotificationDetails(
-          'instant_notification_channel_id',
-          'Instant Notifications',
-          importance: Importance.max,
-          priority: Priority.high,
-        ),
-        iOS: DarwinNotificationDetails());
-
-    await flutterLocalNotificationsPlugin.show(
-      0,
-      title,
-      body,
-      platformChannelSpecifics,
-      payload: 'instant_notification',
-    );
-  }
-
   static Future<void> scheduleDailyNotificationAt8AM() async {
     // Get today's date and set the time for 8:00 AM
     final DateTime now = DateTime.now();
@@ -75,9 +56,9 @@ class NotificationService {
       tz.TZDateTime.from(scheduledTime, tz.local),
       const NotificationDetails(
         android: AndroidNotificationDetails(
-          'daily_notifications_channel', // Your channel ID
-          'Daily Notifications', // Channel name
-          channelDescription: 'This channel is for daily notifications',
+          'rosary_notifications_channel', // Your channel ID
+          'Rosary Notifications', // Channel name
+          channelDescription: 'This channel is for rosary notifications',
           importance: Importance.max,
           priority: Priority.high,
           showWhen: false,
@@ -90,31 +71,4 @@ class NotificationService {
           DateTimeComponents.time, // Repeats daily at the set time
     );
   }
-
-  // static Future<void> scheduleNotificationb(DateTime scheduledTime) async {
-  //   // Fixed notification details
-  //   const int id = 0; // Notification ID
-  //   String title = "reminder_title".tr; // Notification title
-  //   String body = "reminder_desc".tr; // Notification body
-
-  //   await flutterLocalNotificationsPlugin.zonedSchedule(
-  //     id,
-  //     title,
-  //     body,
-  //     tz.TZDateTime.from(scheduledTime, tz.local),
-  //     const NotificationDetails(
-  //       iOS: DarwinNotificationDetails(),
-  //       android: AndroidNotificationDetails(
-  //         'reminder_channel',
-  //         'Reminder Channel',
-  //         importance: Importance.high,
-  //         priority: Priority.high,
-  //       ),
-  //     ),
-  //     uiLocalNotificationDateInterpretation:
-  //         UILocalNotificationDateInterpretation.absoluteTime,
-  //     androidAllowWhileIdle: true,
-  //     matchDateTimeComponents: DateTimeComponents.time, // Daily notification
-  //   );
-  // }
 }

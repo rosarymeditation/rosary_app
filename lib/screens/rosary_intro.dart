@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rosary/controllers/chaplet_template_controller.dart';
@@ -13,6 +14,7 @@ import 'package:rosary/widgets/our_father_widget.dart';
 import '../controllers/main_controller.dart';
 import '../model/bid_model.dart';
 import '../widgets/bead_number_widget.dart';
+import '../widgets/html_widget.dart';
 import '../widgets/intro_bid.dart';
 import '../widgets/main_text.dart';
 
@@ -100,32 +102,16 @@ class _RosaryIntroPageState extends State<RosaryIntroPage> {
                       counter >= 1 && counter <= 3
                           ? Padding(
                               padding: const EdgeInsets.symmetric(vertical: 10),
-                              child: MainText(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .inversePrimary,
-                                text: 'hail_mary'.tr,
-                                size: 15.sp,
+                              child: HtmlWidget(
+                                data: 'hail_mary'.tr,
                               ),
                             )
                           : Container(),
                       counter > 3
                           ? Column(children: [
-                              MainText(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .inversePrimary,
-                                text: 'glory_to_father'.tr,
-                                size: 15.sp,
-                              ),
+                              HtmlWidget(data: 'glory_to_father'.tr),
                               Divider(),
-                              MainText(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .inversePrimary,
-                                text: 'oh_my_jesus'.tr,
-                                size: 15.sp,
-                              ),
+                              HtmlWidget(data: 'oh_my_jesus'.tr),
                             ])
                           : Container(),
                       counter >= 1 && counter <= 3
@@ -199,23 +185,26 @@ class _RosaryIntroPageState extends State<RosaryIntroPage> {
                                           MainAxisAlignment.center,
                                       children: [
                                         InkWell(
-                                          onTap: (){
-                                             main.setIntroBidFocus(1);
-                                             AppConstant.vibrator();
-                                          },
-                                          child: AppConstant.getBead(counter, 1)),
+                                            onTap: () {
+                                              main.setIntroBidFocus(1);
+                                              AppConstant.vibrator();
+                                            },
+                                            child: AppConstant.getBead(
+                                                counter, 1)),
                                         InkWell(
-                                          onTap: (){
-                                            main.setIntroBidFocus(2);
-                                            AppConstant.vibrator();
-                                          },
-                                          child: AppConstant.getBead(counter, 2)),
+                                            onTap: () {
+                                              main.setIntroBidFocus(2);
+                                              AppConstant.vibrator();
+                                            },
+                                            child: AppConstant.getBead(
+                                                counter, 2)),
                                         InkWell(
-                                          onTap: (){
-                                             main.setIntroBidFocus(3);
-                                             AppConstant.vibrator();
-                                          },
-                                          child: AppConstant.getBead(counter, 3)),
+                                            onTap: () {
+                                              main.setIntroBidFocus(3);
+                                              AppConstant.vibrator();
+                                            },
+                                            child: AppConstant.getBead(
+                                                counter, 3)),
                                         Container(),
                                         Container(),
                                       ],
@@ -265,7 +254,7 @@ class _RosaryIntroPageState extends State<RosaryIntroPage> {
                       return;
                     }
                     main.setIntroBidFocus(count + 1);
-                   
+
                     if (count < 3) {
                       AppConstant.vibrator();
                     }
